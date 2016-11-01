@@ -9,7 +9,7 @@ import java.util.Set;
  *
  */
 
-public class Player{
+public class Player implements Cloneable{
 	private Board board;
 	private String name;
 	private Set<Category> tokens;
@@ -39,6 +39,15 @@ public class Player{
 		for (int i=quantity; i>0;i--){
 			tile=board.getNext(tile);
 		}
+	}
+	public Player clone(){
+		Player cloned= new Player(this.name);
+		cloned.board=this.board;
+		Set<Category> clonedTokens= new HashSet<Category>();
+		clonedTokens.addAll(this.tokens);
+		cloned.tokens=clonedTokens;
+		cloned.tile=this.tile;
+		return cloned;
 	}
 	
 	@Override

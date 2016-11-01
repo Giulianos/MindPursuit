@@ -1,4 +1,4 @@
-package mindRace;
+package mindrace.model;
 
 import java.lang.Thread.State;
 /**

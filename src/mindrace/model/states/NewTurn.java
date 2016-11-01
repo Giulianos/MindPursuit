@@ -1,4 +1,4 @@
-package mindrace.model;
+package mindrace.model.states;
 
 import mindrace.model.states.State;
 

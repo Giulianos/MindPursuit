@@ -1,5 +1,6 @@
 package mindrace.model.states;
 
+import mindrace.model.Situation;
 import mindrace.model.states.State;
 
 /**
@@ -10,6 +11,13 @@ import mindrace.model.states.State;
 public class NewTurn extends State {
 	
 	
+	/**
+	 * @param previousState
+	 */
+	public NewTurn(State previousState) {
+		super(previousState);
+	}
+
 	public void initialize(){
 		previousState=null;
 	}

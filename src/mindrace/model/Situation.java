@@ -27,6 +27,7 @@ public class Situation implements Cloneable{
 			copyPlayers.add(p.clone());
 		}
 		Situation clonedSituation= new Situation(copyPlayers,currentPlayer.clone(),currentBoard);
+		return clonedSituation;
 	}
 	
 }

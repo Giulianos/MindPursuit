@@ -1,0 +1,6 @@
+
+	
+	public enum QType {
+		   ART, ENTERTAINMENT, GEOGRAPHY, HISTORY, SCIENCE, SPORTS;
+		}
+

@@ -1,7 +1,7 @@
 package mindrace.model;
 
 import java.util.HashSet;
-import java.util.Locale.Category;
+import mindrace.model.Category;
 import java.util.Set;
 /**
  * 

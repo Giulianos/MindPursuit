@@ -11,11 +11,13 @@ public class Game {
 	private State state;
 	private Situation situation;
 	private boolean isStateInitialized;
+	
 	public Game(State state){
 		this.state=state;
 		situation= new Situation();
 		isStateInitialized=false;
 	}
+	
 	public update(){
 		private State next;
 		if(isStateInitialized){

@@ -1,36 +1,30 @@
 package mindrace.model.states;
 
 import mindrace.model.Category;
-import mindrace.model.Player;
 import mindrace.model.Situation;
 import mindrace.model.states.ModifierState;
 
 /**
- * @author User
+ * @author Daniella
  *
  */
-public class StealingToken extends ModifierState {
-	private Player playerToSteal;
-	private Category categoryToSteal;
-	
+public class WinningToken extends ModifierState {
+	private Category winningCategory;
 	/**
 	 * @see mindrace.model.states.ModifierState#initialize()
 	 */
 	@Override
 	public void initialize() {
+		(currentSituation.getCurrentPlayer()).addToken(winningCategory);
 	}
 
-	public void setTokenToSteal(Player playerToSteal, Category category){
-		this.playerToSteal = playerToSteal;
-		this.categoryToSteal = categoryToSteal;
-	}
 	/**
 	 * @see mindrace.model.states.ModifierState#terminate()
 	 */
 	@Override
-	public State terminate(){
-		(currentSituation.getCurrentPlayer()).addToken(categoryToSteal);
-		playerToSteal.removeToken(categoryToSteal);
+	public State terminate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
@@ -38,7 +32,8 @@ public class StealingToken extends ModifierState {
 	 */
 	@Override
 	public Situation getNewSituation() {
-		return currentSituation;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

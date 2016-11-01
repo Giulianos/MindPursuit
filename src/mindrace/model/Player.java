@@ -22,7 +22,7 @@ public class Player{
 	}
 	public addToken(Category category){
 		if(tokens.contains(category)){
-			throw new IllegalArgumentException("Ya tiene ese token");
+			throw new IllegalArgumentException("Has that token");
 		}
 		tokens.add(category);
 	}

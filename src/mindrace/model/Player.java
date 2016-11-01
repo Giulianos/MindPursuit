@@ -1,5 +1,6 @@
-package mindRace;
+package mindrace.model;
 
+import java.util.HashSet;
 import java.util.Locale.Category;
 import java.util.Set;
 /**
@@ -13,20 +14,24 @@ public class Player{
 	private String name;
 	private Set<Category> tokens;
 	private Tile tile;
+	
 	public Player(String name){
 		this.name = name;
 		this.tokens = new HashSet<Category>();
-		this.tile = new Tile();
+		this.tile = board.startingTile();
 	}
+	
 	public String getName(){
 		return name;
 	}
-	public addToken(Category category){
+	
+	public void addToken(Category category){
 		if(tokens.contains(category)){
 			throw new IllegalArgumentException("Has that token");
 		}
 		tokens.add(category);
 	}
+	
 	public void move(int quantity){
 		if(quantity<0){
 			throw new IllegalArgumentException("quantity must be non negative");
@@ -35,10 +40,12 @@ public class Player{
 			tile=board.getNext(tile);
 		}
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		return this.name.equals(obj.toString());
 	}
+	
 	@Override
 	public int hashCode() {
 		return this.name.hashCode();

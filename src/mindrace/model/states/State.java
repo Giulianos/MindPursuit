@@ -1,9 +1,7 @@
-/**
- * 
- */
+
 package model.states;
 
-import model.Situation;
+import mindrace.model.Situation;
 
 /**
  * @author Giuliano

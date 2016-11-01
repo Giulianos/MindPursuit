@@ -1,6 +1,11 @@
 package mindRace;
 
 import java.lang.Thread.State;
+/**
+ * 
+ * @author francisco
+ *
+ */
 
 public class Game {
 	private State state;

@@ -2,6 +2,11 @@ package mindRace;
 
 import java.util.Locale.Category;
 import java.util.Set;
+/**
+ * 
+ * @author francisco
+ *
+ */
 
 public class Player{
 	private String name;

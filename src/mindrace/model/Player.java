@@ -9,6 +9,7 @@ import java.util.Set;
  */
 
 public class Player{
+	private Board board;
 	private String name;
 	private Set<Category> tokens;
 	private Tile tile;
@@ -31,7 +32,7 @@ public class Player{
 			throw new IllegalArgumentException("quantity must be non negative");
 		}
 		for (int i=quantity; i>0;i--){
-			tile=tile.next;
+			tile=board.getNext(tile);
 		}
 	}
 	@Override

@@ -1,5 +1,5 @@
 
-package model.states;
+package mindrace.model.states;
 
 import mindrace.model.Situation;
 

@@ -9,9 +9,6 @@ import mindrace.model.states.State;
  */
 public class NewTurn extends State {
 	
-	public NewTurn(State previousState){
-		super(previousState);
-	}
 	
 	public void initialize(){
 		previousState=null;

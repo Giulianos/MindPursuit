@@ -32,7 +32,7 @@ public class Game {
 		if(state.getClass().equals(Modifier.class)){
 			situation=state.getSituation();
 		}
-		next.setSituation(situation);
+		next.setSituation(situation.clone());
 		state=next;
 		
 	}

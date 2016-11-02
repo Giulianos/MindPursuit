@@ -9,19 +9,41 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+/**
+ * 
+ * @author Julian
+ *
+ */
 public class QuestionSet {
 	
-private Map<QType, Set<Question>> questionset;
+private Map<Category, Set<Question>> questionMap;
 	
-	public QuestionSet() throws IOException
-	{
-		questionset = new TreeMap<QType,Set<Question>>();
-		questionset.put(QType.ART, createQSet("/Users/Julian/Desktop/art.txt"));
-	}
-	private Set<Question> createQSet(String text) throws IOException {
+	/**
+	 * Genera un mapa donde cada categoria se asocia a un Set de preguntas de dicha categoria
+	 * @throws IOException
+	 */
+
+	public QuestionSet() throws IOException {
+		questionMap = new TreeMap<Category,Set<Question>>();
+		for(Category each : Category.values())
+		{
+			questionMap.put(each, createQuestionSet(each.toString()+".txt"));
+			
+		}
 		
-		Set<Question> questions = new TreeSet<Question>();
+	}
+	/**
+	 * Genera el Set de preguntas para cada categoria
+	 * @param text: Nombre del archivo de preguntas
+	 * @return questionSet: Set con preguntas de la categoria
+	 * @throws IOException
+	 */
+	private Set<Question> createQuestionSet(String text) throws IOException {
+		
+		Set<Question> questionSet = new TreeSet<Question>();
 		
 		try 
 		{
@@ -34,10 +56,11 @@ private Map<QType, Set<Question>> questionset;
 				int endofq = currentline.indexOf('(');
 				int endofans = currentline.indexOf(')');
 				String question = currentline.substring(0, endofq);
-				String options = currentline.substring(endofq+1,endofans);
-				String [] items = options.split(",");
-				Question q = new Question(question,items);
-				questions.add(q);
+				String items = currentline.substring(endofq+1,endofans);
+				String aux[] = items.split(",");
+				String[] options = Arrays.copyOfRange(aux, 0, aux.length-1);	
+				Question q = new Question(question, options, new Integer(options[options.length-1]));
+				questionSet.add(q);
 				currentline = in.readLine();
 			}
 			
@@ -51,25 +74,32 @@ private Map<QType, Set<Question>> questionset;
 		{
 			System.out.println(e.getMessage());
 		}
-		return questions;
+		return questionSet;
 	
 	}
-	public void printAnswers()
+	/**
+	 * Devuelve una pregunta al azar de la categoria recibida
+	 * @param categoryToAsk
+	 * @return 
+	 */
+	public Question getQuestion(Category categoryToAsk)
 	{
-		for(Question each : questionset.get(QType.ART))
+		Set<Question> categoryQuestionSet = questionMap.get(categoryToAsk);
+		int count = 0;
+		int random = (int) (Math.random() * categoryQuestionSet.size());
+		for(Question question : categoryQuestionSet)
 		{
-			System.out.println(each.toString());
-			each.printoptions();
+			if(count == random)
+			{
+				categoryQuestionSet.remove(question);
+				return question;
+			}
 		}
-	}
-	public Question getQuestion(Category category){
-		Question[] questions= (Question[]) questionset.get(category).toArray();
-		int index= (int) (Math.random()*questions.length);
-		Question question= questions[index];
-		return question;
-		
+		count++;
+		return null; //Si no quedan mas preguntas, que excepcion lanzar?
 		
 	}
+	
 
 }
 	

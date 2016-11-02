@@ -9,13 +9,13 @@ import java.util.Set;
  */
 public class Tile {
 	private Integer position;
-	private Boolean isStart;
+	private Boolean start;
 	private Set<Player> players = new HashSet<Player>();
 
-	public Tile(Integer position, Boolean isStart) {
+	public Tile(Integer position, Boolean start) {
 		super();
 		this.position = position;
-		this.isStart = isStart;
+		this.start = start;
 	}
 	
 	public Integer getPosition(){
@@ -23,7 +23,7 @@ public class Tile {
 	}
 	
 	public Boolean isStart(){
-		return isStart;
+		return start;
 	}
 	
 	public void addPlayer(Player player){

@@ -1,6 +1,8 @@
 package mindrace.model;
 
 import java.lang.Thread.State;
+import java.util.HashSet;
+import java.util.Set;
 /**
  * 
  * @author francisco
@@ -11,10 +13,15 @@ public class Game {
 	private State state;
 	private Situation situation;
 	private boolean isStateInitialized;
+	private CircularList<Player> playersTurn;
+	private Set<Player> players;
 	
-	public Game(State state){
+	public Game(CircularList playersTurn, Player startingPlayer, State state){
 		this.state=state;
-		situation= new Situation();
+		this.playersTurn=playersTurn;
+		this.players= new HashSet<Player>();
+		this.players.addAll(playersTurn);
+		situation= new Situation(players, startingPlayer,new Board());
 		isStateInitialized=false;
 	}
 	

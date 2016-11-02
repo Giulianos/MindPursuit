@@ -1,7 +1,7 @@
 package mindrace.model;
 
 import java.util.HashSet;
-import java.util.Locale.Category;
+import mindrace.model.Category;
 import java.util.Set;
 /**
  * 
@@ -23,6 +23,9 @@ public class Player{
 	
 	public String getName(){
 		return name;
+	}
+	public Tile getTile(){
+		return tile;
 	}
 	
 	public void addToken(Category category){

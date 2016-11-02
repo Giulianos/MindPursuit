@@ -1,6 +1,6 @@
 package mindrace.model;
 
-import java.lang.Thread.State;
+import mindrace.model.states.*;
 import java.util.HashSet;
 import java.util.Set;
 /**
@@ -25,8 +25,8 @@ public class Game {
 		isStateInitialized=false;
 	}
 	
-	public update(){
-		private State next;
+	public void  update(){
+		State next;
 		if(isStateInitialized){
 			next=state.terminate();
 			isStateInitialized=false;
@@ -39,7 +39,7 @@ public class Game {
 		if(state.getClass().equals(Modifier.class)){
 			situation=state.getSituation();
 		}
-		next.setSituation(situation);
+		next.setCurrentSituation(situation.clone());
 		state=next;
 		
 	}

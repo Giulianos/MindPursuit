@@ -12,9 +12,8 @@ abstract public class State {
 	protected State previousState;
 	protected Situation currentSituation;
 	
-	public State(State previousState, Situation currentSituation) {
+	public State(State previousState) {
 		this.previousState = previousState;
-		this.currentSituation = currentSituation;
 	}
 	
 	/**

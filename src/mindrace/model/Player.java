@@ -24,6 +24,9 @@ public class Player implements Cloneable{
 	public String getName(){
 		return name;
 	}
+	public Tile getTile(){
+		return tile;
+	}
 	
 	public void addToken(Category category){
 		if(tokens.contains(category)){

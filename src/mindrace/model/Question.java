@@ -1,3 +1,4 @@
+package mindrace.model;
 
 public class Question implements Comparable<Question> {
 	

@@ -11,23 +11,29 @@ public class Situation implements Cloneable{
 	private Set<Player> players;
 	private Player currentPlayer;
 	private Board currentBoard;
+	private CircularList<Player> playersTurn;
 	
-	public Situation(Set<Player> players, Player currentPlayer, Board currentBoard) {
-		this.players = players;
+	public Situation(CircularList<Player> players, Player currentPlayer, Board currentBoard) {
+		this.playersTurn = players;
 		this.currentPlayer = currentPlayer;
 		this.currentBoard = currentBoard;
+		this.players= new HashSet<Player>();
+		this.players.addAll(players);
 	}
 	
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
 	public Situation clone(){
-		Set<Player> copyPlayers=new HashSet<Player>();
+		CircularList<Player> copyPlayers=new CircularList<Player>();
 		for(Player p: this.players){
 			copyPlayers.add(p.clone());
 		}
 		Situation clonedSituation= new Situation(copyPlayers,currentPlayer.clone(),currentBoard);
 		return clonedSituation;
+	}
+	public void nextTurn(){
+		currentPlayer= playersTurn.getNext(currentPlayer);
 	}
 	
 }

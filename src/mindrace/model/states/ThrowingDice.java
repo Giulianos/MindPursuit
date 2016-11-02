@@ -1,4 +1,4 @@
-package mindrace.model;
+package mindrace.model.states;
 import mindrace.model.*;
 import mindrace.model.states.*;
 import java.util.Random;
@@ -13,19 +13,15 @@ public class ThrowingDice extends State {
 	private Random randomNumber = new Random();
 	private State previousState;
 	private Situation currentSituation;
-	static final Integer minimalNumber = 1;
-	static final Integer maximalNumber = 6; 
+	private static final int  MINIMALNUMBER = 1;
+	private static final int MAXIMALNUMBER = 6; 
 	
-	public ThrowingDice(State previousState) {
-		super(null);
-		this.previousState = previousState;
-	}
 	public void setCurrentSituation(Situation currentSituation) {
 		this.currentSituation = currentSituation;
 	}
 
 	public Integer throwDice() {
-		return (int) (randomNumber.nextDouble()*maximalNumber + minimalNumber);
+		return (int) (randomNumber.nextDouble()*MAXIMALNUMBER + MINIMALNUMBER);
 	}
 	
 	public void initialize() {
@@ -35,11 +31,10 @@ public class ThrowingDice extends State {
 	public Integer diceNumber() {
 		return diceNumber;
 	}
-	
-	//preguntar bien como hacerlo
+
 	public State terminate() {
-		return new Move(this);
+		return new Moving();
 	}
 
 }
-}
+

@@ -1,9 +1,6 @@
-import mindrace.model.Category;
-import mindrace.model.Player;
-import mindrace.model.Situation;
-import mindrace.model.ThrowingDice;
-import mindrace.model.states.ModifierState;
-import mindrace.model.states.State;
+package mindrace.model.states;
+
+import mindrace.model.*;
 
 /*
  * 
@@ -17,49 +14,43 @@ public class Moving extends ModifierState{
 		Integer movement; //va a tener cuanto va a moverse
 		Category currentCategory;
 		Situation currentSituation;
-		static final Integer fastMovement = 5;
-		static final Integer slowMovement = 1;
+		private static final Integer fastMovement = 5;
+		private static final Integer slowMovement = 1;
 		
-		
-		public Moving(State previousState){
-			this.previousState = previousState;
-		}
 		
 		public void initialize(){
 			this.setMovment();
 			this.move();
-			this.setCurrentCategory();
-
-			
-			
+			this.setCurrentCategory();	
 		}
 		
 		public State terminate(){
 			if(currentCategory == null){
-				return new ChoosingCategory(this);
+	//			return new ChoosingCategory();
 			}
 			
-			return new Asking(this);
+			return new Asking();
 		}
 		
 		private void move() {
-			currentSituation.getActualPlayer().move(movement) // metodopara setear la posicion del jugador
+			currentSituation.getCurrentPlayer().move(movement);
 			
 		}
 
 		private void setMovment(){
-			if (previousState instanceof ThrowingDice){
-				movement = ((ThrowDice) previousSate).getNumberOfTheDice;
+			if (previousState.getClass().equals(ThrowingDice.class)){
+				movement = ((ThrowingDice) previousState).diceNumber();
 			}
-			if(lastState instanceof WinningToken || lastState instanceof StillToken)){
+			if(previousState.getClass().equals(WinningToken.class) || previousState.getClass().equals(StealingToken.class)){
 				movement = fastMovement;
 			}
 			if(previousState instanceof Asking){
-				if(((Asking) previousState).getTimeTaken() < currentSituation.getTimeTaken()){
+				if(((Asking) previousState).getTimeTaken() < 15){   ///falta agregar constante 
 					movement = slowMovement;
 				}
 				movement = fastMovement;
 			}
+			//todo: throw exception.
 		}
 		
 		private void setCurrentCategory() {

@@ -35,6 +35,12 @@ public class Player implements Cloneable{
 		}
 		tokens.add(category);
 	}
+	public void removeToken(Category category){
+		if(!tokens.contains(category)){
+			throw new IllegalArgumentException("Doesn´t have that token");
+		}
+		tokens.remove(category);
+	}
 	
 	public void move(int quantity){
 		if(quantity<0){
@@ -45,8 +51,7 @@ public class Player implements Cloneable{
 		}
 	}
 	public Player clone(){
-		Player cloned= new Player(this.name);
-		cloned.board=this.board;
+		Player cloned= new Player(this.name, board);
 		Set<Category> clonedTokens= new HashSet<Category>();
 		clonedTokens.addAll(this.tokens);
 		cloned.tokens=clonedTokens;

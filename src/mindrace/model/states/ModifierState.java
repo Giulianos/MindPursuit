@@ -20,5 +20,7 @@ public abstract class ModifierState extends State {
 	@Override
 	public abstract State terminate();
 	
-	public abstract Situation getNewSituation();
+	public  Situation getNewSituation(){
+		return this.currentSituation;
+	}
 }

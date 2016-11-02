@@ -22,7 +22,7 @@ public class StealingToken extends ModifierState {
 
 	public void setTokenToSteal(Player playerToSteal, Category category){
 		this.playerToSteal = playerToSteal;
-		this.categoryToSteal = categoryToSteal;
+		this.categoryToSteal = category;
 	}
 	/**
 	 * @see mindrace.model.states.ModifierState#terminate()
@@ -31,6 +31,7 @@ public class StealingToken extends ModifierState {
 	public State terminate(){
 		(currentSituation.getCurrentPlayer()).addToken(categoryToSteal);
 		playerToSteal.removeToken(categoryToSteal);
+		return new Moving();
 	}
 
 	/**

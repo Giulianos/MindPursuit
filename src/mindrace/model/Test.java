@@ -23,7 +23,7 @@ public class Test {
 		players.addElement(p2);
 		System.out.println("hello");
 		try{
-		Game game= new Game(players, p1, new ThrowingDice(null));
+		Game game= new Game(players, p1, new ThrowingDice());
 		game.update();
 		game.update();
 		game.update();

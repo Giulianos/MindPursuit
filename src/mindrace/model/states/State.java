@@ -12,10 +12,6 @@ abstract public class State {
 	protected State previousState;
 	protected Situation currentSituation;
 	
-	public State(State previousState) {
-		this.previousState = previousState;
-	}
-	
 	/**
 	 * Inicializa el estado y realiza todas las acciones
 	 * que sean posibles hacer sin recibir input del usuario.
@@ -38,5 +34,8 @@ abstract public class State {
 	}
 	public Situation getSituation(){
 		return currentSituation;
+	}
+	public void setPreviousState(State previousState){
+		this.previousState=previousState;
 	}
 }

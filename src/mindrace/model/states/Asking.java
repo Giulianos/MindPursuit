@@ -17,11 +17,6 @@ public class Asking extends State {
 	QuestionSet questionSet;
 	Integer selectedAnswer;
 	Integer timeTaken;
-	
-	public Asking(State previousState)
-	{
-		super(previousState);
-	}
 
 	/**
 	 * @see mindrace.model.states.State#initialize()
@@ -39,8 +34,8 @@ public class Asking extends State {
 			categoryToAsk = playersTile.getCategory();
 			
 		} else {
-			AskingCategory auxiliaryPreviousState = (AskingCategory)previousState;
-			categoryToAsk = auxiliaryPreviousState.getCategory();
+			ChoosingCategory auxiliaryPreviousState = (ChoosingCategory)previousState;
+			categoryToAsk = auxiliaryPreviousState.getCategory(); 
 		}
 		
 		questionToAsk = questionSet.getQuestion(categoryToAsk);

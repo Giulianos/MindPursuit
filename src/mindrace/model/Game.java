@@ -15,14 +15,9 @@ public class Game {
 	private State state;
 	private Situation situation;
 	private boolean isStateInitialized;
-	private CircularList<Player> playersTurn;
-	private Set<Player> players;
 	
-	public Game(CircularList playersTurn, Player startingPlayer, State state) throws IOException{
+	public Game(CircularList<Player> players, Player startingPlayer, State state) throws IOException{
 		this.state=state;
-		this.playersTurn=playersTurn;
-		this.players= new HashSet<Player>();
-		this.players.addAll(playersTurn);
 		Board b= new Board();
 		situation= new Situation(players, startingPlayer,b);
 		isStateInitialized=false;
@@ -33,6 +28,7 @@ public class Game {
 		State next;
 		if(isStateInitialized){
 			next=state.terminate();
+			next.setPreviousState(state);
 			isStateInitialized=false;
 		}
 		else{

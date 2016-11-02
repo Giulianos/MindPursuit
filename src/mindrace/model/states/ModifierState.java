@@ -7,7 +7,11 @@ import mindrace.model.Situation;
  *
  */
 public abstract class ModifierState extends State {
-
+	
+	public ModifierState(State previousState) {
+		super(previousState);
+	}
+	
 	/**
 	 * @see mindrace.model.states.State#initialize()
 	 */

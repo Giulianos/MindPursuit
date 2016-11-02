@@ -15,9 +15,10 @@ public class Player implements Cloneable{
 	private Set<Category> tokens;
 	private Tile tile;
 	
-	public Player(String name){
+	public Player(String name, Board b){
 		this.name = name;
 		this.tokens = new HashSet<Category>();
+		this.board=b;
 		this.tile = board.startingTile();
 	}
 	
@@ -51,6 +52,9 @@ public class Player implements Cloneable{
 		cloned.tokens=clonedTokens;
 		cloned.tile=this.tile;
 		return cloned;
+	}
+	public void setBoard(Board b){
+		this.board=b;
 	}
 	
 	@Override

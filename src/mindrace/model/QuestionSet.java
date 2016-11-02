@@ -62,6 +62,14 @@ private Map<QType, Set<Question>> questionset;
 			each.printoptions();
 		}
 	}
+	public Question getQuestion(Category category){
+		Question[] questions= (Question[]) questionset.get(category).toArray();
+		int index= (int) (Math.random()*questions.length);
+		Question question= questions[index];
+		return question;
+		
+		
+	}
 
 }
 	

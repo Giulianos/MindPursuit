@@ -36,5 +36,7 @@ abstract public class State {
 	public void setCurrentSituation(Situation currentSituation) {
 		this.currentSituation = currentSituation;
 	}
-	
+	public Situation getSituation(){
+		return currentSituation;
+	}
 }

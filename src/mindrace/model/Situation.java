@@ -8,7 +8,6 @@ import java.util.Set;
  *
  */
 public class Situation implements Cloneable{
-	private Set<Player> players;
 	private Player currentPlayer;
 	private Board currentBoard;
 	private CircularList<Player> playersTurn;
@@ -17,10 +16,7 @@ public class Situation implements Cloneable{
 		this.playersTurn = players;
 		this.currentPlayer = currentPlayer;
 		this.currentBoard = currentBoard;
-		this.players= new HashSet<Player>();
-		for(int i= 0; i < players.size();i++ ){
-			this.players.add(players.get(i));
-		}
+		this.playersTurn = new CircularList<Player>(players);
 	}
 	
 	public Player getCurrentPlayer() {
@@ -28,8 +24,8 @@ public class Situation implements Cloneable{
 	}
 	public Situation clone(){
 		CircularList<Player> copyPlayers=new CircularList<Player>();
-		for(Player p: this.players){
-			copyPlayers.add(p.clone());
+		for(int i=0; i<playersTurn.size(); i++){
+			copyPlayers.add(playersTurn.get(i).clone());
 		}
 		Situation clonedSituation= new Situation(copyPlayers,currentPlayer.clone(),currentBoard);
 		return clonedSituation;

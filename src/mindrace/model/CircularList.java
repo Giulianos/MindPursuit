@@ -1,5 +1,13 @@
 package mindrace.model;
 
+import java.util.AbstractList;
+
+
+/**
+ * 
+ * @author Agustin Lavarello
+ * 
+ */
 public class CircularList<T> {
 
 	private int size;
@@ -29,12 +37,17 @@ public class CircularList<T> {
     		this.next = n;
     	}
     }
-  
-   
+
     public  CircularList(){
         first = null;
         size = 0;
     }
+    
+    public CircularList(CircularList<T> circularList){
+		for(int i=0; i<circularList.size(); i++) {
+			this.add(circularList.get(i), i);
+		}
+	}
 
     public Node<T> getFirst(){
 		return first;
@@ -71,7 +84,6 @@ public class CircularList<T> {
 		
 	}
 
-
 	public T get(int index) {
 		if(index > size) {
 			throw new IllegalArgumentException();
@@ -88,7 +100,13 @@ public class CircularList<T> {
 		return size;
 	}
 
-	//busca un lemento y devuelve el proximo
+	/**
+	 * 
+	 * Busca un elemento y devuelve el proximo.
+	 * 
+	 * @param element
+	 * @return
+	 */
 	public T getNext(T element){
 		Node<T> aux = first;
 		if(aux.getElement().equals(element)){
@@ -109,7 +127,7 @@ public class CircularList<T> {
 	public boolean isEmpty(){
 		return first == null;
 	}
-    
+	
 	public void add(T element, Integer index){
 		if(index > size){
 			throw new IllegalArgumentException();
@@ -137,7 +155,3 @@ public class CircularList<T> {
 	}
     
 }
-
-    
-    
-

@@ -61,6 +61,11 @@ public class Player implements Cloneable{
 	public void setBoard(Board b){
 		this.board=b;
 	}
+	public Set<Category> getTokens() {
+		Set<Category> tokensCopy = new HashSet<Category>();
+		tokensCopy.addAll(this.tokens);
+		return tokensCopy;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {

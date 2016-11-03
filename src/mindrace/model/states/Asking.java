@@ -75,8 +75,12 @@ public class Asking extends State {
 	public State terminate() {
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
-			if(this.getSituation().getCurrentPlayer().getTile().isSpecial() && timeTaken<15){ //constante de tiempo
-				return new WinningToken();
+			if(timeTaken<15){ //constante de tiempo
+				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {
+					return new WinningToken();	
+				} else if (getSituation().getCurrentPlayer().getTile().stealablePlayers(getSituation().getCurrentPlayer()).size() > 0) {
+					return new StealingToken();
+				}
 			}
 			return new Moving();
 		}

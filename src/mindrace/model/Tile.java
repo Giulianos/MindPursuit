@@ -43,4 +43,15 @@ public class Tile{
 	public boolean isSpecial(){
 		return false;
 	}
+	public Set<Player> stealablePlayers(Player thief){
+		Set<Player> stealablePlayers = new HashSet<Player>();
+		for(Player p : players) {
+			if(!p.equals(thief)) {
+				if(p.getTokens().size()>0) {
+					stealablePlayers.add(p.clone());
+				}
+			}
+		}
+		return stealablePlayers;
+	}
 }

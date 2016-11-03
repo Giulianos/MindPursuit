@@ -15,7 +15,7 @@ public class NewTurn extends ModifierState {
 
 
 	public void initialize(){
-		this.currentSituation.nextTurn();
+		this.getSituation().nextTurn();
 	}
 	
 	public State terminate(){

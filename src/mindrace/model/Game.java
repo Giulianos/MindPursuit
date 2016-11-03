@@ -5,6 +5,11 @@ import mindrace.model.states.*;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 /**
  * 
  * @author francisco
@@ -16,9 +21,8 @@ public class Game {
 	private Situation situation;
 	private boolean isStateInitialized;
 	
-	public Game(CircularList<Player> players, Player startingPlayer, State state) throws IOException{
+	public Game(CircularList<Player> players, Player startingPlayer, State state, Board b) throws IOException, ParserConfigurationException,SAXException{
 		this.state=state;
-		Board b= new Board();
 		situation= new Situation(players, startingPlayer,b);
 		isStateInitialized=false;
 		}

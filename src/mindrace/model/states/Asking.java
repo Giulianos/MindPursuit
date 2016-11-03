@@ -24,17 +24,17 @@ public class Asking extends State {
 	@Override
 	public void initialize() {
 		Category categoryToAsk;
-		if( (previousState.getClass().equals(Moving.class)) ||
-			(previousState.getClass().equals(WinningToken.class)) ) {
+		if( (this.getPreviousState().getClass().equals(Moving.class)) ||
+			(this.getPreviousState().getClass().equals(WinningToken.class)) ) {
 			
 			/* Si el estado anterior es Moving o WinningToken puedo asegurar que el casillero del juagdor
 			 * es con categoria y sacarla del tile.
 			 */
-			TileWithCategory playersTile = (TileWithCategory) currentSituation.getCurrentPlayer().getTile();
+			TileWithCategory playersTile = (TileWithCategory)getSituation().getCurrentPlayer().getTile();
 			categoryToAsk = playersTile.getCategory();
 			
 		} else {
-			ChoosingCategory auxiliaryPreviousState = (ChoosingCategory)previousState;
+			ChoosingCategory auxiliaryPreviousState = (ChoosingCategory)this.getPreviousState();
 			categoryToAsk = auxiliaryPreviousState.getCategory(); 
 		}
 		
@@ -74,8 +74,12 @@ public class Asking extends State {
 	@Override
 	public State terminate() {
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
-			if(currentSituation.getCurrentPlayer().getTile().isStar() && timeTaken<)
+			if(this.getSituation().getCurrentPlayer().getTile().isSpecial() && timeTaken<15){ //constante de tiempo
+				return new WinningToken();
+			}
+			return new Moving();
 		}
+		return new NewTurn();
 	}
 	public int getTimeTaken(){
 		return timeTaken;

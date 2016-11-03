@@ -9,7 +9,6 @@ import java.util.Set;
  */
 public class Tile{
 	private Integer position;
-	private Boolean isStart;
 	private Set<Player> players = new HashSet<Player>();
 
 	public Tile(Integer position){
@@ -40,5 +39,8 @@ public class Tile{
 			return false;
 		Tile tile = (Tile)obj;
 		return this.position.equals(tile.position);
+	}
+	public boolean isSpecial(){
+		return false;
 	}
 }

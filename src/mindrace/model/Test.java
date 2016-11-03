@@ -49,6 +49,19 @@ public class Test {
 			b = new Board();
 			TileWithCategory tileN = (TileWithCategory)b.getTileAt(42);
 			System.out.println(tileN.getPosition());
+			Player p1 = new Player("agustin", b);
+			Player p2 = new Player("Julian", b);
+			CircularList<Player> players = new CircularList<Player>();
+			players.add(p1);
+			players.add(p2);
+			Game game = new Game(players, p1,new ThrowingDice(), b);
+			game.update();
+			game.update();
+			game.update();
+			game.update();
+			game.update();
+			game.update();
+			
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,6 +72,7 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }

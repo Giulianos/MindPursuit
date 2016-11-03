@@ -10,15 +10,14 @@ import mindrace.model.*;
 public class Moving extends ModifierState{
 
 		private Player player; //este seria el jugador que va a mover
-		private State previousState;
 		private Integer movement; //va a tener cuanto va a moverse
 		private Category currentCategory;
-		private Situation currentSituation;
 		private static final Integer fastMovement = 5;
 		private static final Integer slowMovement = 1;
 		
 		
 		public void initialize(){
+			this.player=this.getSituation().getCurrentPlayer();
 			this.setMovment();
 			this.move();
 			this.setCurrentCategory();	
@@ -26,26 +25,26 @@ public class Moving extends ModifierState{
 		
 		public State terminate(){
 			if(currentCategory == null){
-	//			return new ChoosingCategory();
+				return new ChoosingCategory();
 			}
 			
 			return new Asking();
 		}
 		
 		private void move() {
-			currentSituation.getCurrentPlayer().move(movement);
+			this.getSituation().getCurrentPlayer().move(movement);
 			
 		}
 
 		private void setMovment(){
-			if (this.previousState.getClass().equals(ThrowingDice.class)){
-				movement = ((ThrowingDice) previousState).diceNumber();
+			if (this.getPreviousState().getClass().equals(ThrowingDice.class)){
+				movement = ((ThrowingDice) this.getPreviousState()).diceNumber();
 			}
-			if(previousState.getClass().equals(WinningToken.class) || previousState.getClass().equals(StealingToken.class)){
+			if(this.getPreviousState().getClass().equals(WinningToken.class) || this.getPreviousState().getClass().equals(StealingToken.class)){
 				movement = fastMovement;
 			}
-			if(previousState instanceof Asking){
-				if(((Asking) previousState).getTimeTaken() < 15){   ///falta agregar constante 
+			if(this.getPreviousState() instanceof Asking){
+				if(((Asking) this.getPreviousState()).getTimeTaken() < 15){   ///falta agregar constante 
 					movement = slowMovement;
 				}
 				movement = fastMovement;
@@ -57,19 +56,9 @@ public class Moving extends ModifierState{
 			if(player.getTile().getClass().equals(TileWithCategory.class)){
 				currentCategory = ((TileWithCategory) (player.getTile())).getCategory();
 			}
+			else{
+				currentCategory=null;
+			}
 		}
-		
-		public void setCurrentSituation(Situation currentSituation) {
-			this.currentSituation = currentSituation;
-		}
-
-		/* (non-Javadoc)
-		 * @see mindrace.model.states.ModifierState#getNewSituation()
-		 */
-		@Override
-		public Situation getNewSituation() {
-			return currentSituation;
-		}
-
 		
 	}

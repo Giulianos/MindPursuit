@@ -18,7 +18,7 @@ public class TileWithCategory extends Tile{
 		 return category;
 	 }
 	 
-	 public Boolean isSpecial(){
+	 public boolean isSpecial(){
 		 return special;
 	 }
 }

@@ -16,7 +16,10 @@ public class Situation implements Cloneable{
 		this.playersTurn = players;
 		this.currentPlayer = currentPlayer;
 		this.currentBoard = currentBoard;
-		this.playersTurn = new CircularList<Player>(players);
+		this.playersTurn = new CircularList<Player>();
+		for(int i=0; i<players.size();i++){
+			playersTurn.add(players.get(i));
+		}
 	}
 	
 	public Player getCurrentPlayer() {

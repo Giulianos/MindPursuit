@@ -29,17 +29,10 @@ public class StealingToken extends ModifierState {
 	 */
 	@Override
 	public State terminate(){
-		(currentSituation.getCurrentPlayer()).addToken(categoryToSteal);
+		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
 		playerToSteal.removeToken(categoryToSteal);
 		return new Moving();
 	}
 
-	/**
-	 * @see mindrace.model.states.ModifierState#getNewSituation()
-	 */
-	@Override
-	public Situation getNewSituation() {
-		return currentSituation;
-	}
 
 }

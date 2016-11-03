@@ -4,14 +4,21 @@ package mindrace.model;
  * @author Daniella
  *
  */
-public class TileWithCategory extends Tile {
+public class TileWithCategory extends Tile{
 	 Category category;
-
-	 public TileWithCategory(Integer position, Boolean isStart, Category category) {
-		super(position, isStart);
+	 Boolean special;
+	 
+	 public TileWithCategory(Integer position, Boolean special, Category category){
+		super(position);
 		this.category = category;
+		this.special = special;
 	 }
+	 
 	 public Category getCategory(){
 		 return category;
+	 }
+	 
+	 public Boolean isSpecial(){
+		 return special;
 	 }
 }

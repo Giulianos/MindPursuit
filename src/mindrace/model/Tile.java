@@ -7,15 +7,14 @@ import java.util.Set;
  * @author Daniella
  *
  */
-public class Tile {
+public class Tile{
 	private Integer position;
 	private Boolean isStart;
 	private Set<Player> players = new HashSet<Player>();
 
-	public Tile(Integer position, Boolean isStart) {
+	public Tile(Integer position){
 		super();
 		this.position = position;
-		this.isStart = isStart;
 	}
 	
 	public Integer getPosition(){
@@ -23,7 +22,7 @@ public class Tile {
 	}
 	
 	public Boolean isStart(){
-		return isStart;
+		return position == 1;
 	}
 	
 	public void addPlayer(Player player){
@@ -34,7 +33,7 @@ public class Tile {
 		players.remove(player);
 	}
 	
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj){
 		if (obj == null)
 			return false;
 		if (!(obj.getClass().equals(this.getClass())))

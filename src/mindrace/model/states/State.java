@@ -9,8 +9,8 @@ import mindrace.model.Situation;
  */
 abstract public class State {
 	
-	protected State previousState;
-	protected Situation currentSituation;
+	private State previousState;
+	private Situation currentSituation;
 	
 	/**
 	 * Inicializa el estado y realiza todas las acciones
@@ -37,5 +37,8 @@ abstract public class State {
 	}
 	public void setPreviousState(State previousState){
 		this.previousState=previousState;
+	}
+	public State getPreviousState(){
+		return previousState;
 	}
 }

@@ -9,11 +9,11 @@ import mindrace.model.*;
  */
 public class Moving extends ModifierState{
 
-		Player player; //este seria el jugador que va a mover
-		State previousState;
-		Integer movement; //va a tener cuanto va a moverse
-		Category currentCategory;
-		Situation currentSituation;
+		private Player player; //este seria el jugador que va a mover
+		private State previousState;
+		private Integer movement; //va a tener cuanto va a moverse
+		private Category currentCategory;
+		private Situation currentSituation;
 		private static final Integer fastMovement = 5;
 		private static final Integer slowMovement = 1;
 		
@@ -38,7 +38,7 @@ public class Moving extends ModifierState{
 		}
 
 		private void setMovment(){
-			if (previousState.getClass().equals(ThrowingDice.class)){
+			if (this.previousState.getClass().equals(ThrowingDice.class)){
 				movement = ((ThrowingDice) previousState).diceNumber();
 			}
 			if(previousState.getClass().equals(WinningToken.class) || previousState.getClass().equals(StealingToken.class)){

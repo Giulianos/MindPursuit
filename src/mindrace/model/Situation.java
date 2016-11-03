@@ -18,7 +18,9 @@ public class Situation implements Cloneable{
 		this.currentPlayer = currentPlayer;
 		this.currentBoard = currentBoard;
 		this.players= new HashSet<Player>();
-		this.players.addAll(players);
+		for(int i= 0; i < players.size();i++ ){
+			this.players.add(players.get(i));
+		}
 	}
 	
 	public Player getCurrentPlayer() {

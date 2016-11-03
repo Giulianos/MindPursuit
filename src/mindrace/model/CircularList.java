@@ -1,17 +1,10 @@
 package mindrace.model;
 
-import java.util.AbstractList;
-
-
-/**
- * 
- * @author Agustin Lavarello
- * 
- */
-public class CircularList<T> extends AbstractList<T> {
+public class CircularList<T> {
 
 	private int size;
     private Node<T> first;
+    static final Integer cero = 0;
     
     
     private class Node<T> {
@@ -47,9 +40,9 @@ public class CircularList<T> extends AbstractList<T> {
 		return first;
 	}
     
-    public void addElement(T t) {
+    public void add(T element) {
 		
-		Node<T> n = new Node<T>(t);
+		Node<T> n = new Node<T>(element);
 		Node<T> aux = first;
 		
 		if (isEmpty()) {
@@ -74,24 +67,28 @@ public class CircularList<T> extends AbstractList<T> {
 			n.setNext(first);
 		}
 		size++;
+	
 		
 	}
 
-	@Override
+
 	public T get(int index) {
+		if(index > size) {
+			throw new IllegalArgumentException();
+		}
 		Node<T> aux = first;
-		for(int i= 0; i<=index; i++){
-				aux= aux.getNext();
+		for(int i= 0; i<index; i++){
+				aux = aux.getNext();
 			}
 		return aux.getElement();
 	}
 
-	@Override
+
 	public int size() {
 		return size;
 	}
 
-	//busca un lemento y devuelve el proximo, si no lo encuentra devuelve null
+	//busca un lemento y devuelve el proximo
 	public T getNext(T element){
 		Node<T> aux = first;
 		if(aux.getElement().equals(element)){
@@ -105,7 +102,7 @@ public class CircularList<T> extends AbstractList<T> {
 			}
 			aux = aux.getNext();
 		}
-		return null;
+		throw new IllegalArgumentException("Element is not on the list"); 
 		
 	}
 	
@@ -113,12 +110,34 @@ public class CircularList<T> extends AbstractList<T> {
 		return first == null;
 	}
     
+	public void add(T element, Integer index){
+		if(index > size){
+			throw new IllegalArgumentException();
+		}
+		Node<T> node = first;
+		Node<T> aux;
+		if (index.equals(cero)) {
+			for(int i=0; i<size-1; i++){
+				node = node.getNext();
+			}
+			
+			node.setNext(new Node<T>(element));
+			node.getNext().setNext(first);	
+			first = node.getNext();
+		}
+		else {
+			for(int i=0; i<index-1; i++){
+				node = node.getNext();
+			}
+			aux = node.getNext();
+			node.setNext(new Node<T>(element));
+			node.getNext().setNext(aux);
+		}
+		
+	}
     
 }
 
     
     
-    
-    
-    
-    
+

@@ -64,7 +64,14 @@ public class Player implements Cloneable{
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.name.equals(obj.toString());
+		if(obj==null){
+			return false;
+		}
+		if(!obj.getClass().equals(this.getClass())){
+			return false;
+		}
+		Player aux= (Player) obj;
+		return this.name.equals(aux.getName());
 	}
 	
 	@Override

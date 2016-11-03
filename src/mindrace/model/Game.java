@@ -40,7 +40,7 @@ public class Game {
 			state.initialize();
 			isStateInitialized=true;
 		}
-		if(state.getClass().equals(ModifierState.class)){
+		if(state instanceof ModifierState){
 			situation=state.getSituation();
 		}
 		next.setCurrentSituation(situation.clone());

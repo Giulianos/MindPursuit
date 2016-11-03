@@ -1,6 +1,6 @@
 package mindrace.model;
 
-import java.util.AbstractList;
+public class CircularList<T> {
 
 
 /**

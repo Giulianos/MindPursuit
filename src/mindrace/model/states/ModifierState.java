@@ -21,6 +21,6 @@ public abstract class ModifierState extends State {
 	public abstract State terminate();
 	
 	public  Situation getNewSituation(){
-		return this.currentSituation;
+		return super.getSituation();
 	}
 }

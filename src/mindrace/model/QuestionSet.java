@@ -58,8 +58,7 @@ private Map<Category, Set<Question>> questionMap;
 				String question = currentline.substring(0, endofq);
 				String items = currentline.substring(endofq+1,endofans);
 				String aux[] = items.split(",");
-				String[] options = Arrays.copyOfRange(aux, 0, aux.length-1);	
-				Question q = new Question(question, options, new Integer(options[options.length-1]));
+				Question q = new Question(question, aux);
 				questionSet.add(q);
 				currentline = in.readLine();
 			}
@@ -68,7 +67,7 @@ private Map<Category, Set<Question>> questionMap;
 		} 
 		catch (FileNotFoundException e) 
 		{
-			System.out.println("File not found");
+			System.out.println("File not found"+text);
 		} 
 		catch (Exception e) 
 		{

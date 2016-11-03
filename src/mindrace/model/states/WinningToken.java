@@ -15,7 +15,7 @@ public class WinningToken extends ModifierState {
 	 */
 	@Override
 	public void initialize() {
-		(currentSituation.getCurrentPlayer()).addToken(winningCategory);
+		(this.getSituation().getCurrentPlayer()).addToken(winningCategory);
 	}
 
 	/**
@@ -23,17 +23,12 @@ public class WinningToken extends ModifierState {
 	 */
 	@Override
 	public State terminate() {
-		// TODO Auto-generated method stub
-		return null;
+		if(this.getPreviousState().equals(Moving.class)){
+			return new ChoosingCategory();
+		}
+		return new Moving();
 	}
 
-	/**
-	 * @see mindrace.model.states.ModifierState#getNewSituation()
-	 */
-	@Override
-	public Situation getNewSituation() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

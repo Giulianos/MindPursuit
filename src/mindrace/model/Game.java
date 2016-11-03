@@ -20,11 +20,13 @@ public class Game {
 	private State state;
 	private Situation situation;
 	private boolean isStateInitialized;
+	private QuestionSet questions;
 	
 	public Game(CircularList<Player> players, Player startingPlayer, State state, Board b) throws IOException, ParserConfigurationException,SAXException{
 		this.state=state;
 		situation= new Situation(players, startingPlayer,b);
 		isStateInitialized=false;
+		questions = new QuestionSet();
 		}
 	
 	
@@ -40,7 +42,7 @@ public class Game {
 			state.initialize();
 			isStateInitialized=true;
 		}
-		if(state.getClass().equals(ModifierState.class)){
+		if(state instanceof ModifierState){
 			situation=state.getSituation();
 		}
 		next.setCurrentSituation(situation.clone());
@@ -50,5 +52,8 @@ public class Game {
 	}
 	public State getState(){
 		return state;
+	}
+	public QuestionSet getQuestionSet(){
+		return questions;
 	}
 }

@@ -74,6 +74,7 @@ public class Asking extends State {
 	@Override
 	public State terminate() {
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
+			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
 			if(this.getSituation().getCurrentPlayer().getTile().isSpecial() && timeTaken<15){ //constante de tiempo
 				return new WinningToken();
 			}
@@ -83,6 +84,9 @@ public class Asking extends State {
 	}
 	public int getTimeTaken(){
 		return timeTaken;
+	}
+	public void setQuestionSet(QuestionSet questions){
+		this.questionSet=questions;
 	}
 
 }

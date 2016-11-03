@@ -59,9 +59,12 @@ public class Test {
 			game.update();
 			game.update();
 			game.update();
+			((Asking)(game.getState())).addQuestionSet(game.getQuestionSet());
+			game.update();
+			((Asking)game.getState()).setAnswer(1, 10);
 			game.update();
 			game.update();
-			
+			game.update();
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

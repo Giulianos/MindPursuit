@@ -7,13 +7,17 @@ package mindrace.model;
 public class Question implements Comparable<Question> {
 	
 	String question;
-	String[] options;
+	String[] parameters;
 	int correctAnswer;
 	
-	public Question(String question, String[] options, int correctAnswer) 
+	public Question(String question, String[] options) 
 	{
 		this.question = question;
-		this.options = options;
+		this.parameters= new String[4];
+		this.correctAnswer= new Integer(options[options.length-1]);
+		for (int i=0; i<options.length-2;i++){
+			this.parameters[i]=options[i];
+		}
 	}
 	@Override
 	public String toString() {
@@ -26,9 +30,9 @@ public class Question implements Comparable<Question> {
 	public String getQuestion() {
 		return question;
 	}
-	public String getCorrectAnswer()
+	public Integer getCorrectAnswer()
 	{
-		return options[correctAnswer];
+		return correctAnswer;
 	}
 	
 

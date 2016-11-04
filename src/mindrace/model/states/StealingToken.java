@@ -1,5 +1,7 @@
 package mindrace.model.states;
 
+import java.util.Set;
+
 import mindrace.model.Category;
 import mindrace.model.Player;
 import mindrace.model.Situation;
@@ -34,7 +36,7 @@ public class StealingToken extends ModifierState {
 	@Override
 	public State terminate(){
 		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
-		playerToSteal.removeToken(categoryToSteal);
+		this.getSituation().getRealPlayer(playerToSteal).removeToken(categoryToSteal);
 		return new Moving();
 	}
 }

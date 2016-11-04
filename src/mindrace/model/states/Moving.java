@@ -19,11 +19,16 @@ public class Moving extends ModifierState{
 		public void initialize(){
 			this.player=this.getSituation().getCurrentPlayer();
 			this.setMovment();
+			player.getTile().removePlayer(player);
 			this.move();
-			this.setCurrentCategory();	
+			this.setCurrentCategory();
+			player.getTile().addPlayer(player);
 		}
 		
 		public State terminate(){
+			if (player.getTile().getPosition()<=movement){
+				return new WinningToken();
+			}
 			if(currentCategory == null){
 				return new ChoosingCategory();
 			}

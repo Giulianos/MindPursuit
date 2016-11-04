@@ -83,5 +83,19 @@ public class Player implements Cloneable{
 	public int hashCode() {
 		return this.name.hashCode();
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		String string =this.name;
+		for(Category c: tokens){
+			string+=c.toString();
+		}
+		return string;
+	}
+	public void setTile(Tile tile){
+		this.tile=tile;
+	}
 
 }

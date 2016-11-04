@@ -23,7 +23,7 @@ public class Situation implements Cloneable{
 	}
 	
 	public Player getCurrentPlayer() {
-		return currentPlayer;
+		return playersTurn.get(currentPlayer);
 	}
 	public Situation clone(){
 		CircularList<Player> copyPlayers=new CircularList<Player>();
@@ -35,6 +35,9 @@ public class Situation implements Cloneable{
 	}
 	public void nextTurn(){
 		currentPlayer= playersTurn.getNext(currentPlayer);
+	}
+	public Player getRealPlayer(Player player){
+		return playersTurn.get(player);
 	}
 	
 }

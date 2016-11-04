@@ -73,6 +73,9 @@ public class Asking extends State {
 	 */
 	@Override
 	public State terminate() {
+		if(selectedAnswer == null){
+			throw new NullPointerException();
+		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
 			if(timeTaken<15){ //constante de tiempo

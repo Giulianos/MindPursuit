@@ -49,8 +49,10 @@ public class Test {
 			b = new Board();
 			TileWithCategory tileN = (TileWithCategory)b.getTileAt(42);
 			System.out.println(tileN.getPosition());
-			Player p1 = new Player("agustin", b);
-			Player p2 = new Player("Julian", b);
+			Player p1 = new Player("Julian", b);
+			Player p2 = new Player("Agustin", b);
+			p2.addToken(Category.Ciencia);
+			p2.addToken(Category.Geografia);
 			CircularList<Player> players = new CircularList<Player>();
 			players.add(p1);
 			players.add(p2);
@@ -59,12 +61,22 @@ public class Test {
 			game.update();
 			game.update();
 			game.update();
-			((Asking)(game.getState())).addQuestionSet(game.getQuestionSet());
-			game.update();
-			((Asking)game.getState()).setAnswer(1, 10);
 			game.update();
 			game.update();
 			game.update();
+			
+		
+			System.out.println(game.getSituation().getCurrentPlayer());
+			System.out.println(p2);
+			System.out.println(game.getSituation().getRealPlayer(p2));
+			
+		
+			
+			
+		
+		
+		
+		
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -21,7 +21,7 @@ public class WinningToken extends ModifierState {
 	 */
 	@Override
 	public void initialize() {
-		if (this.getPreviousState().equals(Asking.class)){
+		if (this.getPreviousState().getClass().equals(Asking.class)){
 			TileWithCategory auxTile = (TileWithCategory) this.getSituation().getCurrentPlayer().getTile(); 
 			winningCategory = auxTile.getCategory();  
 			(this.getSituation().getCurrentPlayer()).addToken(winningCategory);
@@ -57,7 +57,10 @@ public class WinningToken extends ModifierState {
 	 */
 	@Override
 	public State terminate() {
-		if(this.getPreviousState().equals(Asking.class)){
+		if(winningCategory==null){
+			throw new NullPointerException();
+		}
+		if(this.getPreviousState().getClass().equals(Asking.class)){
 			return new Moving();
 		} else if (this.getSituation().getCurrentPlayer().getTile().getClass().equals(TileWithCategory.class)){
 			(this.getSituation().getCurrentPlayer()).addToken(winningCategory);

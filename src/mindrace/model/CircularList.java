@@ -153,5 +153,13 @@ public class CircularList<T> {
 		}
 		
 	}
+	
+	public T get(T t){
+		for (int i=0; i<this.size;i++){
+			if(this.get(i).equals(t))
+				return get(i);
+		}
+		return null;
+	}
     
 }

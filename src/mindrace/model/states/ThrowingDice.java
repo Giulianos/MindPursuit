@@ -11,14 +11,8 @@ public class ThrowingDice extends State {
 
 	private Integer diceNumber;
 	private Random randomNumber = new Random();
-	private State previousState;
-	private Situation currentSituation;
 	private static final int  MINIMALNUMBER = 1;
 	private static final int MAXIMALNUMBER = 6; 
-	
-	public void setCurrentSituation(Situation currentSituation) {
-		this.currentSituation = currentSituation;
-	}
 
 	public Integer throwDice() {
 		return (int) (randomNumber.nextDouble()*MAXIMALNUMBER + MINIMALNUMBER);

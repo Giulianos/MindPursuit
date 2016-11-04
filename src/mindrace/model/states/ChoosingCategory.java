@@ -30,5 +30,8 @@ public class ChoosingCategory extends State {
 	public Category getCategory(){
 		return chosenCategory;
 	}
+	public void setCategory(Category chosenCategory){
+		this.chosenCategory=chosenCategory;
+	}
 
 }

@@ -27,6 +27,11 @@ public class Game {
 		situation= new Situation(players, startingPlayer,b);
 		isStateInitialized=false;
 		questions = new QuestionSet();
+		for(int i=0 ; i<players.size();i++){
+			players.get(i).setTile(b.getTileAt(1));
+			b.getTileAt(1).addPlayer(players.get(i));
+		}
+		
 		}
 	
 	
@@ -47,6 +52,10 @@ public class Game {
 		}
 		next.setCurrentSituation(situation.clone());
 		state=next;
+		if(next.getClass().equals(Asking.class))
+		{
+			((Asking)next).addQuestionSet(questions);
+		}
 		System.out.println("Moving to state"+ state.getClass().getName());
 		
 	}
@@ -55,5 +64,8 @@ public class Game {
 	}
 	public QuestionSet getQuestionSet(){
 		return questions;
+	}
+	public Situation getSituation(){
+		return situation;
 	}
 }

@@ -20,6 +20,10 @@ public class StealingToken extends ModifierState {
 	public void initialize() {
 	}
 
+	public Set<Player> getPlayersToSteal(){
+		return this.getSituation().getCurrentPlayer().getTile().stealablePlayers(this.getSituation().getCurrentPlayer());
+	}
+	
 	public void setTokenToSteal(Player playerToSteal, Category category){
 		this.playerToSteal = playerToSteal;
 		this.categoryToSteal = category;
@@ -33,6 +37,4 @@ public class StealingToken extends ModifierState {
 		playerToSteal.removeToken(categoryToSteal);
 		return new Moving();
 	}
-
-
 }

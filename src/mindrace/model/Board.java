@@ -58,12 +58,12 @@ public class Board{
 			} else {
 				Category categoryToAdd;
 				switch(categoryAttributeNode.getNodeValue()) {
-					case "Geografia": categoryToAdd = Category.Geografia; break;
-					case "Ciencia": categoryToAdd = Category.Ciencia; break;
-					case "Historia": categoryToAdd = Category.Historia; break;
-					case "Deportes": categoryToAdd = Category.Deportes; break;
-					case "Arte": categoryToAdd = Category.Arte; break;
-					default: categoryToAdd = Category.Entretenimiento; break;
+					case "Geography": categoryToAdd = Category.Geography; break;
+					case "Science": categoryToAdd = Category.Science; break;
+					case "History": categoryToAdd = Category.History; break;
+					case "Sport": categoryToAdd = Category.Sport; break;
+					case "Art": categoryToAdd = Category.Art; break;
+					default: categoryToAdd = Category.Entertainment; break;
 				}
 				tileToAdd = new TileWithCategory(i,
 						attributesMap.getNamedItem("star").getNodeValue().equals("true"),

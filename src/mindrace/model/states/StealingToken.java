@@ -11,7 +11,7 @@ import mindrace.model.states.ModifierState;
  * @author User
  *
  */
-public class StealingToken extends ModifierState {
+public class StealingToken extends State {
 	private Player playerToSteal;
 	private Category categoryToSteal;
 	
@@ -38,5 +38,14 @@ public class StealingToken extends ModifierState {
 		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
 		this.getSituation().getRealPlayer(playerToSteal).removeToken(categoryToSteal);
 		return new Moving();
+	}
+
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

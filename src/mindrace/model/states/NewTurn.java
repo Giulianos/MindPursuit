@@ -9,7 +9,7 @@ import mindrace.model.states.*;
  * @author francisco
  *
  */
-public class NewTurn extends ModifierState {
+public class NewTurn extends State{
 	
 	
 
@@ -20,6 +20,15 @@ public class NewTurn extends ModifierState {
 	
 	public State terminate(){
 		return new ThrowingDice();
+	}
+
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

@@ -7,7 +7,5 @@ package mindrace.model;
  */
 
 public enum Category {
-	Geografia,Ciencia,Historia,Deportes,Arte,Entretenimiento
-
-	
+	Geography,Science,History,Sport,Art,Entertainment
 }

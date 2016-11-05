@@ -41,4 +41,5 @@ abstract public class State {
 	public State getPreviousState(){
 		return previousState;
 	}
+	abstract public boolean isModifier();
 }

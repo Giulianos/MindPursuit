@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import mindrace.model.*;
 
 /**
  * 
@@ -24,7 +25,7 @@ private Map<Category, Set<Question>> questionMap;
 	 * @throws IOException
 	 */
 
-	public QuestionSet() throws IOException {
+	public QuestionSet() {
 		questionMap = new TreeMap<Category,Set<Question>>();
 		for(Category each : Category.values())
 		{
@@ -39,7 +40,7 @@ private Map<Category, Set<Question>> questionMap;
 	 * @return questionSet: Set con preguntas de la categoria
 	 * @throws IOException
 	 */
-	private Set<Question> createQuestionSet(String text) throws IOException {
+	private Set<Question> createQuestionSet(String text) {
 		
 		Set<Question> questionSet = new TreeSet<Question>();
 		
@@ -91,8 +92,9 @@ private Map<Category, Set<Question>> questionMap;
 				categoryQuestionSet.remove(question);
 				return question;
 			}
+			count++;
 		}
-		count++;
+		
 		return null; //Si no quedan mas preguntas, que excepcion lanzar?
 		
 	}

@@ -30,14 +30,11 @@ public class Player implements Cloneable{
 	}
 	
 	public void addToken(Category category){
-		if(tokens.contains(category)){
-			throw new IllegalArgumentException("Has that token");
-		}
 		tokens.add(category);
 	}
 	public void removeToken(Category category){
 		if(!tokens.contains(category)){
-			throw new IllegalArgumentException("Doesn´t have that token");
+			throw new IllegalArgumentException("Doesnï¿½t have that token");
 		}
 		tokens.remove(category);
 	}

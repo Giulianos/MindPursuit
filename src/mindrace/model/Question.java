@@ -6,16 +6,16 @@ package mindrace.model;
  */
 public class Question implements Comparable<Question> {
 	
-	String question;
-	String[] parameters;
-	int correctAnswer;
+	private String question;
+	private String[] parameters;
+	private int correctAnswer;
 	
 	public Question(String question, String[] options) 
 	{
 		this.question = question;
-		this.parameters= new String[4];
+		this.parameters= new String[3];
 		this.correctAnswer= new Integer(options[options.length-1]);
-		for (int i=0; i<options.length-2;i++){
+		for (int i=0; i<options.length-1;i++){
 			this.parameters[i]=options[i];
 		}
 	}
@@ -34,6 +34,13 @@ public class Question implements Comparable<Question> {
 	{
 		return correctAnswer;
 	}
+	public String[] getParameters(){
+		return parameters;
+	}
+	public void printParameters(){
+		for(int i=0; i<parameters.length;i++){
+			System.out.println(parameters[i]);
+		}
 	
-
+	}
 }

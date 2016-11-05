@@ -7,7 +7,7 @@ import mindrace.model.*;
  * @author Agustin Lavarello
  *
  */
-public class Moving extends ModifierState{
+public class Moving extends State{
 
 		private Player player; //este seria el jugador que va a mover
 		private Integer movement; //va a tener cuanto va a moverse
@@ -49,10 +49,12 @@ public class Moving extends ModifierState{
 				movement = fastMovement;
 			}
 			if(this.getPreviousState() instanceof Asking){
-				if(((Asking) this.getPreviousState()).getTimeTaken() < 15){   ///falta agregar constante 
+				if(((Asking) this.getPreviousState()).getTimeTaken() > 15){   ///falta agregar constante 
 					movement = slowMovement;
 				}
-				movement = fastMovement;
+				else{
+					movement = fastMovement;
+				}
 			}
 			//todo: throw exception.
 		}
@@ -64,6 +66,15 @@ public class Moving extends ModifierState{
 			else{
 				currentCategory=null;
 			}
+		}
+
+		/* (non-Javadoc)
+		 * @see mindrace.model.states.State#isModifier()
+		 */
+		@Override
+		public boolean isModifier() {
+			// TODO Auto-generated method stub
+			return true;
 		}
 		
 	}

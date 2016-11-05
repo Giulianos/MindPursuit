@@ -12,9 +12,10 @@ import mindrace.model.states.ModifierState;
  * @author Daniella
  *
  */
-public class WinningToken extends ModifierState {
+public class WinningToken extends State {
 	private Category winningCategory;
 	private Set<Category> possibleTokens;
+	private boolean shouldAsk=false;
 
 	/**
 	 * @see mindrace.model.states.ModifierState#initialize()
@@ -30,6 +31,7 @@ public class WinningToken extends ModifierState {
 		 * si no viene de asking, entonces viene de moving.
 		 */
 		else{
+			shouldAsk=true;
 			/**
 			 * @see http://stackoverflow.com/a/27980614
 			 */
@@ -69,5 +71,17 @@ public class WinningToken extends ModifierState {
 			(this.getSituation().getCurrentPlayer()).addToken(winningCategory);
 			return new ChoosingCategory();
 		}
+	}
+	public boolean shouldAsk(){
+		return this.shouldAsk;
+	}
+
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

@@ -13,10 +13,11 @@ import mindrace.model.TileWithCategory;
  */
 public class Asking extends State {
 	
-	Question questionToAsk;
-	QuestionSet questionSet;
-	Integer selectedAnswer;
-	Integer timeTaken;
+	private Question questionToAsk;
+	private static QuestionSet questionSet= new QuestionSet();
+	private Integer selectedAnswer;
+	private Integer timeTaken;
+	
 
 	/**
 	 * @see mindrace.model.states.State#initialize()
@@ -62,11 +63,6 @@ public class Asking extends State {
 		this.timeTaken = timeTaken;
 	}
 	
-	public void addQuestionSet(QuestionSet questionSet) {
-		if(questionSet == null)
-			throw new IllegalArgumentException();
-		this.questionSet = questionSet;
-	}
 
 	/**
 	 * @see mindrace.model.states.State#terminate()
@@ -92,8 +88,14 @@ public class Asking extends State {
 	public int getTimeTaken(){
 		return timeTaken;
 	}
-	public void setQuestionSet(QuestionSet questions){
-		this.questionSet=questions;
+
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

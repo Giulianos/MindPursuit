@@ -34,4 +34,13 @@ public class ChoosingCategory extends State {
 		this.chosenCategory=chosenCategory;
 	}
 
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

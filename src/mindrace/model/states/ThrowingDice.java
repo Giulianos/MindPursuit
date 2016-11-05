@@ -30,5 +30,14 @@ public class ThrowingDice extends State {
 		return new Moving();
 	}
 
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
+	 */
+	@Override
+	public boolean isModifier() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
 

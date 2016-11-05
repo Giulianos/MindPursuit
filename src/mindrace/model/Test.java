@@ -14,7 +14,6 @@ import org.xml.sax.SAXException;
  *
  */
 public class Test {
-	//hola como estas ?
 
 	/**
 	 * @param args1
@@ -51,7 +50,7 @@ public class Test {
 			Player p1 = new Player("Julian", b);
 			Player p2 = new Player("Agustin", b);
 			CircularList<Player> players = new CircularList<Player>();
-			p1.addToken(Category.Entertainment);
+			p2.addToken(Category.Entertainment);
 			players.add(p1);
 			players.add(p2);
 			Game game = new Game(players, p1,new ThrowingDice(), b);

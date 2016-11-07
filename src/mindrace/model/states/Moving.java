@@ -26,7 +26,7 @@ public class Moving extends State{
 		}
 		
 		public State terminate(){
-			if (player.getTile().getPosition()<=movement){
+			if (player.getTile().getPosition()<=movement && this.getSituation().getCurrentPlayer().getTokens().size() <= 4){
 				return new WinningToken();
 			}
 			if(currentCategory == null){

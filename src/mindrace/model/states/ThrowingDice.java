@@ -1,6 +1,5 @@
 package mindrace.model.states;
-import mindrace.model.*;
-import mindrace.model.states.*;
+
 import java.util.Random;
 /**
  * 
@@ -30,12 +29,7 @@ public class ThrowingDice extends State {
 		return new Moving();
 	}
 
-	/* (non-Javadoc)
-	 * @see mindrace.model.states.State#isModifier()
-	 */
-	@Override
 	public boolean isModifier() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

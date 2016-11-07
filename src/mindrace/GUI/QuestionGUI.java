@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mindrace.model.Question;
+
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JInternalFrame;
@@ -21,15 +24,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 
 /**
- * @author Agu
+ * @author Agustin Lavarello
  *
  */
 public class QuestionGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField question;
+	private JTextField questionText;
 	private Integer answered;
 	private Timer timer;
+	private Question question;
 
 	public void setAnswered(Integer answered) {
 		this.answered = answered;
@@ -60,16 +64,17 @@ public class QuestionGUI extends JFrame {
 	 * Create the frame.
 	 */
 	//recibe una question
-	public QuestionGUI() {
+	public QuestionGUI(Question q) {
+		this question = q;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 402);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		question = new JTextField("hola");
-		question.setColumns(10);
-		question.setEditable(false);
+		questionText = new JTextField(question.getQuestion());
+		questionText.setColumns(10);
+		questionText.setEditable(false);
 		Timer closingTimer = new Timer();
 		TimerTask closingTask = new TimerTask() {
 
@@ -81,6 +86,7 @@ public class QuestionGUI extends JFrame {
 			
 		};
 		//No anda la prgres bar
+		/*
 		JProgressBar timeBar = new JProgressBar(0,20);
 		timeBar.setStringPainted(true);
 		TimerTask progresTask = new TimerTask() {
@@ -89,16 +95,22 @@ public class QuestionGUI extends JFrame {
 				timeBar.setString(((Integer)timeBar.getValue()).toString());
 			}
 		};
+	
 		Timer progresTimer = new Timer();
 		progresTimer.schedule(progresTask, 1000);
 		progresTimer.schedule(progresTask, 1000);	
-				
+		*/	
 		
 		JButton answer1 = new JButton("1");
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(1);
-				//el if para ver si es o no 
+				if(question.getCorrectAnswer().equals(1)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
 				closingTimer.schedule(closingTask, 2000);
 				
 				
@@ -109,7 +121,12 @@ public class QuestionGUI extends JFrame {
 		answer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(2);
-				answer2.setBackground(Color.green);
+				if(question.getCorrectAnswer().equals(1)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
 				closingTimer.schedule(closingTask, 2000);
 			}
 		});
@@ -118,6 +135,12 @@ public class QuestionGUI extends JFrame {
 		answer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(3);
+				if(question.getCorrectAnswer().equals(1)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
 				closingTimer.schedule(closingTask, 2000);
 			}
 		});
@@ -126,6 +149,12 @@ public class QuestionGUI extends JFrame {
 		answer4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(4);
+				if(question.getCorrectAnswer().equals(1)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
 				closingTimer.schedule(closingTask, 2000);
 			}
 		});
@@ -140,7 +169,7 @@ public class QuestionGUI extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(question, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+						.addComponent(questionText, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer4, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer3, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer2, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
@@ -154,7 +183,7 @@ public class QuestionGUI extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(TimeBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(question, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(questionText, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(answer1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)

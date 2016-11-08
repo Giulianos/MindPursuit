@@ -24,6 +24,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.border.LineBorder;
 
+import mindrace.model.Situation;
 import mindrace.model.states.ThrowingDice;
 
 import java.awt.Color;
@@ -41,9 +42,16 @@ public class BoardGUI {
 	private JTextField playerName;
 	private ThrowingDice dice;
 	private boolean isBtnDicepressed;
+	private Situation situation;
+	private JButton btnDice;
+	private JLabel token_1;
+	private JLabel token_2;
+	private JLabel token_3;
+	private JLabel token_4;
+	private JLabel token_5;
+	private JLabel token_6;
 	
 
-	
 
 	/**
 	 * Launch the application.
@@ -64,9 +72,9 @@ public class BoardGUI {
 	/**
 	 * Create the application.
 	 */
-	public BoardGUI(//ThrowingDice dice, tendria que recibir la situation en vez de throwing dice
+	public BoardGUI(//Situation situation 
 			) {
-		//this.dice = dice;
+		//this.Situation = situation;
 		initialize();
 	}
 
@@ -74,37 +82,38 @@ public class BoardGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
 		
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setSize(800, 600);
 		frame.setResizable(false);
 		
-		JButton btnDice = new JButton("Roll the dice!!");
+		btnDice = new JButton("Roll the dice!!");
 		btnDice.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				if(!isBtnDicepressed) {
 					btnDice.setText("");
-					Image dice = null;
+					ImageIcon dice = null;
+					//
 					//es de prueba
 					Random randomNumber = new Random();
 					Integer diceNumber = (int) (randomNumber.nextDouble()*6 + 1); //dice.diceNumber();
 					switch (diceNumber) {
-					case 1: dice = new ImageIcon(this.getClass().getResource("/dice1.png")).getImage(); 
+					case 1: dice = new ImageIcon("dice1.png");
 							break;
-					case 2: dice = new ImageIcon(this.getClass().getResource("/dice2.png")).getImage(); 
+					case 2: dice = new ImageIcon("dice1.png"); 
 							break;
-					case 3: dice = new ImageIcon(this.getClass().getResource("/dice3.png")).getImage(); 
+					case 3: dice = new ImageIcon("dice1.png"); 
 							break;
-					case 4: dice = new ImageIcon(this.getClass().getResource("/dice4.png")).getImage(); 
+					case 4: dice = new ImageIcon("dice1.png");
 							break;
-					case 5: dice = new ImageIcon(this.getClass().getResource("/dice5.png")).getImage(); 
+					case 5: dice = new ImageIcon("dice1.png");
 							break;
-					case 6:	dice = new ImageIcon(this.getClass().getResource("/dice6.png")).getImage(); 
+					case 6:	dice = new ImageIcon("dice1.png");
 							break;
 				}
-					btnDice.setIcon(new ImageIcon(dice));
+					btnDice.setIcon(dice);
 					isBtnDicepressed = true;
 					
 			}
@@ -115,23 +124,18 @@ public class BoardGUI {
 		playerName.setHorizontalAlignment(SwingConstants.CENTER);
 		playerName.setEditable(false);
 		playerName.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
-		playerName.setText("PlayerName");
+		playerName.setText(/*situation.getCurrentPlayer().getName()*/"");
 		playerName.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		
 		//codigo para escribir que categorias tiene 
-		JLabel label_2 = new JLabel("Biologia");
-		
-		JLabel label = new JLabel("No tiene");
-		
-		JLabel label_1 = new JLabel("No tiene");
-		
-		JLabel label_3 = new JLabel("No tiene");
-		
-		JLabel label_5 = new JLabel("No tiene");
-		
-		JLabel label_4 = new JLabel("No tiene");
+		token_2 = new JLabel("Biologia");
+		token_3 = new JLabel("No tiene");
+		token_1 = new JLabel("No tiene");
+		token_4 = new JLabel("No tiene");
+		token_6 = new JLabel("No tiene");
+		token_5 = new JLabel("No tiene");
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -148,14 +152,14 @@ public class BoardGUI {
 							.addComponent(playerName, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
 							.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(label_5, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-									.addComponent(label_1, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-									.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+									.addComponent(token_6, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+									.addComponent(token_1, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+									.addComponent(token_2, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(label, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-									.addComponent(label_3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(label_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+									.addComponent(token_3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+									.addComponent(token_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(token_5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -172,21 +176,21 @@ public class BoardGUI {
 							.addComponent(playerName, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+								.addComponent(token_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(token_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+								.addComponent(token_4, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(token_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(token_5, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(token_6, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
 		
 		JLabel board = new JLabel();
-		board.setIcon(new ImageIcon("C:\\Users\\Agu\\ITBA\\Workspace\\TPPOO\\resources\\board.jpg"));
+		board.setIcon(new ImageIcon("board.jpg"));
 		board.setBounds(0, 0, 410, 393);
 		layeredPane.add(board, 0);
 		frame.getContentPane().setLayout(groupLayout);

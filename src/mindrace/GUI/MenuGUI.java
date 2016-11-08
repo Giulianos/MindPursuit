@@ -13,13 +13,15 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 /**
- * @author Agu
+ * @author Agustin Lavarello
  *
  */
 public class MenuGUI {
 
 	private JFrame frame;
-
+	JButton startBotton;
+	JButton saveBotton;
+	JButton exitBotton;
 	/**
 	 * Launch the application.
 	 */
@@ -40,20 +42,17 @@ public class MenuGUI {
 	 * Create the application.
 	 */
 	public MenuGUI() {
-		initialize();
-	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
+		frame.setVisible(true);
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 545, 458);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton saveBotton = new JButton("Recuperar partida");
+		saveBotton = new JButton("Recuperar partida");
+		startBotton = new JButton("Empezar");
+		exitBotton = new JButton("Salir");
 		
-		JButton startBotton = new JButton("Empezar");
 		startBotton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BoardGUI boardGUI = new BoardGUI();// hay que pasarle el dado y todo
@@ -64,7 +63,7 @@ public class MenuGUI {
 			}
 		});
 		
-		JButton exitBotton = new JButton("Salir");
+		
 		exitBotton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

@@ -1,6 +1,7 @@
 package mindrace.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 
 /**
@@ -24,7 +27,12 @@ public class ChoosingCategoryGUI extends JFrame {
 
 	private JPanel contentPane;
 	private Category category;
-
+	JButton button_1;
+	JButton button_2;
+	JButton button_3;
+	JButton button_4;
+	JButton button_5;
+	JButton button_6;
 	
     
 	/**
@@ -35,7 +43,6 @@ public class ChoosingCategoryGUI extends JFrame {
 			public void run() {
 				try {
 					ChoosingCategoryGUI frame = new ChoosingCategoryGUI();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,51 +54,82 @@ public class ChoosingCategoryGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ChoosingCategoryGUI() {
+		setVisible(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton button_1 = new JButton(Category.Geography.toString());
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				category = Category.Geography;
+		Timer closingTimer = new Timer();
+		TimerTask closingTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				dispose();
+				
 			}
-		});
+			
+		};
 		
-		JButton button_2 = new JButton(Category.Science.toString());
+		button_1 = new JButton(Category.Geography.toString());
+		button_2 = new JButton(Category.Science.toString());
+		button_3 = new JButton(Category.History.toString());
+		button_4 = new JButton(Category.Sport.toString());
+		button_5 = new JButton(Category.Art.toString());
+		button_6 = new JButton(Category.Entertainment.toString());
+		
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Science;
+				category = Category.Geography;
+				button_1.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
 			}
 		});
 		
-		JButton button_3 = new JButton(Category.History.toString());
-		button_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				category = Category.History;
-			}
-		});
 		
-		JButton button_4 = new JButton(Category.Sport.toString());
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				category = Category.Sport;
-			}
-		});
-		
-		JButton button_5 = new JButton(Category.Art.toString());
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Art;
+				category = Category.Science;
+				button_2.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
 			}
 		});
 		
-		JButton button_6 = new JButton(Category.Entertainment.toString());
+		
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				category = Category.History;
+				button_3.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
+			}
+		});
+		
+		
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				category = Category.Sport;
+				button_4.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
+			}
+		});
+		
+		
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				category = Category.Art;
+				button_5.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
+			}
+		});
+		
+		
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				category = Category.Entertainment;
+				button_6.setBackground(Color.YELLOW);
+				closingTimer.schedule(closingTask, 1000);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -101,7 +139,7 @@ public class ChoosingCategoryGUI extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+							.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
 							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -120,7 +158,7 @@ public class ChoosingCategoryGUI extends JFrame {
 					.addGap(20)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(button_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(button, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+						.addComponent(button_6, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
 					.addGap(27)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
@@ -134,6 +172,11 @@ public class ChoosingCategoryGUI extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 	
+	/**
+	 * 
+	 */
+	
+
 	public Category getCategory() {
 		return category;
 	}

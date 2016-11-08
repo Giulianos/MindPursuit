@@ -20,56 +20,35 @@ import java.awt.event.ActionEvent;
 public class ExitWindowGUI {
 
 	private JFrame frame;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ExitWindowGUI window = new ExitWindowGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
+	JButton btnSI;
+	JButton btnNO;
+	JLabel lblEstasSeguroQue;
+	
 	public ExitWindowGUI() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
+		frame.setVisible(true);
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblEstasSeguroQue = new JLabel("Estas seguro que quieres salir?");
+		lblEstasSeguroQue = new JLabel("Estas seguro que quieres salir?");
 		lblEstasSeguroQue.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		JButton btnNewButton = new JButton("Si");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSI = new JButton("Si");
+		btnSI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnSI.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		JButton btnNo = new JButton("No");
-		btnNo.addActionListener(new ActionListener() {
+		btnNO = new JButton("No");
+		btnNO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnNo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnNO.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -79,9 +58,9 @@ public class ExitWindowGUI {
 					.addContainerGap(14, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnSI, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-					.addComponent(btnNo, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNO, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 					.addGap(37))
 		);
 		groupLayout.setVerticalGroup(
@@ -91,16 +70,14 @@ public class ExitWindowGUI {
 					.addComponent(lblEstasSeguroQue)
 					.addPreferredGap(ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNo, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnSI, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNO, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
 					.addGap(41))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	
 
-	/**
-	 * 
-	 */
 	public JFrame getFrame() {
 		return frame;
 		

@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
+import javax.swing.JLabel;
 
 /**
  * @author Agustin Lavarello
@@ -29,50 +31,36 @@ import javax.swing.JProgressBar;
  */
 public class QuestionGUI extends JFrame {
 
+	
+	private Integer answered;
+	private Question question;
+	private Long timeTaken;
+	private final static int firstAnswer = 0;
+	private final static int secondAnswer = 1;
+	private final static int thirdAnswer = 2;
+	private final static int fourthAnswer = 3;
 	private JPanel contentPane;
 	private JTextField questionText;
-	private Integer answered;
-	private Timer timer;
-	private Question question;
+	JButton answer1;
+	JButton answer2;
+	JButton answer3;
+	JButton answer4;
 
-	public void setAnswered(Integer answered) {
-		this.answered = answered;
-	}
 	
-	public Integer getAnswered() {
-		return answered;
-	}
 
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QuestionGUI frame = new QuestionGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	//recibe una question
+	
 	public QuestionGUI(Question q) {
-		this question = q;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 402);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		
-		questionText = new JTextField(question.getQuestion());
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(100, 100, 450, 402);
+		this.contentPane = new JPanel();
+		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setContentPane(contentPane);
+		this.setResizable(false);
+		
+		question = q;
+		questionText = new JTextField(question.getQuestion()) ;
 		questionText.setColumns(10);
 		questionText.setEditable(false);
 		Timer closingTimer = new Timer();
@@ -85,82 +73,92 @@ public class QuestionGUI extends JFrame {
 			}
 			
 		};
-		//No anda la prgres bar
-		/*
-		JProgressBar timeBar = new JProgressBar(0,20);
-		timeBar.setStringPainted(true);
+		
+		
+		
+		answer1 = new JButton(question.getParameters()[firstAnswer]);
+		answer2 = new JButton(question.getParameters()[secondAnswer]);
+		answer3 = new JButton(question.getParameters()[thirdAnswer]);
+		answer4 = new JButton(question.getParameters()[fourthAnswer]);
+		
+		answer1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuestionGUI.this.setAnswered(firstAnswer);
+				if(question.getCorrectAnswer().equals(firstAnswer)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
+				showCorrectAnswer();
+				closingTimer.schedule(closingTask, 2000);
+				
+				
+			}
+		});
+		
+	
+		
+		answer2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuestionGUI.this.setAnswered(secondAnswer);
+				if(question.getCorrectAnswer().equals(secondAnswer)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
+				showCorrectAnswer();
+				closingTimer.schedule(closingTask, 2000);
+			}
+		});
+		
+		
+		answer3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuestionGUI.this.setAnswered(thirdAnswer);
+				if(question.getCorrectAnswer().equals(thirdAnswer)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
+				showCorrectAnswer();
+				closingTimer.schedule(closingTask, 2000);
+			}
+		});
+		
+	
+		answer4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setAnswered(fourthAnswer);
+				if(question.getCorrectAnswer().equals(fourthAnswer)) {
+					answer1.setBackground(Color.GREEN);
+				}
+				else {
+					answer1.setBackground(Color.RED);
+				}
+				showCorrectAnswer();
+				closingTimer.schedule(closingTask, 2000);
+			}
+
+		
+		});
+		
+	
+		
+		JLabel timeLabel = new JLabel();
+		
 		TimerTask progresTask = new TimerTask() {
+			int timeShown = 20;
 			public void run() {
-				timeBar.setValue(timeBar.getValue() + 1);
-				timeBar.setString(((Integer)timeBar.getValue()).toString());
+				timeLabel.setText(timeShown + "");
+				timeShown--;
 			}
 		};
 	
 		Timer progresTimer = new Timer();
 		progresTimer.schedule(progresTask, 1000);
-		progresTimer.schedule(progresTask, 1000);	
-		*/	
-		
-		JButton answer1 = new JButton("1");
-		answer1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(1);
-				if(question.getCorrectAnswer().equals(1)) {
-					answer1.setBackground(Color.GREEN);
-				}
-				else {
-					answer1.setBackground(Color.RED);
-				}
-				closingTimer.schedule(closingTask, 2000);
-				
-				
-			}
-		});
-		
-		JButton answer2 = new JButton("2");
-		answer2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(2);
-				if(question.getCorrectAnswer().equals(1)) {
-					answer1.setBackground(Color.GREEN);
-				}
-				else {
-					answer1.setBackground(Color.RED);
-				}
-				closingTimer.schedule(closingTask, 2000);
-			}
-		});
-		
-		JButton answer3 = new JButton("3");
-		answer3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(3);
-				if(question.getCorrectAnswer().equals(1)) {
-					answer1.setBackground(Color.GREEN);
-				}
-				else {
-					answer1.setBackground(Color.RED);
-				}
-				closingTimer.schedule(closingTask, 2000);
-			}
-		});
-		
-		JButton answer4 = new JButton("4");
-		answer4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(4);
-				if(question.getCorrectAnswer().equals(1)) {
-					answer1.setBackground(Color.GREEN);
-				}
-				else {
-					answer1.setBackground(Color.RED);
-				}
-				closingTimer.schedule(closingTask, 2000);
-			}
-		});
-
-		JProgressBar TimeBar = new JProgressBar();
-		TimeBar.setStringPainted(true);
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -169,20 +167,19 @@ public class QuestionGUI extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(timeLabel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 						.addComponent(questionText, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer4, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer3, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer2, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(answer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(TimeBar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+						.addComponent(answer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(TimeBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(timeLabel, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(questionText, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(answer1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
@@ -198,4 +195,27 @@ public class QuestionGUI extends JFrame {
 	}
 	
 	public void draw() {}
+	
+	public void setAnswered(Integer answered) {
+		this.answered = answered;
+	}
+	
+	public Integer getAnswered() {
+		return answered;
+	}
+	private void showCorrectAnswer() {
+		switch (question.getCorrectAnswer()) {
+		case 1: answer1.setBackground(Color.GREEN);
+				break;
+		case 2:answer2.setBackground(Color.GREEN);
+				break;
+		case 3: answer3.setBackground(Color.GREEN);
+				break;
+		case 4: answer4.setBackground(Color.GREEN);
+				break;
+		
+	}
+		
+	}
+
 }

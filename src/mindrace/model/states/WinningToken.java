@@ -6,7 +6,7 @@ import java.util.Set;
 import mindrace.model.Category;
 import mindrace.model.Situation;
 import mindrace.model.TileWithCategory;
-import mindrace.model.states.ModifierState;
+
 
 /**
  * @author Daniella

@@ -1,13 +1,15 @@
 
 package mindrace.model.states;
 
+import java.io.Serializable;
+
 import mindrace.model.Situation;
 
 /**
  * @author Giuliano
  *
  */
-abstract public class State {
+abstract public class State implements Serializable {
 	
 	private State previousState;
 	private Situation currentSituation;

@@ -1,10 +1,13 @@
 package mindrace.model;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author Julian
  *
  */
-public class Question implements Comparable<Question> {
+public class Question implements Comparable<Question>, Serializable {
 	
 	private String question;
 	private String[] parameters;

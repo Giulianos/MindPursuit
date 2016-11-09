@@ -3,7 +3,7 @@ package mindrace.model;
 import mindrace.model.Tile;
 import mindrace.model.TileWithCategory;
 import mindrace.model.Category;
-
+import java.io.Serializable;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
  * @author Daniella, Giuliano
  *
  */
-public class Board{
+public class Board implements Serializable{
 	/*
 	 * Constantes
 	 */

@@ -1,5 +1,6 @@
 package mindrace.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +8,7 @@ import java.util.Set;
  * @author Giuliano
  *
  */
-public class Situation implements Cloneable{
+public class Situation implements Cloneable, Serializable{
 	private Player currentPlayer;
 	private Board currentBoard;
 	private CircularList<Player> playersTurn;

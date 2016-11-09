@@ -3,6 +3,7 @@ package mindrace.model;
 import mindrace.model.states.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import org.xml.sax.SAXException;
  *
  */
 
-public class Game {
+public class Game implements Serializable {
 	private State state;
 	private Situation situation;
 	private boolean isStateInitialized;

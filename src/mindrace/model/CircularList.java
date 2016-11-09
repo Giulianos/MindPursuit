@@ -1,5 +1,6 @@
 package mindrace.model;
 
+import java.io.Serializable;
 import java.util.AbstractList;
 
 
@@ -8,14 +9,14 @@ import java.util.AbstractList;
  * @author Agustin Lavarello
  * 
  */
-public class CircularList<T> {
+public class CircularList<T> implements Serializable{
 
 	private int size;
     private Node<T> first;
     static final Integer cero = 0;
     
     
-    private class Node<T> {
+    private class Node<T> implements Serializable{
     	private T element;
     	private Node<T> next;
     		

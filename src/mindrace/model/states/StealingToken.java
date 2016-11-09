@@ -5,7 +5,6 @@ import java.util.Set;
 import mindrace.model.Category;
 import mindrace.model.Player;
 import mindrace.model.Situation;
-import mindrace.model.states.ModifierState;
 
 /**
  * @author User

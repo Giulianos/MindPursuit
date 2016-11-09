@@ -70,7 +70,7 @@ public class Asking extends State {
 	@Override
 	public State terminate() {
 		if(selectedAnswer == null){
-			throw new NullPointerException();
+			//throw new NullPointerException();
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );

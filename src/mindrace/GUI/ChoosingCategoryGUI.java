@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mindrace.model.Category;
+import mindrace.model.Situation;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -27,6 +28,7 @@ public class ChoosingCategoryGUI extends JFrame {
 
 	private JPanel contentPane;
 	private Category category;
+	private Situation situation;
 	JButton button_1;
 	JButton button_2;
 	JButton button_3;
@@ -34,26 +36,9 @@ public class ChoosingCategoryGUI extends JFrame {
 	JButton button_5;
 	JButton button_6;
 	
-    
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ChoosingCategoryGUI frame = new ChoosingCategoryGUI();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ChoosingCategoryGUI() {
+   
+	public ChoosingCategoryGUI(Situation situation) {
+		this.situation = situation;
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,56 +65,89 @@ public class ChoosingCategoryGUI extends JFrame {
 		button_5 = new JButton(Category.Art.toString());
 		button_6 = new JButton(Category.Entertainment.toString());
 		
+		if(situation.getCurrentPlayer().getTokens().contains(Category.Geography)) {
+			button_1.setBackground(Color.RED);
+		}
+		if(situation.getCurrentPlayer().getTokens().contains(Category.Science)) {
+			button_2.setBackground(Color.RED);
+		}
+		if(situation.getCurrentPlayer().getTokens().contains(Category.History)) {
+			button_3.setBackground(Color.RED);
+		}
+		if(situation.getCurrentPlayer().getTokens().contains(Category.Sport)) {
+			button_4.setBackground(Color.RED);
+		}
+		if(situation.getCurrentPlayer().getTokens().contains(Category.Art)) {
+			button_5.setBackground(Color.RED);
+		}
+		if(situation.getCurrentPlayer().getTokens().contains(Category.Entertainment)) {
+			button_6.setBackground(Color.RED);
+		}
+		
+		
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Geography;
-				button_1.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.Geography)) {
+					category = Category.Geography;
+					button_1.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
+		
 			}
 		});
 		
 		
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Science;
-				button_2.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.Science)) {
+					category = Category.Science;
+					button_2.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
 			}
 		});
 		
 		
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.History;
-				button_3.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.History)) {
+					category = Category.History;
+					button_3.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
 			}
 		});
 		
 		
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Sport;
-				button_4.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.Sport)) {
+					category = Category.Sport;
+					button_4.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
 			}
 		});
 		
 		
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Art;
-				button_5.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.Art)) {
+					category = Category.Art;
+					button_5.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
 			}
 		});
 		
 		
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Entertainment;
-				button_6.setBackground(Color.YELLOW);
-				closingTimer.schedule(closingTask, 1000);
+				if(!situation.getCurrentPlayer().getTokens().contains(Category.Entertainment)) {
+					category = Category.Entertainment;
+					button_6.setBackground(Color.YELLOW);
+					closingTimer.schedule(closingTask, 1000);
+				}
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

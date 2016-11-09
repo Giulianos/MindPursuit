@@ -34,11 +34,11 @@ public class QuestionGUI extends JFrame {
 	
 	private Integer answered;
 	private Question question;
-	private Long timeTaken;
+	private int timeTaken;
 	private final static int firstAnswer = 0;
 	private final static int secondAnswer = 1;
 	private final static int thirdAnswer = 2;
-	private final static int fourthAnswer = 3;
+	private final static int fourthAnswer = 0;
 	private JPanel contentPane;
 	private JTextField questionText;
 	JButton answer1;
@@ -72,7 +72,7 @@ public class QuestionGUI extends JFrame {
 				
 			}
 			
-		};
+		}; 
 		
 		
 		
@@ -91,6 +91,7 @@ public class QuestionGUI extends JFrame {
 					answer1.setBackground(Color.RED);
 				}
 				showCorrectAnswer();
+				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
 				
 				
@@ -103,14 +104,17 @@ public class QuestionGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(secondAnswer);
 				if(question.getCorrectAnswer().equals(secondAnswer)) {
-					answer1.setBackground(Color.GREEN);
+					answer2.setBackground(Color.GREEN);
 				}
 				else {
-					answer1.setBackground(Color.RED);
+					answer2.setBackground(Color.RED);
 				}
 				showCorrectAnswer();
+				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
 			}
+
+			
 		});
 		
 		
@@ -118,12 +122,13 @@ public class QuestionGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				QuestionGUI.this.setAnswered(thirdAnswer);
 				if(question.getCorrectAnswer().equals(thirdAnswer)) {
-					answer1.setBackground(Color.GREEN);
+					answer3.setBackground(Color.GREEN);
 				}
 				else {
-					answer1.setBackground(Color.RED);
+					answer3.setBackground(Color.RED);
 				}
 				showCorrectAnswer();
+				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
 			}
 		});
@@ -133,12 +138,13 @@ public class QuestionGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				setAnswered(fourthAnswer);
 				if(question.getCorrectAnswer().equals(fourthAnswer)) {
-					answer1.setBackground(Color.GREEN);
+					answer4.setBackground(Color.GREEN);
 				}
 				else {
-					answer1.setBackground(Color.RED);
+					answer4.setBackground(Color.RED);
 				}
 				showCorrectAnswer();
+				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
 			}
 
@@ -146,7 +152,7 @@ public class QuestionGUI extends JFrame {
 		});
 		
 	
-		
+	
 		JLabel timeLabel = new JLabel();
 		
 		TimerTask progresTask = new TimerTask() {
@@ -158,7 +164,7 @@ public class QuestionGUI extends JFrame {
 		};
 	
 		Timer progresTimer = new Timer();
-		progresTimer.schedule(progresTask, 1000);
+		progresTimer.schedule(progresTask, 1000, 1000);
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -203,19 +209,25 @@ public class QuestionGUI extends JFrame {
 	public Integer getAnswered() {
 		return answered;
 	}
-	private void showCorrectAnswer() {
+	public void showCorrectAnswer() {
+		
 		switch (question.getCorrectAnswer()) {
-		case 1: answer1.setBackground(Color.GREEN);
+		case 0: this.answer1.setBackground(Color.GREEN);
 				break;
-		case 2:answer2.setBackground(Color.GREEN);
+		case 1:answer2.setBackground(Color.GREEN);
 				break;
-		case 3: answer3.setBackground(Color.GREEN);
+		case 2: answer3.setBackground(Color.GREEN);
 				break;
-		case 4: answer4.setBackground(Color.GREEN);
+		case 3: answer4.setBackground(Color.GREEN);
 				break;
-		
+		}
 	}
-		
+	
+	public void disableBtns() {
+		answer1.setEnabled(false);
+		answer2.setEnabled(false);
+		answer3.setEnabled(false);
+		answer4.setEnabled(false);
 	}
 
 }

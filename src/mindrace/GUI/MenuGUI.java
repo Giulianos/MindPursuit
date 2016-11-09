@@ -55,7 +55,7 @@ public class MenuGUI {
 		
 		startBotton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BoardGUI boardGUI = new BoardGUI();// hay que pasarle el dado y todo
+				BoardGUI boardGUI = new BoardGUI();// hay que pasarle situation
 				boardGUI.getFrame().setVisible(true);
 				frame.dispose();
 				//empieza el juego

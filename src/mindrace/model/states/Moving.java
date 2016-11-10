@@ -67,6 +67,9 @@ public class Moving extends State{
 				currentCategory=null;
 			}
 		}
+		public Player getPlayer(){
+			return player;
+		}
 
 		/* (non-Javadoc)
 		 * @see mindrace.model.states.State#isModifier()

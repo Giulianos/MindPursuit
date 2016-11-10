@@ -76,10 +76,10 @@ public class QuestionGUI extends JFrame {
 		
 		
 		
-		answer1 = new JButton(question.getParameters()[firstAnswer]);
-		answer2 = new JButton(question.getParameters()[secondAnswer]);
-		answer3 = new JButton(question.getParameters()[thirdAnswer]);
-		answer4 = new JButton(question.getParameters()[fourthAnswer]);
+		answer1 = new JButton(question.getOptions()[firstAnswer]);
+		answer2 = new JButton(question.getOptions()[secondAnswer]);
+		answer3 = new JButton(question.getOptions()[thirdAnswer]);
+		answer4 = new JButton(question.getOptions()[fourthAnswer]);
 		
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

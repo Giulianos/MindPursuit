@@ -5,6 +5,8 @@ import mindrace.model.states.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,13 +24,15 @@ public class Game implements Serializable {
 	private Situation situation;
 	private boolean isStateInitialized;
 	
-	public Game(CircularList<Player> players, Player startingPlayer, State state, Board b) throws IOException, ParserConfigurationException,SAXException{
+	public Game(List<String> playersNames, State state) throws IOException, ParserConfigurationException,SAXException{
 		this.state=state;
-		situation= new Situation(players, startingPlayer,b);
+		Board board= new Board();
+		List<Player> players =iniciatePlayers(playersNames, board);
+		situation= new Situation(players,board);
 		isStateInitialized=false;
 		for(int i=0 ; i<players.size();i++){
-			players.get(i).setTile(b.getTileAt(1));
-			b.getTileAt(1).addPlayer(players.get(i));
+			players.get(i).setTile(board.getTileAt(1));
+			board.getTileAt(1).addPlayer(players.get(i));
 		}
 		
 		}
@@ -60,5 +64,16 @@ public class Game implements Serializable {
 	}
 	public Situation getSituation(){
 		return situation;
+	}
+	public Player getPlayer(String name){
+		return situation.getRealPlayer(name);
+	}
+	public List<Player> iniciatePlayers(List<String> playersToCreate, Board board){
+		
+		List<Player> players= new LinkedList<Player>();
+		for (String names: playersToCreate){
+			players.add(new Player(names,board));
+		}
+		return players;
 	}
 }

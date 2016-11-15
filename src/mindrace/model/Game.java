@@ -56,7 +56,6 @@ public class Game implements Serializable {
 		}
 		next.setCurrentSituation(situation.clone());
 		state=next;
-		System.out.println("Moving to state"+ state.getClass().getSimpleName());
 		
 	}
 	public State getState(){

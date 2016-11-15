@@ -271,7 +271,7 @@ public class BoardGUI {
 	
 
 	
-	public void draw() {
+	public void draw(PlayerGUI player) {
 		
 		for(PlayerGUI player: playersGUI) {
 			layeredPane.add(player.getLabel(),1, 0);

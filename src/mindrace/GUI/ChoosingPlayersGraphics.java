@@ -31,35 +31,14 @@ public class ChoosingPlayersGraphics {
 	private JButton btn4 = new JButton("4");
 	private JButton btn5 = new JButton("5");
 	private JButton btn6 = new JButton("6");
-	//private Set<PlayerGUI> players = new HashSet<PlayerGUI>();
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ChoosingPlayersGraphics window = new ChoosingPlayersGraphics();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private Controller controller;
+	private View view;
 
-	/**
-	 * Create the application.
-	 */
+	
 	//controller y view
-	public ChoosingPlayersGraphics() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public ChoosingPlayersGraphics(Controller controller, View view) {
+		this.controller = controller;
+		this.view = view;
 		frame = new JFrame();
 		frame.getContentPane().setName("");
 		frame.setResizable(false);

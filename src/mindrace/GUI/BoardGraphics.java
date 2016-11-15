@@ -37,6 +37,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.awt.event.ActionEvent;
@@ -65,16 +66,10 @@ public class BoardGraphics {
 
 	/**
 	 * Launch the application.
+	 * @param playersGraphics 
 	 */
 	//lista de players graphics y setear el current player con el primero de lista
-	public BoardGraphics() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public BoardGraphics(List<PlayerGraphics> playersGraphics) {
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,30 +77,29 @@ public class BoardGraphics {
 		frame.setResizable(false);
 		btnDice = new JButton("Tira el dado!!");
 		btnDice.addActionListener(new ActionListener() {
-
+		
 			public void actionPerformed(ActionEvent e) {
 				if(!isBtnDicepressed) {
 					btnDice.setText("");
-					ImageIcon dice;
-					int diceNumber;
-					//ThrowingDiceGUI dice = controller.throwDice();
-					//dice.getDiceNumber();
+					ImageIcon diceImg;
+					ThrowingDiceGUI dice = controller.throwDice();
+					int diceNumber = dice.getDiceNumber();
 					switch (diceNumber) {
-					case 1: dice = new ImageIcon("dice1.png");
+					case 1: diceImg = new ImageIcon("dice1.png");
 							break;
-					case 2: dice = new ImageIcon("dice2.png"); 
+					case 2: diceImg = new ImageIcon("dice2.png"); 
 							break;
-					case 3: dice = new ImageIcon("dice3.png"); 
+					case 3: diceImg = new ImageIcon("dice3.png"); 
 							break;
-					case 4: dice = new ImageIcon("dice4.png");
+					case 4: diceImg = new ImageIcon("dice4.png");
 							break;
-					case 5: dice = new ImageIcon("dice5.png");
+					case 5: diceImg = new ImageIcon("dice5.png");
 							break;
-					case 6:	dice = new ImageIcon("dice6.png");
+					case 6:	diceImg = new ImageIcon("dice6.png");
 							break;
 				}
-					btnDice.setIcon(dice);
-					btnDice.setBounds(new Rectangle(dice.getIconWidth(), dice.getIconHeight()));
+					btnDice.setIcon(diceImg);
+					btnDice.setBounds(new Rectangle(diceImg.getIconWidth(), diceImg.getIconHeight()));
 					isBtnDicepressed = true;
 					//controller.move();
 			}
@@ -191,18 +185,15 @@ public class BoardGraphics {
 		board.setBounds(0, 0, boardImg.getIconWidth(), boardImg.getIconHeight());
 		layeredPane.add(board, 0, 0);
 		
-		/*
-		ImageIcon pieceRed = new ImageIcon("pieceRed.png");
-		JLabel piece = new JLabel();
-		piece.setIcon(pieceRed);
-		piece.setBounds(90, 430, pieceRed.getIconWidth(), pieceRed.getIconHeight());
-		ImageIcon pieceBlue = new ImageIcon("pieceBlue.png");
-		JLabel piece2 = new JLabel();
-		piece2.setIcon(pieceBlue);
-		piece2.setBounds(130, 40, pieceBlue.getIconWidth(), pieceBlue.getIconHeight());
-		layeredPane.add(piece, 1, 0);
-		layeredPane.add(piece2, 1, 0);
-		*/
+		layeredPane.add(playersGraphics.get(0).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(1).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(2).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(3).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(4).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(5).getLabel(), 0, 0);
+		layeredPane.add(playersGraphics.get(6).getLabel(), 0, 0);
+		
+		currentPlayer = playersGraphics.get(0); 
 		
 		
 		

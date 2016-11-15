@@ -1,28 +1,68 @@
 package mindrace.GUI;
 
+import java.awt.Graphics;
+import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import mindrace.model.Category;
+import mindrace.model.Player;
+
 
 /**
- * @author francisco
+ * @author Agustin Lavarello
  *
  */
-public class PlayerGUI {
-	private String name;
-	private Set<Category> tokens;
+public class PlayerGUI extends JPanel {
 	
-	public PlayerGUI(String name, Set<Category> tokens){
-		this.name=name;
-		tokens= new HashSet<Category>(tokens);
+	private int x,y;
+	private JLabel label = new JLabel();
+	private ImageIcon img;
+	private Player player;
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+
+	public PlayerGUI(ImageIcon img, Player player) {
+		this.player = player;
+		this.setCoordinates(TilesGUI.tile0);
+		this.img = img;
+		this.label.setIcon(img);
+		this.label.setBounds(x, y, img.getIconHeight(), img.getIconWidth());
 	}
 	
-	public String getName(){
-		return name;
+	
+	public void setCoordinates(Point  p) {
+		this.x = (int)p.getX();
+		this.y = (int)p.getY();
 	}
-	public Set<Category> getTokens(){
-		return new HashSet<Category>(tokens);
+
+	public void update() {
+		this.label.setBounds(x, y, img.getIconHeight(), img.getIconWidth());
 	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public JLabel getLabel() {
+		return label;
+	}
+	
+	/**
+	 * @return the img
+	 */
+	public ImageIcon getImg() {
+		return img;
+	}
+
+	
+	
 	
 }

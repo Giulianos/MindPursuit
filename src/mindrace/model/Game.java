@@ -31,11 +31,11 @@ public class Game implements Serializable {
 		situation= new Situation(players,board);
 		isStateInitialized=false;
 		for(int i=0 ; i<players.size();i++){
-			players.get(i).setTile(board.getTileAt(1));
-			board.getTileAt(1).addPlayer(players.get(i));
+			players.get(i).setTile(board.getTileAt(0));
+			board.getTileAt(0).addPlayer(players.get(i));
 		}
 		
-		}
+	}
 	
 	
 	public void  update(){
@@ -56,7 +56,6 @@ public class Game implements Serializable {
 		}
 		next.setCurrentSituation(situation.clone());
 		state=next;
-		System.out.println("Moving to state"+ state.getClass().getSimpleName());
 		
 	}
 	public State getState(){

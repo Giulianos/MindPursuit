@@ -23,7 +23,7 @@ public class Board implements Serializable{
 	/*
 	 * Constantes
 	 */
-	private final Integer lastPosition = 42;
+	private final Integer tilesQuantity = 42;
 	
 	private CircularList<Tile> tiles = new CircularList<Tile>();
 	private String tilesXMLFile = "boardTiles.xml";
@@ -48,9 +48,9 @@ public class Board implements Serializable{
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(URI);
 		NodeList tilesList = doc.getElementsByTagName("tile");
-		for(int i = 1; i <= lastPosition; i++) {
+		for(int i = 0; i < tilesQuantity; i++) {
 			Tile tileToAdd;
-			Node tileNode = tilesList.item(i-1);
+			Node tileNode = tilesList.item(i);
 			NamedNodeMap attributesMap = tileNode.getAttributes();
 			Node categoryAttributeNode = attributesMap.getNamedItem("category");
 			if(categoryAttributeNode == null) {
@@ -81,13 +81,12 @@ public class Board implements Serializable{
 	}
 	
 	public Tile getTileAt(Integer index){
-		return tiles.get(index-1);
+		return tiles.get(index);
 	}
 	/**
 	 * @return
 	 */
 	public Tile startingTile() {
-		System.out.println();
 		return tiles.get(0);
 	}
 	

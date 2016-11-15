@@ -22,7 +22,7 @@ public class Tile implements Serializable{
 	}
 	
 	public Boolean isStart(){
-		return position == 1;
+		return position == 0;
 	}
 	
 	public void addPlayer(Player player){

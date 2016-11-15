@@ -16,12 +16,14 @@ import java.awt.Font;
  * @author Agustin Lavarello
  *
  */
-public class MenuGUI {
+public class MenuGraphics {
 
 	private JFrame frame;
 	JButton startBotton;
 	JButton saveBotton;
 	JButton exitBotton;
+	private Controller controller;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -29,7 +31,7 @@ public class MenuGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuGUI window = new MenuGUI();
+					MenuGraphics window = new MenuGraphics();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +43,7 @@ public class MenuGUI {
 	/**
 	 * Create the application.
 	 */
-	public MenuGUI() {
+	public MenuGraphics() {
 
 		frame = new JFrame();
 		frame.setVisible(true);
@@ -55,10 +57,8 @@ public class MenuGUI {
 		
 		startBotton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BoardGUI boardGUI = new BoardGUI();// hay que pasarle situation
-				boardGUI.getFrame().setVisible(true);
+				controller.initialize();
 				frame.dispose();
-				//empieza el juego
 				
 			}
 		});

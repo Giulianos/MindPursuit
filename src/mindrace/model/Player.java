@@ -20,7 +20,7 @@ public class Player implements Cloneable, Serializable{
 		this.name = name;
 		this.tokens = new HashSet<Category>();
 		this.board=b;
-		this.tile = board.startingTile();
+		//this.tile = board.startingTile();
 	}
 	
 	public String getName(){

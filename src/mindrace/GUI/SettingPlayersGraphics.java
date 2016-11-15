@@ -9,36 +9,21 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * @author Agu
  *
  */
-public class SettingPlayersGUI {
+public class SettingPlayersGraphics {
 
 	private JFrame frame;
 	private JTextField nombreDelJugador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SettingPlayersGUI window = new SettingPlayersGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public SettingPlayersGUI() {
+	
+	public SettingPlayersGraphics(View view) {
+		
 		initialize();
 	}
 
@@ -47,6 +32,7 @@ public class SettingPlayersGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setVisible(true);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +83,12 @@ public class SettingPlayersGUI {
 		frame.getContentPane().add(yellow);
 		
 		JButton btnAcceptar = new JButton("Acceptar");
+		btnAcceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				view.addPlayersGrapgics(playerGraphics);
+				view.enteringNames();
+			}
+		});
 		btnAcceptar.setBounds(345, 239, 89, 23);
 		frame.getContentPane().add(btnAcceptar);
 	}

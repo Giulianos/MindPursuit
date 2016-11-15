@@ -17,19 +17,19 @@ import mindrace.model.Player;
  * @author Agustin Lavarello
  *
  */
-public class PlayerGUI extends JPanel {
+public class PlayerGraphics extends JPanel {
 	
 	private int x,y;
 	private JLabel label = new JLabel();
 	private ImageIcon img;
-	private Player player;
+	private PlayerGUI player;
 	
-	public Player getPlayer() {
+	public PlayerGUI getPlayerGUI() {
 		return player;
 	}
 
 
-	public PlayerGUI(ImageIcon img, Player player) {
+	public PlayerGraphics(ImageIcon img, Player player) {
 		this.player = player;
 		this.setCoordinates(TilesGUI.tile0);
 		this.img = img;

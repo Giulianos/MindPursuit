@@ -17,14 +17,14 @@ import java.awt.event.ActionEvent;
  * @author Agu
  *
  */
-public class ExitWindowGUI {
+public class ExitWindowGraphics {
 
 	private JFrame frame;
 	JButton btnSI;
 	JButton btnNO;
 	JLabel lblEstasSeguroQue;
 	
-	public ExitWindowGUI() {
+	public ExitWindowGraphics() {
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setResizable(false);

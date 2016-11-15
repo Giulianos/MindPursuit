@@ -21,7 +21,7 @@ import javax.swing.JComboBox;
  * @author AgusTin Lavarello
  *
  */
-public class ChoosingPlayersGUI {
+public class ChoosingPlayersGraphics {
 
 	private JFrame frame;
 	private int NumberOfPlayers;
@@ -31,7 +31,7 @@ public class ChoosingPlayersGUI {
 	private JButton btn4 = new JButton("4");
 	private JButton btn5 = new JButton("5");
 	private JButton btn6 = new JButton("6");
-	private Set<PlayerGUI> players = new HashSet<PlayerGUI>();
+	//private Set<PlayerGUI> players = new HashSet<PlayerGUI>();
 	/**
 	 * Launch the application.
 	 */
@@ -39,7 +39,7 @@ public class ChoosingPlayersGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChoosingPlayersGUI window = new ChoosingPlayersGUI();
+					ChoosingPlayersGraphics window = new ChoosingPlayersGraphics();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,8 @@ public class ChoosingPlayersGUI {
 	/**
 	 * Create the application.
 	 */
-	public ChoosingPlayersGUI() {
+	//controller y view
+	public ChoosingPlayersGraphics() {
 		initialize();
 	}
 
@@ -72,44 +73,39 @@ public class ChoosingPlayersGUI {
 		
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 1;
 				deactivateButtons();
-				creatPlayers(1);
+				controller.NumberOfPlayer(1);
+				view.enteringNames();
 			}
 		});
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 2;
 				deactivateButtons();
-				creatPlayers(2);
+				controller.NumberOfPlayer(2);
 			}
 		});
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 3;
 				deactivateButtons();
-				creatPlayers(3);
+				controller.NumberOfPlayer(3);
 			}
 		});
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 4;
 				deactivateButtons();
-				creatPlayers(4);
+				controller.NumberOfPlayer(4);
 			}
 		});
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 5;
 				deactivateButtons();
-				creatPlayers(5);
+				controller.NumberOfPlayer(5);
 			}
 		});
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NumberOfPlayers = 6;
 				deactivateButtons();
-				creatPlayers(6);
+				controller.NumberOfPlayer(6);
 			}
 		});
 	
@@ -181,4 +177,9 @@ public class ChoosingPlayersGUI {
 		btn5.setEnabled(false);
 		btn6.setEnabled(false);
 	}
+	
+	public int getNumberOfPlayers() {
+		return NumberOfPlayers;
+	}
+
 }

@@ -45,15 +45,13 @@ import java.awt.event.ActionEvent;
  * @author Agustin Lavarello
  *
  */
-public class BoardGUI {
+public class BoardGraphics {
 
 	private JFrame frame;
 	private JTextField playerName;
-	private ThrowingDice dice;
 	private boolean isBtnDicepressed;
-	private Situation situation;
-	private PlayerGUI currentPlayer;
-	private Category[] tokensOfPlayer;
+	private PlayerGraphics currentPlayer;
+	private Object[] tokensOfPlayer;
 	private JButton btnDice;
 	private JLabel token_1;
 	private JLabel token_2;
@@ -61,7 +59,6 @@ public class BoardGUI {
 	private JLabel token_4;
 	private JLabel token_5;
 	private JLabel token_6;
-	private Set<PlayerGUI> playersGUI = new HashSet<PlayerGUI>();
 	private JLayeredPane layeredPane;
 	
 
@@ -69,27 +66,8 @@ public class BoardGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BoardGUI window = new BoardGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public BoardGUI(//Situation situation 
-			) {
-		//this.Situation = situation;
-		//this.player = situation.getCurrentPlayer();
-		//this.tokensOfPlayer = (Category[]) player.getTokens().toArray();
+	//lista de players graphics y setear el current player con el primero de lista
+	public BoardGraphics() {
 		initialize();
 	}
 
@@ -108,11 +86,10 @@ public class BoardGUI {
 			public void actionPerformed(ActionEvent e) {
 				if(!isBtnDicepressed) {
 					btnDice.setText("");
-					ImageIcon dice = null;
-					//
-					//es de prueba
-					Random randomNumber = new Random();
-					Integer diceNumber = (int) (randomNumber.nextDouble()*6 + 1); //dice.diceNumber();
+					ImageIcon dice;
+					int diceNumber;
+					//ThrowingDiceGUI dice = controller.throwDice();
+					//dice.getDiceNumber();
 					switch (diceNumber) {
 					case 1: dice = new ImageIcon("dice1.png");
 							break;
@@ -130,7 +107,7 @@ public class BoardGUI {
 					btnDice.setIcon(dice);
 					btnDice.setBounds(new Rectangle(dice.getIconWidth(), dice.getIconHeight()));
 					isBtnDicepressed = true;
-					
+					//controller.move();
 			}
 		}
 		});
@@ -251,6 +228,14 @@ public class BoardGUI {
 		
 	}
 	
+	public void newTurn() {
+		setBtnDicepressed(false);
+		btnDice.setText("Tira el dado");
+		btnDice.setIcon(null);
+		draw();
+		
+	}
+	
 	public void setBtnDicepressed(boolean isBtnDicepressed) {
 		this.isBtnDicepressed = isBtnDicepressed;
 	}
@@ -260,24 +245,18 @@ public class BoardGUI {
 	}
 	
 	
-	public void setCurrentPlayer(PlayerGUI player) {
+	public void setCurrentPlayer(PlayerGraphics player) {
 		this.currentPlayer = player;
 	}
-	//agrega el player con sus nuevas coordenadas
-	public void changePlayerGUI(PlayerGUI player) {
-		playersGUI.remove(player);
-		playersGUI.add(player);
-	}
-	
 
 	
 	public void draw() {
 		
-		for(PlayerGUI player: playersGUI) {
-			layeredPane.add(player.getLabel(),1, 0);
-		}
-
-
+		
+		layeredPane.add(currentPlayer.getLabel(),1, 0);
+		
+		this.tokensOfPlayer =  currentPlayer.getPlayer().getTokens().toArray();
+		
 		playerName.setText(currentPlayer.getPlayer().getName());
 		
 		if(tokensOfPlayer.length >= 1){
@@ -297,7 +276,8 @@ public class BoardGUI {
 		}
 		if(tokensOfPlayer.length >= 6){
 			token_6.setText(tokensOfPlayer[5].toString());
-		}		frame.repaint();
+		}		
+		frame.repaint();
 		
 	}
 }

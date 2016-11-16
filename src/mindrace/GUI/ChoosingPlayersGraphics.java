@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JSeparator;
@@ -35,7 +37,7 @@ public class ChoosingPlayersGraphics {
 	private View view;
 
 	
-	//controller y view
+	
 	public ChoosingPlayersGraphics(Controller controller, View view) {
 		this.controller = controller;
 		this.view = view;
@@ -47,43 +49,58 @@ public class ChoosingPlayersGraphics {
 		
 		JLabel lblNumeroDeJugadores = new JLabel("Numero de Jugadores");
 		
-		
+		Timer closingTimer = new Timer();
+		TimerTask closingTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				frame.dispose();
+				
+			}
+			
+		};
 		
 		
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
 				controller.numberOfPlayers(1);
+				closingTimer.schedule(closingTask, 1000);
 				view.enteringNames();
 			}
 		});
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(2);
 			}
 		});
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(3);
 			}
 		});
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(4);
 			}
 		});
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(5);
 			}
 		});
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(6);
 			}
 		});

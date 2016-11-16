@@ -41,7 +41,7 @@ public class QuestionGUI {
 	/**
 	 * @return the correctAnswer
 	 */
-	public int getCorrectAnswer() {
+	public Integer getCorrectAnswer() {
 		return correctAnswer;
 	}
 

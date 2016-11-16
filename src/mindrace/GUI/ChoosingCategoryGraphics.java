@@ -29,12 +29,18 @@ public class ChoosingCategoryGraphics extends JFrame {
 	private JPanel contentPane;
 	private Category category;
 	private Controller controller;
-	JButton button_1;
-	JButton button_2;
-	JButton button_3;
-	JButton button_4;
-	JButton button_5;
-	JButton button_6;
+	private JButton button_1;
+	private JButton button_2;
+	private JButton button_3;
+	private JButton button_4;
+	private JButton button_5;
+	private JButton button_6;
+	private Category categoria1 = Category.Art;
+	private Category categoria2 = Category.Entertainment;
+	private Category categoria3 = Category.Geography;
+	private Category categoria4 = Category.History;
+	private Category categoria5 = Category.Science;
+	private Category categoria6 = Category.Sport;
 
 	
 	public ChoosingCategoryGraphics(Controller controller) {
@@ -58,12 +64,12 @@ public class ChoosingCategoryGraphics extends JFrame {
 			
 		};
 		
-		button_1 = new JButton(Category.Geography.toString());
-		button_2 = new JButton(Category.Science.toString());
-		button_3 = new JButton(Category.History.toString());
-		button_4 = new JButton(Category.Sport.toString());
-		button_5 = new JButton(Category.Art.toString());
-		button_6 = new JButton(Category.Entertainment.toString());
+		button_1 = new JButton(categoria1.toString());
+		button_2 = new JButton(categoria2.toString());
+		button_3 = new JButton(categoria3.toString());
+		button_4 = new JButton(categoria4.toString());
+		button_5 = new JButton(categoria5.toString());
+		button_6 = new JButton(categoria6.toString());
 		
 		
 		button_1.addActionListener(new ActionListener() {

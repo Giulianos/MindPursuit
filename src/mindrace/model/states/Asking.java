@@ -40,6 +40,12 @@ public class Asking extends State {
 		}
 		
 		questionToAsk = questionSet.getQuestion(categoryToAsk);
+		if(questionToAsk==null){
+			questionSet=new QuestionSet();
+			questionToAsk= questionSet.getQuestion(categoryToAsk);
+		}
+		
+		timeTaken= System.currentTimeMillis();
 	}
 	
 	/**
@@ -56,11 +62,11 @@ public class Asking extends State {
 	 * del jugador.
 	 * 
 	 */
-	public void setAnswer(Integer option, Long l) {
-		if(option==null || l==null)
+	public void setAnswer(Integer option) {
+		if(option==null )
 			throw new IllegalArgumentException();
 		this.selectedAnswer = option;
-		this.timeTaken = l;
+		this.timeTaken = System.currentTimeMillis()-timeTaken;
 	}
 	
 
@@ -74,7 +80,7 @@ public class Asking extends State {
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
-			if(timeTaken<15){ //constante de tiempo
+			if(timeTaken<15000){ //constante de tiempo
 				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {
 					return new WinningToken();	
 				} else if (getSituation().getCurrentPlayer().getTile().stealablePlayers(getSituation().getCurrentPlayer()).size() > 0) {

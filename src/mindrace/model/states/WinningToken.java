@@ -84,4 +84,11 @@ public class WinningToken extends State {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	/**
+	 * @return the winningCategory
+	 */
+	public Category getWinningCategory() {
+		return winningCategory;
+	}
 }

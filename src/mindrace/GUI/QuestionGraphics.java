@@ -33,7 +33,6 @@ import javax.swing.JLabel;
 public class QuestionGraphics extends JFrame {
 
 	
-	private Integer answered;
 	private QuestionGUI question;
 	private int timeTaken;
 	private final static int firstAnswer = 0;
@@ -87,7 +86,6 @@ public class QuestionGraphics extends JFrame {
 		
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAnswered(firstAnswer);
 				if(question.getCorrectAnswer() == firstAnswer) {
 					answer1.setBackground(Color.GREEN);
 				}
@@ -97,6 +95,7 @@ public class QuestionGraphics extends JFrame {
 				showCorrectAnswer();
 				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
+				setAnswered(firstAnswer);
 				
 				
 			}
@@ -106,7 +105,6 @@ public class QuestionGraphics extends JFrame {
 		
 		answer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAnswered(secondAnswer);
 				if(question.getCorrectAnswer() == secondAnswer) {
 					answer2.setBackground(Color.GREEN);
 				}
@@ -116,6 +114,7 @@ public class QuestionGraphics extends JFrame {
 				showCorrectAnswer();
 				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
+				setAnswered(secondAnswer);
 			}
 
 			
@@ -124,7 +123,6 @@ public class QuestionGraphics extends JFrame {
 		
 		answer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAnswered(thirdAnswer);
 				if(question.getCorrectAnswer() == thirdAnswer) {
 					answer3.setBackground(Color.GREEN);
 				}
@@ -134,13 +132,13 @@ public class QuestionGraphics extends JFrame {
 				showCorrectAnswer();
 				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
+				setAnswered(thirdAnswer);
 			}
 		});
 		
 	
 		answer4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAnswered(fourthAnswer);
 				if(question.getCorrectAnswer() == fourthAnswer) {
 					answer4.setBackground(Color.GREEN);
 				}
@@ -150,6 +148,7 @@ public class QuestionGraphics extends JFrame {
 				showCorrectAnswer();
 				disableBtns();
 				closingTimer.schedule(closingTask, 2000);
+				setAnswered(fourthAnswer);
 			}
 
 		
@@ -158,12 +157,24 @@ public class QuestionGraphics extends JFrame {
 	
 	
 		JLabel timeLabel = new JLabel();
-		
+		/*
+		 * if timeShown is 0 I set a wrong answer and close the window
+		 */
 		TimerTask progresTask = new TimerTask() {
 			int timeShown = 20;
 			public void run() {
 				timeLabel.setText(timeShown + "");
+				if(timeShown == 0) {
+					if(question.getCorrectAnswer() == firstAnswer) {
+						setAnswered(secondAnswer);
+					}
+					else {
+						setAnswered(firstAnswer);
+					}
+					dispose();
+				}
 				timeShown--;
+				
 			}
 		};
 	
@@ -206,13 +217,11 @@ public class QuestionGraphics extends JFrame {
 	
 	public void draw() {}
 	
-	public void setAnswered(Integer answered) {
-		this.answered = answered;
+	public void setAnswered(Integer answer) {
+		this.question.setAnswer(answer);
+		controller.answered(question);
 	}
 	
-	public Integer getAnswered() {
-		return answered;
-	}
 	public void showCorrectAnswer() {
 		
 		switch (question.getCorrectAnswer()) {

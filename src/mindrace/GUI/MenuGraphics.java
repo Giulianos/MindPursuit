@@ -29,7 +29,7 @@ public class MenuGraphics {
 	
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,13 +46,14 @@ public class MenuGraphics {
 	/**
 	 * Create the application.
 	 */
-	public MenuGraphics() {
+	public MenuGraphics(Controller controller) {
 
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 545, 458);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.controller=controller;
 		
 		saveBotton = new JButton("Recuperar partida");
 		startBotton = new JButton("Empezar");

@@ -23,12 +23,7 @@ public class PlayerGraphics extends JPanel {
 	private String name;
 	private JLabel label = new JLabel();
 	private ImageIcon img;
-	private PlayerGUI player;
 	
-	public PlayerGUI getPlayerGUI() {
-		return player;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -37,12 +32,10 @@ public class PlayerGraphics extends JPanel {
 		this.name = name;
 		this.img = img;
 		this.label.setIcon(img);
-		this.label.setBounds(0, 0, img.getIconHeight(), img.getIconWidth());
+		Point p = TilesGUI.getTilesPositions().get(0);
+		this.label.setBounds((int)p.getX(), (int)p.getY(), img.getIconHeight(), img.getIconWidth());
 	}
 	
-	public void setPlayer(PlayerGUI player) {
-		this.player = player;
-	}
 	public void setCoordinates(Point  p) {
 		this.x = (int)p.getX();
 		this.y = (int)p.getY();

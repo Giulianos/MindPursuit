@@ -31,6 +31,7 @@ public class WinningTokenGraphics extends JFrame {
 	private JPanel contentPane;
 	private Category category;
 	private Set<Category> categories;
+	private Controller controller;
 	JButton button_1;
 	JButton button_2;
 	JButton button_3;
@@ -39,8 +40,9 @@ public class WinningTokenGraphics extends JFrame {
 	JButton button_6;
 	
    
-	public WinningTokenGraphics(Controller controler,Set<Category> categories) {
+	public WinningTokenGraphics(Controller controller,Set<Category> categories) {
 		this.categories = categories; 
+		this.controller=controller;
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,8 +101,8 @@ public class WinningTokenGraphics extends JFrame {
 					category = Category.Geography;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
-					//
 				}
+				controller.tokenChosen(category);
 		
 			}
 		});
@@ -113,6 +115,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_2.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -124,6 +127,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_3.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -135,6 +139,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_4.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -146,6 +151,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_5.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -157,6 +163,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_6.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

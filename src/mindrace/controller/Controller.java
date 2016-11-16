@@ -83,7 +83,6 @@ public class Controller {
 			WinningToken winning = (WinningToken) game.getState();
 			
 			view.winningTokenGraphics( winning.getPossibleTokens() );
-			game.update();
 		}else if (game.getState().getClass().equals(Asking.class)){
 			game.update();
 			Asking asking= (Asking) game.getState();
@@ -103,6 +102,25 @@ public class Controller {
 		
 	}
 	
+	public void tokenChosen(Category category){
+		WinningToken winning= (WinningToken) game.getState() ;
+		winning.setChosenCategory(category);
+		game.update();
+		if(game.getState().getClass().equals(Asking.class)){
+			game.update();
+			Asking asking= (Asking) game.getState();
+			QuestionGUI questionGUI = createQuestionGUI(asking.getQuestion());
+			view.questionGraphics(questionGUI);
+		}	
+		else{
+			view.choosingCategory();
+		}
+		
+		
+		
+		
+	}
+	
 	/**
 	 * @param state
 	 * @return
@@ -116,7 +134,6 @@ public class Controller {
 
 	public void chosenCategory(Category category){
 		game.update();
-		
 		ChoosingCategory state= (ChoosingCategory) game.getState();
 		state.setCategory(category);
 		

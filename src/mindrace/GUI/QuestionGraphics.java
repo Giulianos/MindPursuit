@@ -77,6 +77,33 @@ public class QuestionGraphics extends JFrame {
 			
 		}; 
 		
+		JLabel timeLabel = new JLabel();
+		/*
+		 * if timeShown is 0 I set a wrong answer and close the window
+		 */
+		TimerTask progresTask = new TimerTask() {
+			int timeShown = 20;
+			public void run() {
+				timeLabel.setText(timeShown + "");
+				if(timeShown == 0) {
+					if(question.getCorrectAnswer() == firstAnswer) {
+						setAnswered(secondAnswer);
+					}
+					else {
+						setAnswered(firstAnswer);
+					}
+					this.cancel();
+					dispose();
+					
+				}
+				timeShown--;
+				
+			}
+		};
+	
+		Timer progresTimer = new Timer();
+		progresTimer.schedule(progresTask, 1000, 1000);
+		
 		
 		
 		answer1 = new JButton(question.getOptions()[firstAnswer]);
@@ -94,6 +121,7 @@ public class QuestionGraphics extends JFrame {
 				}
 				showCorrectAnswer();
 				disableBtns();
+				progresTimer.cancel();
 				closingTimer.schedule(closingTask, 2000);
 				setAnswered(firstAnswer);
 				
@@ -113,6 +141,7 @@ public class QuestionGraphics extends JFrame {
 				}
 				showCorrectAnswer();
 				disableBtns();
+				progresTimer.cancel();
 				closingTimer.schedule(closingTask, 2000);
 				setAnswered(secondAnswer);
 			}
@@ -131,6 +160,7 @@ public class QuestionGraphics extends JFrame {
 				}
 				showCorrectAnswer();
 				disableBtns();
+				progresTimer.cancel();
 				closingTimer.schedule(closingTask, 2000);
 				setAnswered(thirdAnswer);
 			}
@@ -147,6 +177,7 @@ public class QuestionGraphics extends JFrame {
 				}
 				showCorrectAnswer();
 				disableBtns();
+				progresTimer.cancel();
 				closingTimer.schedule(closingTask, 2000);
 				setAnswered(fourthAnswer);
 			}
@@ -155,32 +186,6 @@ public class QuestionGraphics extends JFrame {
 		});
 		
 	
-	
-		JLabel timeLabel = new JLabel();
-		/*
-		 * if timeShown is 0 I set a wrong answer and close the window
-		 */
-		TimerTask progresTask = new TimerTask() {
-			int timeShown = 20;
-			public void run() {
-				timeLabel.setText(timeShown + "");
-				if(timeShown == 0) {
-					if(question.getCorrectAnswer() == firstAnswer) {
-						setAnswered(secondAnswer);
-					}
-					else {
-						setAnswered(firstAnswer);
-					}
-					dispose();
-				}
-				timeShown--;
-				
-			}
-		};
-	
-		Timer progresTimer = new Timer();
-		progresTimer.schedule(progresTask, 1000, 1000);
-		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

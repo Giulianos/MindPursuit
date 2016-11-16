@@ -88,7 +88,7 @@ public class QuestionGraphics extends JFrame {
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAnswered(firstAnswer);
-				if(question.getCorrectAnswer().equals(firstAnswer)) {
+				if(question.getCorrectAnswer() == firstAnswer) {
 					answer1.setBackground(Color.GREEN);
 				}
 				else {
@@ -107,7 +107,7 @@ public class QuestionGraphics extends JFrame {
 		answer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAnswered(secondAnswer);
-				if(question.getCorrectAnswer().equals(secondAnswer)) {
+				if(question.getCorrectAnswer() == secondAnswer) {
 					answer2.setBackground(Color.GREEN);
 				}
 				else {
@@ -125,7 +125,7 @@ public class QuestionGraphics extends JFrame {
 		answer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAnswered(thirdAnswer);
-				if(question.getCorrectAnswer().equals(thirdAnswer)) {
+				if(question.getCorrectAnswer() == thirdAnswer) {
 					answer3.setBackground(Color.GREEN);
 				}
 				else {
@@ -141,7 +141,7 @@ public class QuestionGraphics extends JFrame {
 		answer4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAnswered(fourthAnswer);
-				if(question.getCorrectAnswer().equals(fourthAnswer)) {
+				if(question.getCorrectAnswer() == fourthAnswer) {
 					answer4.setBackground(Color.GREEN);
 				}
 				else {

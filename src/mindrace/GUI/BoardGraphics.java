@@ -253,9 +253,9 @@ public class BoardGraphics {
 		
 		layeredPane.add(currentPlayer.getLabel(),1, 0);
 		
-		this.tokensOfPlayer =  currentPlayerGUI.getPlayer().getTokens().toArray();
+		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
 		
-		playerName.setText(currentPlayerGUI.getPlayer().getName());
+		playerName.setText(currentPlayerGUI.getName());
 		
 		if(tokensOfPlayer.length >= 1){
 			token_1.setText(tokensOfPlayer[0].toString());

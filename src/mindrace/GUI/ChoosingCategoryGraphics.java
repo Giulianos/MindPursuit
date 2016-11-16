@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import mindrace.model.Category;
 import mindrace.model.Situation;
+import mindrace.controller.*;
 
 /**
  * @author Agustin Lavarello
@@ -70,7 +71,7 @@ public class ChoosingCategoryGraphics extends JFrame {
 					category = Category.Geography;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
-					controller.chosencategory(Category.Geography);
+					controller.chosenCategory(Category.Geography);
 			}
 		});
 		

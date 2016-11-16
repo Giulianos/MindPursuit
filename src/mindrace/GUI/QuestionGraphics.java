@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mindrace.controller.Controller;
 import mindrace.model.Question;
 
 import java.awt.FlowLayout;
@@ -29,11 +30,11 @@ import javax.swing.JLabel;
  * @author Agustin Lavarello
  *
  */
-public class QuestionGUI extends JFrame {
+public class QuestionGraphics extends JFrame {
 
 	
 	private Integer answered;
-	private Question question;
+	private QuestionGUI question;
 	private int timeTaken;
 	private final static int firstAnswer = 0;
 	private final static int secondAnswer = 1;
@@ -45,11 +46,13 @@ public class QuestionGUI extends JFrame {
 	JButton answer2;
 	JButton answer3;
 	JButton answer4;
+	
+	private Controller controller;
 
 	
 
 	
-	public QuestionGUI(Question q) {
+	public QuestionGraphics(Controller controller, QuestionGUI q) {
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,8 +61,9 @@ public class QuestionGUI extends JFrame {
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
 		this.setResizable(false);
+		this.controller=controller;
 		
-		question = q;
+		this.question= q;
 		questionText = new JTextField(question.getQuestion()) ;
 		questionText.setColumns(10);
 		questionText.setEditable(false);
@@ -83,7 +87,7 @@ public class QuestionGUI extends JFrame {
 		
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(firstAnswer);
+				setAnswered(firstAnswer);
 				if(question.getCorrectAnswer().equals(firstAnswer)) {
 					answer1.setBackground(Color.GREEN);
 				}
@@ -102,7 +106,7 @@ public class QuestionGUI extends JFrame {
 		
 		answer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(secondAnswer);
+				setAnswered(secondAnswer);
 				if(question.getCorrectAnswer().equals(secondAnswer)) {
 					answer2.setBackground(Color.GREEN);
 				}
@@ -120,7 +124,7 @@ public class QuestionGUI extends JFrame {
 		
 		answer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				QuestionGUI.this.setAnswered(thirdAnswer);
+				setAnswered(thirdAnswer);
 				if(question.getCorrectAnswer().equals(thirdAnswer)) {
 					answer3.setBackground(Color.GREEN);
 				}

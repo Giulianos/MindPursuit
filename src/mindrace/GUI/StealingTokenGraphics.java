@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLayeredPane;
+
+import mindrace.controller.Controller;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -16,6 +19,7 @@ import javax.swing.JLabel;
 public class StealingTokenGraphics {
 
 	private JFrame frame;
+	private Controller controller;
 
 	/**
 	 * Launch the application.
@@ -35,8 +39,11 @@ public class StealingTokenGraphics {
 
 	/**
 	 * Create the application.
+	 * 
+	 * 
+	 * Faltan las llamadas a controller con lo que gano el jugador
 	 */
-	public StealingTokenGraphics() {
+	public StealingTokenGraphics(Controller controller) {
 		initialize();
 	}
 

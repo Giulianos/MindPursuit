@@ -1,8 +1,10 @@
 package mindrace.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import mindrace.GUI.*;
+import mindrace.model.Category;
 import mindrace.model.Game;
 import mindrace.model.states.Asking;
 import mindrace.model.states.ChoosingCategory;
@@ -10,6 +12,7 @@ import mindrace.model.states.Moving;
 import mindrace.model.states.StealingToken;
 import mindrace.model.states.ThrowingDice;
 import mindrace.model.states.WinningToken;
+import mindrace.GUI.View;
 
 /**
  * @author francisco
@@ -38,8 +41,10 @@ public class Controller {
 		view.setNumberOfPlayers(numberOfPlayers);
 	}
 	
-	public void addPlayersGraphics(List<PlayersGraphics> playersGraphics){
-		//TODO convert and add to model;
+	public void addPlayersGraphics(List<PlayerGraphics> playersGraphics){
+		List<String> playersNames= new LinkedList<String>();
+		for (PlayerGraphics player: playersGraphics)
+			playersNames.add(player.getName());
 	}
 	
 	public void move(){
@@ -139,13 +144,13 @@ public class Controller {
 	public void tokenStolen(StealingTokenGUI stealingTokenGUI){
 		StealingToken stealingToken = (StealingToken) game.getState();
 		
-		stealing.setTokenToSteal(game.getPlayer(stealingTokenGUI.getPlayerStolen)), stealingTokenGUI.getTokenToSteal);
+		stealingToken.setTokenToSteal(game.getPlayer(stealingTokenGUI.getPlayerStolen())), stealingTokenGUI.getTokenToSteal());
 		
 		game.update();
 		/**
 		 * next Turn
 		 */
-		nexTurn();
+		nextTurn();
  	}
 	
 	private void nextTurn(){

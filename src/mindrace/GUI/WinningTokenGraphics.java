@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mindrace.controller.Controller;
 import mindrace.model.Category;
 import mindrace.model.Situation;
 

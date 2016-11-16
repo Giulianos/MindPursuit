@@ -131,7 +131,7 @@ public class SettingPlayersGraphics {
 			public void actionPerformed(ActionEvent e) {
 				if(isColorChosen && !names.contains(nombreDelJugador.getText())){	
 				names.add(nombreDelJugador.getText());
-				view.addPlayersGrapgics(creatPlayersGraphics());
+				view.addPlayersGraphics(creatPlayersGraphics());
 				view.enteringNames();
 				}
 			}	

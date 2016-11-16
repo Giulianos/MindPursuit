@@ -2,6 +2,8 @@ package mindrace.model;
 import mindrace.*;
 import mindrace.model.states.*;
 import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,10 +47,7 @@ public class Test {
 //
 //	}
 	public static void main(String[] args) {
-		Board b;
-		Player p1;
-		Player p2;
-		CircularList<Player> players;
+		List<String> players;
 		Game game;
 		boolean flag = true;
 			try{
@@ -67,14 +66,10 @@ public class Test {
 				}
 				else
 				{
-					b = new Board();
-					p1 = new Player("Julian", b);
-					p2 = new Player("Agustin", b);
-					players = new CircularList<Player>();
-					p1.addToken(Category.Entertainment);
-					players.add(p1);
-					players.add(p2);
-					game = new Game(players, p1,new ThrowingDice(), b);
+					players = new LinkedList<String>();
+					players.add("julian");
+					players.add("roberto");
+					game = new Game(players,new ThrowingDice());
 				}
 				while(true && flag){
 					System.out.println(game.getSituation().getCurrentPlayer());
@@ -160,7 +155,6 @@ public class Test {
 					System.out.println("Estas son las opciones");
 					Question question=askingState.getQuestion();
 					System.out.println(question);
-					question.printParameters();
 					System.out.println("Elije una respuesta");
 					long y= System.currentTimeMillis();
 					int f = reader.nextInt();

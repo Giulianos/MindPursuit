@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
-
+import mindrace.controller.*;
 /**
  * @author AgusTin Lavarello
  *
@@ -53,38 +53,38 @@ public class ChoosingPlayersGraphics {
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(1);
+				controller.numberOfPlayers(1);
 				view.enteringNames();
 			}
 		});
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(2);
+				controller.numberOfPlayers(2);
 			}
 		});
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(3);
+				controller.numberOfPlayers(3);
 			}
 		});
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(4);
+				controller.numberOfPlayers(4);
 			}
 		});
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(5);
+				controller.numberOfPlayers(5);
 			}
 		});
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
-				controller.NumberOfPlayer(6);
+				controller.numberOfPlayers(6);
 			}
 		});
 	
@@ -139,7 +139,7 @@ public class ChoosingPlayersGraphics {
 	 */
 	protected void creatPlayers(int numDeJugadores) {
 		
-			SettingPlayersGUI setPlayer = new SettingPlayersGUI();
+			SettingPlayersGraphics setPlayer = new SettingPlayersGraphics(view);
 
 			
 		

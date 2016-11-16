@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+import mindrace.controller.Controller;
+
 import java.awt.Font;
 
 /**

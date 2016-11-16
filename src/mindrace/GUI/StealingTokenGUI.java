@@ -18,7 +18,9 @@ public class StealingTokenGUI {
 	 *  of the possible tokens to steal, doesn´t 
 	 *  include the thief´s tokens.
 	 */
-	Map<PlayerGUI,Set<Category>> playersWithTokensToSteal;
+	private Map<PlayerGUI,Set<Category>> playersWithTokensToSteal;
+	private PlayerGUI stolenPlayer;
+	private Category stolenToken;
 	
 	public StealingTokenGUI(Set<PlayerGUI> playersToSteal, PlayerGUI thief){
 		this.playersWithTokensToSteal = new HashMap<PlayerGUI,Set<Category>>();
@@ -35,5 +37,29 @@ public class StealingTokenGUI {
 	 */
 	public Map<PlayerGUI,Set<Category>> getPlayersWithTokensToSteal(){
 		return playersWithTokensToSteal;
+	}
+	/**
+	 * @return the stolenPlayer
+	 */
+	public PlayerGUI getStolenPlayer() {
+		return stolenPlayer;
+	}
+	/**
+	 * @param stolenPlayer the stolenPlayer to set
+	 */
+	public void setStolenPlayer(PlayerGUI stolenPlayer) {
+		this.stolenPlayer = stolenPlayer;
+	}
+	/**
+	 * @param stolenToken the stolenToken to set
+	 */
+	public void setStolenToken(Category stolenToken) {
+		this.stolenToken = stolenToken;
+	}
+	/**
+	 * @return the stolenToken
+	 */
+	public Category getStolenToken() {
+		return stolenToken;
 	}
 }

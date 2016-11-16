@@ -28,7 +28,7 @@ import mindrace.model.states.WinningToken;
  * @author francisco
  *
  */
-public class Controller {
+public class ControllerTerminal {
 	View view;
 	boolean running=true;
 	boolean diceThrown=false;

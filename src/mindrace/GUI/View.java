@@ -1,8 +1,10 @@
 package mindrace.GUI;
 
+import java.awt.Point;
 import java.util.List;
 import java.util.Set;
 
+import mindrace.controller.Controller;
 import mindrace.model.Category;
 import mindrace.model.Question;
 
@@ -35,7 +37,7 @@ public class View {
 		return 0;
 	}
 	
-	public void addPlayersGraphics(){
+	public void addPlayersGraphics(PlayerGraphics player){
 		playersGraphics.add(player);
 	}
 	
@@ -43,7 +45,7 @@ public class View {
 	public void enteringNames(){
 		if(numberOfPlayers!=0){
 			numberOfPlayers--;
-			new SettingPlayersGraphic(this);
+			new SettingPlayersGraphics(this);
 		}
 		controller.addPlayersGraphics(playersGraphics);
 		this.board= new BoardGraphics(playersGraphics);
@@ -51,16 +53,16 @@ public class View {
 	}
 	
 	
-	public void setNumberOfPlayers(){
+	public void setNumberOfPlayers(int numberOfPlayers){
 		this.numberOfPlayers=numberOfPlayers;
 	}
 	
 	public void openMenu(){
-		new MenuGraphics(controller);
+		new MenuGraphics();
 	}
 	
 	public void chooseNumberOfPlayers(){
-		ChoosingPlayersGraphics choosing=new ChoosingPlayersGraphics();
+		ChoosingPlayersGraphics choosing=new ChoosingPlayersGraphics(controller, null);
 		
 	}
 	public void winning(WinningGameGUI winningGame){
@@ -69,7 +71,7 @@ public class View {
 	
 	public void winningTokenGraphics( Set<Category> possibleTokens){
 		new WinningTokenGraphics(controller, possibleTokens);
-		
+	}
 
 	
 	public void movePlayer(MovingGUI moving){
@@ -82,12 +84,12 @@ public class View {
 		
 	}
 	
-	public void QuestionGraphics(QuestionGUI question){
-		new QuestionGraphics(controller, question);
+	public void questionGraphics(QuestionGUI question){
+		new QuestionGraphics(controller,question);
 	}
 	
 	public void choosingCategory(){
-		new ChoosingCategory(controller);
+		new ChoosingCategoryGraphics(controller);
 	}
 	
 	public void stealingTokenGraphics(StealingTokenGUI stealing){

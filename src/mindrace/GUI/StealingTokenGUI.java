@@ -13,10 +13,10 @@ import mindrace.model.states.*;
  */
 public class StealingTokenGUI {
 	/** 
-	 * the Maps´s key are the players to be stolen, 
+	 * the Mapsï¿½s key are the players to be stolen, 
 	 * while in each value (the Set) is a collection
-	 *  of the possible tokens to steal, doesn´t 
-	 *  include the thief´s tokens.
+	 *  of the possible tokens to steal, doesnï¿½t 
+	 *  include the thiefï¿½s tokens.
 	 */
 	private Map<PlayerGUI,Set<Category>> playersWithTokensToSteal;
 	private PlayerGUI stolenPlayer;
@@ -62,4 +62,5 @@ public class StealingTokenGUI {
 	public Category getStolenToken() {
 		return stolenToken;
 	}
+	
 }

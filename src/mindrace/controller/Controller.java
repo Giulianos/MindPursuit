@@ -1,18 +1,22 @@
 package mindrace.controller;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import mindrace.GUI.*;
 import mindrace.model.Category;
 import mindrace.model.Game;
+import mindrace.model.Player;
+import mindrace.model.Question;
 import mindrace.model.states.Asking;
 import mindrace.model.states.ChoosingCategory;
 import mindrace.model.states.Moving;
+import mindrace.model.states.State;
 import mindrace.model.states.StealingToken;
 import mindrace.model.states.ThrowingDice;
 import mindrace.model.states.WinningToken;
-import mindrace.GUI.View;
 
 /**
  * @author francisco
@@ -33,6 +37,14 @@ public class Controller {
 			
 	}
 	
+	/**
+	 * @param state
+	 * @return
+	 */
+	private ThrowingDiceGUI createThrowingDiceGUI(ThrowingDice state) {
+		return new ThrowingDiceGUI(state.diceNumber());
+	}
+
 	public void initialize(){
 		view.chooseNumberOfPlayers();
 	}
@@ -75,7 +87,7 @@ public class Controller {
 		}
 		
 		/**
-		 * if I´m here means next state is ChoosingCategory
+		 * if Iï¿½m here means next state is ChoosingCategory
 		 * 
 		 */
 		view.choosingCategory();
@@ -84,6 +96,17 @@ public class Controller {
 		
 	}
 	
+	/**
+	 * @param state
+	 * @return
+	 */
+	private MovingGUI createMovingGUI(Moving state) {
+		Player player = state.getPlayer();
+		String name = player.getName();
+		PlayerGUI playerGUI = new PlayerGUI(name,player.getTokens());
+		return new MovingGUI(playerGUI,state.getPlayer().getTile().getPosition());
+	}
+
 	public void chosenCategory(Category category){
 		game.update();
 		
@@ -104,12 +127,20 @@ public class Controller {
 	}
 	
 	
+	/**
+	 * @param question
+	 * @return
+	 */
+	private QuestionGUI createQuestionGUI(Question question) {
+		return new QuestionGUI(question.getQuestion(),question.getOptions(),question.getCorrectAnswer());
+	}
+
 	public void answered(QuestionGUI questionGUI){
 	
 		
 		Asking state= (Asking) game.getState();
 		
-		state.setAnswer(questionGUI.getAnswer);
+		state.setAnswer(questionGUI.getAnswer());
 		
 		game.update();
 		
@@ -118,7 +149,7 @@ public class Controller {
 		if(game.getState().equals(StealingToken.class)){
 			game.update();
 			
-			StealingTokenGUI stealing = createStealingTokenGUI(game.getState());
+			StealingTokenGUI stealing = createStealingTokenGUI((StealingToken)game.getState());
 			view.stealingTokenGraphics( stealing);
 		}
 		else if(game.getState().equals(WinningToken.class)){
@@ -141,10 +172,26 @@ public class Controller {
 	}
 	
 	
+	/**
+	 * @param state
+	 * @return
+	 */
+	private StealingTokenGUI createStealingTokenGUI(StealingToken state) {
+		Player currentPlayer =  state.getSituation().getCurrentPlayer();
+		String thieftName = currentPlayer.getName();
+		PlayerGUI thieft = new PlayerGUI(thieftName,currentPlayer.getTokens());
+		Set<PlayerGUI> setOfPlayers = new HashSet<PlayerGUI>();
+		for(Player each : state.getPlayersToSteal())
+		{
+			setOfPlayers.add(new PlayerGUI(each.getName(),each.getTokens()));
+		}
+		return new StealingTokenGUI(setOfPlayers,thieft);
+	}
+
 	public void tokenStolen(StealingTokenGUI stealingTokenGUI){
 		StealingToken stealingToken = (StealingToken) game.getState();
-		
-		stealingToken.setTokenToSteal(game.getPlayer(stealingTokenGUI.getPlayerStolen())), stealingTokenGUI.getTokenToSteal());
+		String playersName = stealingTokenGUI.getStolenPlayer().getName();
+		stealingToken.setTokenToSteal(game.getPlayer(playersName), stealingTokenGUI.getStolenToken());
 		
 		game.update();
 		/**
@@ -158,6 +205,14 @@ public class Controller {
 		game.update();
 		PlayerGUI playerGUI= createPlayerGUI(game.getSituation().getCurrentPlayer());
 		view.nextTurn(playerGUI);
+	}
+
+	/**
+	 * @param currentPlayer
+	 * @return
+	 */
+	private PlayerGUI createPlayerGUI(Player currentPlayer) {
+		return new PlayerGUI(currentPlayer.getName(),currentPlayer.getTokens());
 	}
 	
 	

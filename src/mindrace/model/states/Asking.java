@@ -16,7 +16,7 @@ public class Asking extends State {
 	private Question questionToAsk;
 	private static QuestionSet questionSet= new QuestionSet();
 	private Integer selectedAnswer;
-	private Integer timeTaken;
+	private Long timeTaken;
 	
 
 	/**
@@ -56,11 +56,11 @@ public class Asking extends State {
 	 * del jugador.
 	 * 
 	 */
-	public void setAnswer(Integer option, Integer timeTaken) {
-		if(option==null || timeTaken==null)
+	public void setAnswer(Integer option, Long l) {
+		if(option==null || l==null)
 			throw new IllegalArgumentException();
 		this.selectedAnswer = option;
-		this.timeTaken = timeTaken;
+		this.timeTaken = l;
 	}
 	
 
@@ -85,7 +85,7 @@ public class Asking extends State {
 		}
 		return new NewTurn();
 	}
-	public int getTimeTaken(){
+	public Long getTimeTaken(){
 		return timeTaken;
 	}
 
@@ -97,5 +97,7 @@ public class Asking extends State {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 
 }

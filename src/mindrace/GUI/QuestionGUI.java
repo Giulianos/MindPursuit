@@ -18,7 +18,7 @@ public class QuestionGUI {
 		this.correctAnswer=correctAnswer;
 	}
 	
-	public int getanswer(){
+	public int getAnswer(){
 		return answer;
 	}
 	

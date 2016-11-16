@@ -27,6 +27,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.border.LineBorder;
 
+import mindrace.controller.Controller;
 import mindrace.model.Category;
 import mindrace.model.Player;
 import mindrace.model.Situation;
@@ -52,6 +53,7 @@ public class BoardGraphics {
 	private JTextField playerName;
 	private boolean isBtnDicepressed;
 	private PlayerGraphics currentPlayer;
+	private PlayerGUI currentPlayerGUI;
 	private Object[] tokensOfPlayer;
 	private JButton btnDice;
 	private JLabel token_1;
@@ -61,6 +63,7 @@ public class BoardGraphics {
 	private JLabel token_5;
 	private JLabel token_6;
 	private JLayeredPane layeredPane;
+	private Controller controller;
 	
 
 
@@ -68,9 +71,9 @@ public class BoardGraphics {
 	 * Launch the application.
 	 * @param playersGraphics 
 	 */
-	//lista de players graphics y setear el current player con el primero de lista
-	public BoardGraphics(List<PlayerGraphics> playersGraphics) {
-		
+
+	public BoardGraphics(List<PlayerGraphics> playersGraphics, Controller controller) {
+		this.controller = controller;
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setSize(1000,700);
@@ -81,7 +84,7 @@ public class BoardGraphics {
 			public void actionPerformed(ActionEvent e) {
 				if(!isBtnDicepressed) {
 					btnDice.setText("");
-					ImageIcon diceImg;
+					ImageIcon diceImg = null;
 					ThrowingDiceGUI dice = controller.throwDice();
 					int diceNumber = dice.getDiceNumber();
 					switch (diceNumber) {
@@ -101,7 +104,7 @@ public class BoardGraphics {
 					btnDice.setIcon(diceImg);
 					btnDice.setBounds(new Rectangle(diceImg.getIconWidth(), diceImg.getIconHeight()));
 					isBtnDicepressed = true;
-					//controller.move();
+					controller.move();
 			}
 		}
 		});
@@ -211,7 +214,7 @@ public class BoardGraphics {
 		JButton btnExit = new JButton("salir");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ExitWindowGUI exitMenu = new ExitWindowGUI();
+				ExitWindowGraphics exitMenu = new ExitWindowGraphics();
 				exitMenu.getFrame().setVisible(true);
 			}
 		});
@@ -239,6 +242,10 @@ public class BoardGraphics {
 	public void setCurrentPlayer(PlayerGraphics player) {
 		this.currentPlayer = player;
 	}
+	
+	public void setCurrentPlayerGUI(PlayerGUI currentPlayerGUI) {
+		this.currentPlayerGUI = currentPlayerGUI;
+	}
 
 	
 	public void draw() {
@@ -246,9 +253,9 @@ public class BoardGraphics {
 		
 		layeredPane.add(currentPlayer.getLabel(),1, 0);
 		
-		this.tokensOfPlayer =  currentPlayer.getPlayer().getTokens().toArray();
+		this.tokensOfPlayer =  currentPlayerGUI.getPlayer().getTokens().toArray();
 		
-		playerName.setText(currentPlayer.getPlayer().getName());
+		playerName.setText(currentPlayerGUI.getPlayer().getName());
 		
 		if(tokensOfPlayer.length >= 1){
 			token_1.setText(tokensOfPlayer[0].toString());

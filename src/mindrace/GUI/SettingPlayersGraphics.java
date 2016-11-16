@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 
 /**
@@ -45,6 +47,17 @@ public class SettingPlayersGraphics {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		Timer closingTimer = new Timer();
+		TimerTask closingTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				frame.dispose();
+				
+			}
+			
+		};
 		
 		nombreDelJugador = new JTextField();
 		nombreDelJugador.setBounds(159, 27, 214, 31);
@@ -133,6 +146,7 @@ public class SettingPlayersGraphics {
 				names.add(nombreDelJugador.getText());
 				view.addPlayersGraphics(creatPlayersGraphics());
 				view.enteringNames();
+				closingTimer.schedule(closingTask, 1000);
 				}
 			}	
 		});

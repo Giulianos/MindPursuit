@@ -267,6 +267,10 @@ public class BoardGraphics {
 		
 		playerName.setText(currentPlayerGUI.getName());
 		
+		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
+		
+		playerName.setText(currentPlayerGUI.getName());
+		
 		if(tokensOfPlayer.length >= 1){
 			token_1.setText(tokensOfPlayer[0].toString());
 		}

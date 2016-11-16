@@ -17,6 +17,7 @@ public class Asking extends State {
 	private static QuestionSet questionSet= new QuestionSet();
 	private Integer selectedAnswer;
 	private Long timeTaken;
+	private final static long FAST_TIME=15000;
 	
 
 	/**
@@ -80,7 +81,7 @@ public class Asking extends State {
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
-			if(timeTaken<15000){ //constante de tiempo
+			if(timeTaken<FAST_TIME){ 
 				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {
 					return new WinningToken();	
 				} else if (getSituation().getCurrentPlayer().getTile().stealablePlayers(getSituation().getCurrentPlayer()).size() > 0) {

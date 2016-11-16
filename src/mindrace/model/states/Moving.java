@@ -14,6 +14,7 @@ public class Moving extends State{
 		private Category currentCategory;
 		private static final Integer fastMovement = 5;
 		private static final Integer slowMovement = 1;
+		private final static int FAST_TIME=15000; 
 		
 		
 		public void initialize(){
@@ -49,7 +50,7 @@ public class Moving extends State{
 				movement = fastMovement;
 			}
 			if(this.getPreviousState() instanceof Asking){
-				if(((Asking) this.getPreviousState()).getTimeTaken() > 15){   ///falta agregar constante 
+				if(((Asking) this.getPreviousState()).getTimeTaken() > FAST_TIME){   ///falta agregar constante 
 					movement = slowMovement;
 				}
 				else{

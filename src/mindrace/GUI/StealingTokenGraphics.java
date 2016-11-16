@@ -60,7 +60,7 @@ public class StealingTokenGraphics {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		Timer closingTimer = new Timer();
 		TimerTask closingTask = new TimerTask() {

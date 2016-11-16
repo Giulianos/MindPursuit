@@ -51,7 +51,7 @@ public class ChoosingPlayersGraphics {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 350, 200);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		JLabel lblNumeroDeJugadores = new JLabel("Numero de Jugadores");
 		

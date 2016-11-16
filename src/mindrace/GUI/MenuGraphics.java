@@ -52,7 +52,7 @@ public class MenuGraphics {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 545, 458);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.controller=controller;
 		
 		saveBotton = new JButton("Recuperar partida");

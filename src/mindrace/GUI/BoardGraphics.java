@@ -75,7 +75,7 @@ public class BoardGraphics {
 	public BoardGraphics(List<PlayerGraphics> playersGraphics, Controller controller) {
 		this.controller = controller;
 		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setSize(1000,700);
 		frame.setResizable(false);
 		frame.setVisible(true);
@@ -262,7 +262,6 @@ public class BoardGraphics {
 	
 	public void draw() {
 		
-				
 		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
 		
 		playerName.setText(currentPlayerGUI.getName());
@@ -270,6 +269,8 @@ public class BoardGraphics {
 		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
 		
 		playerName.setText(currentPlayerGUI.getName());
+		
+		cleanTokens();
 		
 		if(tokensOfPlayer.length >= 1){
 			token_1.setText(tokensOfPlayer[0].toString());
@@ -291,5 +292,17 @@ public class BoardGraphics {
 		}		
 		frame.repaint();
 		
+	}
+
+	/**
+	 * 
+	 */
+	private void cleanTokens() {
+		token_1.setText("");
+		token_2.setText("");
+		token_3.setText("");
+		token_4.setText("");
+		token_5.setText("");
+		token_6.setText("");
 	}
 }

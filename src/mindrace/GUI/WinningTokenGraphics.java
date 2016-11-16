@@ -77,21 +77,27 @@ public class WinningTokenGraphics extends JFrame {
 		
 		if(!categories.contains(Category.Geography)) {
 			button_1.setBackground(Color.RED);
+			button_1.setEnabled(false);
 		}
 		if(!categories.contains(Category.Science)) {
 			button_2.setBackground(Color.RED);
+			button_2.setEnabled(false);
 		}
 		if(!categories.contains(Category.History)) {
 			button_3.setBackground(Color.RED);
+			button_3.setEnabled(false);
 		}
 		if(!categories.contains(Category.Sport)) {
 			button_4.setBackground(Color.RED);
+			button_4.setEnabled(false);
 		}
 		if(!categories.contains(Category.Art)) {
 			button_5.setBackground(Color.RED);
+			button_5.setEnabled(false);
 		}
 		if(!categories.contains(Category.Entertainment)) {
 			button_6.setBackground(Color.RED);
+			button_6.setEnabled(false);
 		}
 		
 		

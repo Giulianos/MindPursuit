@@ -40,6 +40,10 @@ public class Asking extends State {
 		}
 		
 		questionToAsk = questionSet.getQuestion(categoryToAsk);
+		if(questionToAsk==null){
+			questionSet=new QuestionSet();
+			questionToAsk= questionSet.getQuestion(categoryToAsk);
+		}
 		
 		timeTaken= System.currentTimeMillis();
 	}

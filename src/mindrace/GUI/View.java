@@ -116,4 +116,11 @@ public class View {
 	public void updateBoard(PlayerGUI player){
 		board.setCurrentPlayerGUI(player);
 	}
+	/**
+	 * @param winningCategory
+	 */
+	public void showToken(Category winningCategory) {
+		new TokenGraphics(winningCategory, controller);
+		
+	}
 }

@@ -10,13 +10,15 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.util.Locale.Category;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import mindrace.controller.Controller;
+import mindrace.model.Category;
 
 /**
  * @author Agustin Lavarello
@@ -25,8 +27,10 @@ import java.awt.event.ActionEvent;
 public class TokenGraphics extends JFrame {
 
 	private JPanel contentPane;
+	private Controller controller;
 
-	public TokenGraphics(Category category) {
+	public TokenGraphics(Category winningCategory, Controller controller) {
+		this.controller=controller;
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -37,13 +41,14 @@ public class TokenGraphics extends JFrame {
 		JLabel lblMessage = new JLabel("Felicitaciones Ganaste una Categoria");
 		lblMessage.setFont(new Font("Tekton Pro", Font.PLAIN, 23));
 		
-		JLabel Category = new JLabel(category.toString());
+		JLabel Category = new JLabel(winningCategory.toString());
 		Category.setHorizontalAlignment(SwingConstants.CENTER);
 		Category.setFont(new Font("Tekton Pro", Font.PLAIN, 18));
 		
 		JButton btnAcceptar = new JButton("Acceptar");
 		btnAcceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.move();
 				dispose();
 			}
 		});

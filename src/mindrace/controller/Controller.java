@@ -149,7 +149,10 @@ public class Controller {
 		
 		state.setAnswer(questionGUI.getAnswer());
 		
+		System.out.println("1"+game.getState().getClass());
+		
 		game.update();
+		System.out.println("2"+game.getState().getClass());
 		
 		
 		
@@ -161,15 +164,16 @@ public class Controller {
 		}
 		else if(game.getState().getClass().equals(WinningToken.class)){
 					game.update();
-			
 					WinningToken winning = (WinningToken) game.getState();
-			
-					view.winningTokenGraphics( winning.getPossibleTokens() );
+					view.showToken(winning.getWinningCategory());
 					game.update();
 			
 		}
 		else if (game.getState().getClass().equals(Moving.class)){
 			this.move();
+		}
+		else{
+		nextTurn();
 		}
 		
 	}

@@ -74,59 +74,59 @@ public class ChoosingCategoryGraphics extends JFrame {
 		
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					category = Category.Geography;
+					category = categoria1;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
-					controller.chosenCategory(Category.Geography);
+					controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Science;
+				category = categoria2;
 				button_2.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Science);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.History;
+				category = categoria3;
 				button_3.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.History);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Sport;
+				category = categoria4;
 				button_4.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Sport);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Art;
+				category = categoria5;
 				button_5.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Art);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Entertainment;
+				category = categoria6;
 				button_6.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Entertainment);
+				controller.chosenCategory(category);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

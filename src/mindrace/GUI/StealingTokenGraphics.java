@@ -36,6 +36,7 @@ public class StealingTokenGraphics {
 	private JButton btnCategoria3;
 	private JButton btnCategoria4;
 	private JButton btnCategoria5;
+	private PlayerGUI playerToSteal;
 	private JButton btnCategoria6;
 	private Category categoria1 = Category.Art;
 	private Category categoria2 = Category.Entertainment;
@@ -55,6 +56,7 @@ public class StealingTokenGraphics {
 		this.stealingTokensGUI = stealingToken;
 		this.mapOfPlayers = stealingToken.getPlayersWithTokensToSteal();
 		this.setPlayers = mapOfPlayers.keySet();
+		this.playerToSteal=setPlayers.iterator().next();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setVisible(true);
@@ -85,7 +87,8 @@ public class StealingTokenGraphics {
 		JButton btnChangePlayer = new JButton("Ver otro Jugador");
 		btnChangePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				changePlayer(setPlayers.iterator().next());
+				playerToSteal=setPlayers.iterator().next();
+				changePlayer(playerToSteal);
 				
 			}
 		});
@@ -99,8 +102,12 @@ public class StealingTokenGraphics {
 		btnCategoria1 = new JButton(categoria1.toString());
 		btnCategoria1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria1);
+				controller.tokenStolen(stealingTokensGUI);
+				
+				
 			}
 		});
 		btnCategoria1.setBounds(10, 108, 89, 23);
@@ -109,8 +116,11 @@ public class StealingTokenGraphics {
 		btnCategoria2 = new JButton(categoria2.toString());
 		btnCategoria2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria2);
+				controller.tokenStolen(stealingTokensGUI);
+			
 			}
 		});
 		btnCategoria2.setBounds(10, 170, 101, 23);
@@ -119,8 +129,11 @@ public class StealingTokenGraphics {
 		btnCategoria3 = new JButton(categoria3.toString());
 		btnCategoria3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria3);
+				controller.tokenStolen(stealingTokensGUI);
+				
 			}
 		});
 		btnCategoria3.setBounds(176, 108, 89, 23);
@@ -129,8 +142,11 @@ public class StealingTokenGraphics {
 		btnCategoria5 = new JButton(categoria5.toString());
 		btnCategoria5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria4);
+				controller.tokenStolen(stealingTokensGUI);
+				
 			}
 		});
 		btnCategoria5.setBounds(335, 108, 89, 23);
@@ -139,8 +155,11 @@ public class StealingTokenGraphics {
 		btnCategoria4 = new JButton(categoria4.toString());
 		btnCategoria4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria5);
+				controller.tokenStolen(stealingTokensGUI);
+				
 			}
 		});
 		btnCategoria4.setBounds(176, 170, 89, 23);
@@ -149,15 +168,18 @@ public class StealingTokenGraphics {
 		btnCategoria6 = new JButton(categoria6.toString());
 		btnCategoria6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				closingTimer.schedule(closingTask, 1000);
+				stealingTokensGUI.setStolenPlayer(playerToSteal);
+				stealingTokensGUI.setStolenToken(categoria6);
+				controller.tokenStolen(stealingTokensGUI);
+				
 			}
 		});
 		btnCategoria6.setBounds(335, 170, 89, 23);
 		layeredPane.add(btnCategoria6);
 		frame.getContentPane().setLayout(groupLayout);
 		
-		changePlayer(setPlayers.iterator().next());
+		changePlayer(playerToSteal);
 	}
 
 	/**

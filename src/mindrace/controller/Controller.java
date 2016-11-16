@@ -218,10 +218,7 @@ public class Controller {
 		stealingToken.setTokenToSteal(game.getPlayer(playersName), stealingTokenGUI.getStolenToken());
 		
 		game.update();
-		/**
-		 * next Turn
-		 */
-		nextTurn();
+		move();
  	}
 	
 	private void nextTurn(){

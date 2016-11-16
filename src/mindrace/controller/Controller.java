@@ -1,9 +1,14 @@
 package mindrace.controller;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import mindrace.GUI.*;
 import mindrace.model.Category;
@@ -53,10 +58,12 @@ public class Controller {
 		view.setNumberOfPlayers(numberOfPlayers);
 	}
 	
-	public void addPlayersGraphics(List<PlayerGraphics> playersGraphics){
+	public void addPlayersGraphics(List<PlayerGraphics> playersGraphics) throws IOException, ParserConfigurationException, SAXException{
 		List<String> playersNames= new LinkedList<String>();
 		for (PlayerGraphics player: playersGraphics)
 			playersNames.add(player.getName());
+		
+		this.game= new Game(playersNames, new ThrowingDice());
 	}
 	
 	public void move(){
@@ -69,7 +76,7 @@ public class Controller {
 		view.movePlayer(movingGUI);
 		
 		game.update();
-		if (game.getState().equals(WinningToken.class)){
+		if (game.getState().getClass().equals(WinningToken.class)){
 			
 			game.update();
 			
@@ -77,20 +84,20 @@ public class Controller {
 			
 			view.winningTokenGraphics( winning.getPossibleTokens() );
 			game.update();
-		}
-		
-		else if (game.getState().equals(Asking.class)){
+		}else if (game.getState().getClass().equals(Asking.class)){
+			game.update();
 			Asking asking= (Asking) game.getState();
 			QuestionGUI questionGUI = createQuestionGUI(asking.getQuestion());
 			
 			view.questionGraphics(questionGUI);
-		}
+		}else{
 		
 		/**
 		 * if I�m here means next state is ChoosingCategory
 		 * 
 		 */
 		view.choosingCategory();
+		}
 		
 		return ;
 		
@@ -146,13 +153,13 @@ public class Controller {
 		
 		
 		
-		if(game.getState().equals(StealingToken.class)){
+		if(game.getState().getClass().equals(StealingToken.class)){
 			game.update();
 			
 			StealingTokenGUI stealing = createStealingTokenGUI((StealingToken)game.getState());
 			view.stealingTokenGraphics( stealing);
 		}
-		else if(game.getState().equals(WinningToken.class)){
+		else if(game.getState().getClass().equals(WinningToken.class)){
 					game.update();
 			
 					WinningToken winning = (WinningToken) game.getState();
@@ -161,13 +168,9 @@ public class Controller {
 					game.update();
 			
 		}
-		else if (game.getState().equals(Moving.class)){
-			game.update();
-			game.update();
+		else if (game.getState().getClass().equals(Moving.class)){
+			this.move();
 		}
-		
-		nextTurn();
-		
 		
 	}
 	
@@ -213,6 +216,14 @@ public class Controller {
 	 */
 	private PlayerGUI createPlayerGUI(Player currentPlayer) {
 		return new PlayerGUI(currentPlayer.getName(),currentPlayer.getTokens());
+	}
+
+	/**
+	 * @param view2
+	 */
+	public void setView(View view) {
+		this.view=view;
+		
 	}
 	
 	

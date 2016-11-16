@@ -10,12 +10,17 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import mindrace.controller.*;
@@ -45,6 +50,7 @@ public class ChoosingPlayersGraphics {
 		frame.getContentPane().setName("");
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 350, 200);
+		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNumeroDeJugadores = new JLabel("Numero de Jugadores");
@@ -66,7 +72,12 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				controller.numberOfPlayers(1);
 				closingTimer.schedule(closingTask, 1000);
-				view.enteringNames();
+				try {
+					view.enteringNames();
+				} catch (IOException | ParserConfigurationException | SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn2.addActionListener(new ActionListener() {
@@ -74,6 +85,18 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(2);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn3.addActionListener(new ActionListener() {
@@ -81,6 +104,18 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(3);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn4.addActionListener(new ActionListener() {
@@ -88,6 +123,18 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(4);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn5.addActionListener(new ActionListener() {
@@ -95,6 +142,18 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(5);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn6.addActionListener(new ActionListener() {
@@ -102,6 +161,18 @@ public class ChoosingPlayersGraphics {
 				deactivateButtons();
 				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(6);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	

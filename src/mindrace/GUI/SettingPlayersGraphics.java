@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import mindrace.model.Category;
 
@@ -14,7 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
@@ -30,7 +35,7 @@ public class SettingPlayersGraphics {
 	private JTextField nombreDelJugador;
 	private View view;
 	private boolean isColorChosen;
-	private static HashSet<String> names;
+	private static Set<String> names = new HashSet<String>();
 	
 	public SettingPlayersGraphics(View view) {
 		this.view = view;
@@ -145,7 +150,12 @@ public class SettingPlayersGraphics {
 				if(isColorChosen && !names.contains(nombreDelJugador.getText())){	
 				names.add(nombreDelJugador.getText());
 				view.addPlayersGraphics(creatPlayersGraphics());
-				view.enteringNames();
+				try {
+					view.enteringNames();
+				} catch (IOException | ParserConfigurationException | SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				closingTimer.schedule(closingTask, 1000);
 				}
 			}	

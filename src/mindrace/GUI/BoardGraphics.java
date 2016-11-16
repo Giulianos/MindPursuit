@@ -78,6 +78,7 @@ public class BoardGraphics {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setSize(1000,700);
 		frame.setResizable(false);
+		frame.setVisible(true);
 		btnDice = new JButton("Tira el dado!!");
 		btnDice.addActionListener(new ActionListener() {
 		
@@ -194,7 +195,6 @@ public class BoardGraphics {
 		layeredPane.add(playersGraphics.get(3).getLabel(), 0, 0);
 		layeredPane.add(playersGraphics.get(4).getLabel(), 0, 0);
 		layeredPane.add(playersGraphics.get(5).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(6).getLabel(), 0, 0);
 		
 		currentPlayer = playersGraphics.get(0); 
 		
@@ -253,9 +253,9 @@ public class BoardGraphics {
 		
 		layeredPane.add(currentPlayer.getLabel(),1, 0);
 		
-		this.tokensOfPlayer =  currentPlayerGUI.getPlayer().getTokens().toArray();
+		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
 		
-		playerName.setText(currentPlayerGUI.getPlayer().getName());
+		playerName.setText(currentPlayerGUI.getName());
 		
 		if(tokensOfPlayer.length >= 1){
 			token_1.setText(tokensOfPlayer[0].toString());

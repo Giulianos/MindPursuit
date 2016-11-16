@@ -189,12 +189,24 @@ public class BoardGraphics {
 		board.setBounds(0, 0, boardImg.getIconWidth(), boardImg.getIconHeight());
 		layeredPane.add(board, 0, 0);
 		
-		layeredPane.add(playersGraphics.get(0).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(1).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(2).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(3).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(4).getLabel(), 0, 0);
-		layeredPane.add(playersGraphics.get(5).getLabel(), 0, 0);
+		if(playersGraphics.size() >= 1) {
+			layeredPane.add(playersGraphics.get(0).getLabel(), 1, 0);
+		}
+		if(playersGraphics.size() >= 2) {
+			layeredPane.add(playersGraphics.get(1).getLabel(), 1, 0);
+		}
+		if(playersGraphics.size() >= 3) {
+			layeredPane.add(playersGraphics.get(2).getLabel(), 1, 0);
+		}
+		if(playersGraphics.size() >= 4) {
+			layeredPane.add(playersGraphics.get(3).getLabel(), 1, 0);
+		}
+		if(playersGraphics.size() >= 5) {
+			layeredPane.add(playersGraphics.get(4).getLabel(), 1, 0);
+		}
+		if(playersGraphics.size() >= 6) {
+			layeredPane.add(playersGraphics.get(5).getLabel(), 1, 0);
+		}
 		
 		currentPlayer = playersGraphics.get(0); 
 		
@@ -250,9 +262,7 @@ public class BoardGraphics {
 	
 	public void draw() {
 		
-		
-		layeredPane.add(currentPlayer.getLabel(),1, 0);
-		
+				
 		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
 		
 		playerName.setText(currentPlayerGUI.getName());

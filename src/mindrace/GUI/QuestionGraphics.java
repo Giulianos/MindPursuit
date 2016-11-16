@@ -157,12 +157,24 @@ public class QuestionGraphics extends JFrame {
 	
 	
 		JLabel timeLabel = new JLabel();
-		
+		/*
+		 * if timeShown is 0 I set a wrong answer and close the window
+		 */
 		TimerTask progresTask = new TimerTask() {
 			int timeShown = 20;
 			public void run() {
 				timeLabel.setText(timeShown + "");
+				if(timeShown == 0) {
+					if(question.getCorrectAnswer() == firstAnswer) {
+						setAnswered(secondAnswer);
+					}
+					else {
+						setAnswered(firstAnswer);
+					}
+					dispose();
+				}
 				timeShown--;
+				
 			}
 		};
 	

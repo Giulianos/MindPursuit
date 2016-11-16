@@ -32,7 +32,8 @@ public class PlayerGraphics extends JPanel {
 		this.name = name;
 		this.img = img;
 		this.label.setIcon(img);
-		this.label.setBounds(0, 0, img.getIconHeight(), img.getIconWidth());
+		Point p = TilesGUI.getTilesPositions().get(0);
+		this.label.setBounds((int)p.getX(), (int)p.getY(), img.getIconHeight(), img.getIconWidth());
 	}
 	
 	public void setCoordinates(Point  p) {

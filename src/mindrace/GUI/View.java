@@ -114,6 +114,6 @@ public class View {
 		board.newTurn();
 	}
 	public void updateBoard(PlayerGUI player){
-		board.setCurrentPlayer(player);
+		board.setCurrentPlayerGUI(player);
 	}
 }

@@ -35,7 +35,10 @@ public class SettingPlayersGraphics {
 	private JTextField nombreDelJugador;
 	private View view;
 	private boolean isColorChosen;
+	private JButton btnColorChosen;
+	private JLabel lblChosenColor;
 	private static Set<String> names = new HashSet<String>();
+	private static Set<String> colors = new HashSet<String>();
 	
 	public SettingPlayersGraphics(View view) {
 		this.view = view;
@@ -69,15 +72,22 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(nombreDelJugador);
 		nombreDelJugador.setColumns(10);
 		
+		lblChosenColor = new JLabel("");
+		lblChosenColor.setOpaque(true);
+		lblChosenColor.setBounds(383, 27, 51, 31);
+		frame.getContentPane().add(lblChosenColor);
+		
 		JLabel lblNombreDelJugador = new JLabel("Nombre del Jugador");
 		lblNombreDelJugador.setBounds(22, 21, 154, 42);
 		frame.getContentPane().add(lblNombreDelJugador);
 		
-		JButton green = new JButton("");
+		JButton green = new JButton("Verde");
 		green.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceGreen.png");
 				isColorChosen = true;
+				btnColorChosen = green;
+				lblChosenColor.setBackground(new Color(102, 204, 102));
 			}
 		});
 		green.setBounds(22, 113, 89, 23);
@@ -89,55 +99,66 @@ public class SettingPlayersGraphics {
 		lblColor.setBounds(22, 88, 46, 14);
 		frame.getContentPane().add(lblColor);
 		
-		JButton black = new JButton("");
+		JButton black = new JButton("Negro");
 		black.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceBlack.png");
 				isColorChosen = true;
+				btnColorChosen = black;
+				lblChosenColor.setBackground(new Color(0, 0, 0));
 			}
 		});
 		black.setBackground(new Color(0, 0, 0));
 		black.setBounds(169, 113, 89, 23);
 		frame.getContentPane().add(black);
 		
-		JButton blue = new JButton("");
+		JButton blue = new JButton("Azul");
 		blue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				img = new ImageIcon("pieceGreen.png");
+				img = new ImageIcon("pieceBlue.png");
 				isColorChosen = true;
+				btnColorChosen = blue;
+				lblChosenColor.setBackground(new Color(0, 0, 204));
 			}
 		});
 		blue.setBackground(new Color(0, 0, 204));
 		blue.setBounds(313, 113, 89, 23);
 		frame.getContentPane().add(blue);
 		
-		JButton purple = new JButton("");
+		JButton purple = new JButton("Violeta");
 		purple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				img = new ImageIcon("pieceGreen.png");
+				img = new ImageIcon("piecePurple.png");
 				isColorChosen = true;
+				btnColorChosen = purple;
+				lblChosenColor.setBackground(new Color(102, 0, 102));
 			}
 		});
 		purple.setBackground(new Color(102, 0, 102));
 		purple.setBounds(22, 187, 89, 23);
 		frame.getContentPane().add(purple);
 		
-		JButton red = new JButton("");
+		JButton red = new JButton("Rojo");
 		red.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				img = new ImageIcon("pieceGreen.png");
+				img = new ImageIcon("pieceRed.png");
 				isColorChosen = true;
+				btnColorChosen = red;
+				lblChosenColor.setBackground(new Color(255, 0, 0));
 			}
 		});
 		red.setBackground(new Color(255, 0, 0));
 		red.setBounds(169, 187, 89, 23);
 		frame.getContentPane().add(red);
 		
-		JButton yellow = new JButton("");
+		JButton yellow = new JButton("Amarillo");
 		yellow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				img = new ImageIcon("pieceGreen.png");
+				img = new ImageIcon("pieceYellow.png");
 				isColorChosen = true;
+				btnColorChosen = yellow;
+				lblChosenColor.setBackground(new Color(255, 255, 0));
+				
 			}
 		});
 		yellow.setBackground(new Color(255, 255, 0));
@@ -147,8 +168,9 @@ public class SettingPlayersGraphics {
 		JButton btnAcceptar = new JButton("Acceptar");
 		btnAcceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(isColorChosen && !names.contains(nombreDelJugador.getText())){	
+				if(isColorChosen && !names.contains(nombreDelJugador.getText()) && !colors.contains(btnColorChosen.getText())){	
 				names.add(nombreDelJugador.getText());
+				colors.add(btnColorChosen.getText());
 				view.addPlayersGraphics(creatPlayersGraphics());
 				try {
 					view.enteringNames();
@@ -162,6 +184,8 @@ public class SettingPlayersGraphics {
 		});
 		btnAcceptar.setBounds(345, 239, 89, 23);
 		frame.getContentPane().add(btnAcceptar);
+		
+		
 	}
 
 	/**

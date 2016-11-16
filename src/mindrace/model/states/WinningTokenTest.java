@@ -18,7 +18,7 @@ import mindrace.model.Player;
 import mindrace.model.Situation;
 
 /**
- * @author User
+ * @author Daniella, Giuliano
  *
  */
 public class WinningTokenTest {

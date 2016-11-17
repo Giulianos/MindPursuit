@@ -18,6 +18,7 @@ public class Asking extends State {
 	private Integer selectedAnswer;
 	private Long timeTaken;
 	private final static long FAST_TIME=15000;
+	private final static long SLOW_TIME=20500; //Delta added to compensate delay between model and view.
 	
 
 	/**
@@ -53,7 +54,7 @@ public class Asking extends State {
 			questionToAsk= questionSet.getQuestion(categoryToAsk);
 		}
 		
-		timeTaken= System.currentTimeMillis();
+		timeTaken=System.currentTimeMillis();
 	}
 	
 	/**
@@ -74,7 +75,6 @@ public class Asking extends State {
 		if(option==null )
 			throw new IllegalArgumentException();
 		this.selectedAnswer = option;
-		this.timeTaken = System.currentTimeMillis()-timeTaken;
 	}
 	
 
@@ -83,10 +83,11 @@ public class Asking extends State {
 	 */
 	@Override
 	public State terminate() {
+		timeTaken = timeTaken - System.currentTimeMillis();
 		if(selectedAnswer == null){
 			//throw new NullPointerException();
 		}
-		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
+		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer) && timeTaken<=SLOW_TIME) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
 			if(timeTaken<FAST_TIME){ 
 				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {

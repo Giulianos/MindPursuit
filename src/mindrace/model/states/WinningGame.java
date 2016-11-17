@@ -1,14 +1,20 @@
 package mindrace.model.states;
 
+import mindrace.model.Player;
+
 /**
  * @author User
  */
 public class WinningGame extends State {
+	
+	private Player winner;
 	/**
 	 * @see mindrace.model.states.State#initialize()
 	 */
 	@Override
 	public void initialize() {
+		
+		this.winner= this.getSituation().getCurrentPlayer();
 	}
 
 	/**

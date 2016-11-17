@@ -29,25 +29,7 @@ public class MenuGraphics {
 	JButton exitBotton;
 	private Controller controller;
 	
-	/**
-	 * Launch the application.
-	 *
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuGraphics window = new MenuGraphics();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
+	
 	public MenuGraphics(Controller controller) {
 
 		frame = new JFrame();
@@ -68,12 +50,14 @@ public class MenuGraphics {
 				try {
 					controller.loadGame();
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
+					new GameNotFoundGraphics();
 					e1.printStackTrace();
 				} catch (ClassNotFoundException e1) {
+					new GameNotFoundGraphics();
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
+					new GameNotFoundGraphics();
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

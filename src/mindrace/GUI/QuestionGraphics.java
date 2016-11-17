@@ -53,7 +53,7 @@ public class QuestionGraphics extends JFrame {
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setBounds(100, 100, 450, 402);
+		this.setBounds(100, 100, 450, 300);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
@@ -172,16 +172,16 @@ public class QuestionGraphics extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(timeLabel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-						.addComponent(questionText, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(answer3, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(answer2, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(answer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+						.addComponent(answer3, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+						.addComponent(answer2, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+						.addComponent(answer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+						.addComponent(questionText, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(timeLabel, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+					.addComponent(timeLabel, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(questionText, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -190,7 +190,6 @@ public class QuestionGraphics extends JFrame {
 					.addComponent(answer2, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(answer3, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);

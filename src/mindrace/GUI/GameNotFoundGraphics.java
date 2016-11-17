@@ -1,11 +1,8 @@
 package mindrace.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -18,50 +15,48 @@ import java.util.TimerTask;
  * @author Agustin Lavarello
  *
  */
-public class GameNotFoundGraphics extends JFrame {
+public class GameNotFoundGraphics {
 
-	private JPanel contentPane;
+	private JFrame frame;
 	private JLabel label;
 
 	public GameNotFoundGraphics() {
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setUndecorated(true);
-		setBounds(100, 100, 450, 200);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		
+		frame = new JFrame();
+		frame.setVisible(true);
+		frame.setBounds(100, 100, 450, 200);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		label = new JLabel("No se guardo ningun juego");
+		label.setFont(new Font("Tekton Pro", Font.PLAIN, 27));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(65)
+					.addComponent(label)
+					.addContainerGap(78, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(68, Short.MAX_VALUE)
+					.addComponent(label)
+					.addGap(66))
+		);
+		frame.getContentPane().setLayout(groupLayout);
 		Timer closingTimer = new Timer();
 		TimerTask closingTask = new TimerTask() {
 
 			@Override
 			public void run() {
-				dispose();
+				frame.dispose();
 				
 			}
 			
-		};
-		closingTimer.schedule(closingTask, 1300);
+		}; 
+		closingTimer.schedule(closingTask, 3000);
 		
-		label = new JLabel("No hay partida para recuperar");
-		label.setFont(new Font("Tekton Pro", Font.PLAIN, 26));
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(45)
-					.addComponent(label)
-					.addContainerGap(83, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(102)
-					.addComponent(label)
-					.addContainerGap(123, Short.MAX_VALUE))
-		);
-		contentPane.setLayout(gl_contentPane);
 	}
-
 }

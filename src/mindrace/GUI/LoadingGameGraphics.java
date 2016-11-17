@@ -25,24 +25,14 @@ public class LoadingGameGraphics extends JFrame {
 	
 	public LoadingGameGraphics() {
 		
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setUndecorated(true);
-		setBounds(100, 100, 450, 200);
+		setBounds(100, 100, 450, 250);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		Timer closingTimer = new Timer();
-		TimerTask closingTask = new TimerTask() {
-
-			@Override
-			public void run() {
-				dispose();
-				
-			}
-			
-		};
-		closingTimer.schedule(closingTask, 1300);
+		
 		
 		label = new JLabel("El Juego se esta Guardando ");
 		label.setFont(new Font("Tekton Pro", Font.PLAIN, 35));
@@ -57,11 +47,22 @@ public class LoadingGameGraphics extends JFrame {
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(98)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(87, Short.MAX_VALUE)
 					.addComponent(label)
-					.addContainerGap(118, Short.MAX_VALUE))
+					.addGap(79))
 		);
 		contentPane.setLayout(gl_contentPane);
+		Timer closingTimer = new Timer();
+		TimerTask closingTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				dispose();
+				
+			}
+			
+		};
+		closingTimer.schedule(closingTask, 2000);
 	}
 }

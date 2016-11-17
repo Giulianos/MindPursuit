@@ -237,6 +237,7 @@ public class BoardGraphics {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 					controller.saveGame();
+					new LoadingGameGraphics();
 						
 					}
 			

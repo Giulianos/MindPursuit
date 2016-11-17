@@ -243,6 +243,9 @@ public class Controller {
 		this.view=view;
 		
 	}
+	public PlayerGUI getInitialPlayer(){
+		return this.createPlayerGUI(game.getSituation().clonePlayersTurn().get(0));
+	}
 	
 	
 

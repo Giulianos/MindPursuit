@@ -53,7 +53,7 @@ public class View {
 		}
 		else{
 		controller.addPlayersGraphics(playersGraphics);
-		this.board= new BoardGraphics(playersGraphics, controller);
+		this.board= new BoardGraphics(playersGraphics, controller, controller.getInitialPlayer());
 		}
 			
 	}

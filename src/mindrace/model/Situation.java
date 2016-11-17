@@ -43,10 +43,7 @@ public class Situation implements Cloneable, Serializable{
 		return playersTurn.get(currentPlayer);
 	}
 	public Situation clone(){
-		CircularList<Player> copyPlayers=new CircularList<Player>();
-		for(int i=0; i<playersTurn.size(); i++){
-			copyPlayers.add(playersTurn.get(i).clone());
-		}
+		CircularList<Player> copyPlayers= clonePlayersTurn();
 		Situation clonedSituation= new Situation(copyPlayers,currentPlayer.clone(),currentBoard);
 		return clonedSituation;
 	}
@@ -62,6 +59,17 @@ public class Situation implements Cloneable, Serializable{
 	}
 	public void  addPlayersTurn(CircularList<Player> playersTurn){
 		this.playersTurn=playersTurn;
+	}
+	/**
+	 * @return the playersTurn
+	 */
+	
+	public CircularList<Player> clonePlayersTurn(){
+		CircularList<Player> copyPlayers=new CircularList<Player>();
+		for(int i=0; i<playersTurn.size(); i++){
+			copyPlayers.add(playersTurn.get(i).clone());
+		}
+		return copyPlayers;
 	}
 	
 }

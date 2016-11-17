@@ -2,6 +2,7 @@ package mindrace.GUI;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import mindrace.model.Player;
  * @author Agustin Lavarello
  *
  */
-public class PlayerGraphics extends JPanel {
+public class PlayerGraphics extends JPanel implements Serializable {
 	
 	private int x,y;
 	private String name;

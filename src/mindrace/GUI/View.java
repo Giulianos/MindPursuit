@@ -123,4 +123,28 @@ public class View {
 		new TokenGraphics(winningCategory, controller);
 		
 	}
+	/**
+	 * @param board the board to set
+	 */
+	public void setBoard(BoardGraphics board) {
+		this.board = board;
+	}
+	/**
+	 * @return the playersGraphics
+	 */
+	public List<PlayerGraphics> getPlayersGraphics() {
+		return playersGraphics;
+	}
+	/**
+	 * @param playersGraphics the playersGraphics to set
+	 */
+	public void setPlayersGraphics(List<PlayerGraphics> playersGraphics) {
+		this.playersGraphics = playersGraphics;
+	}
+	public BoardGraphics getBoardGraphics()
+	{
+		return board;
+	}
+	
+
 }

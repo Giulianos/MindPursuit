@@ -231,6 +231,16 @@ public class BoardGraphics {
 		JButton btnSave = new JButton("guardar");
 		mnOptions.add(btnSave);
 		
+		btnSave.addActionListener(new ActionListener()
+				{
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+					controller.saveGame();
+						
+					}
+			
+				});
 		JButton btnExit = new JButton("salir");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -316,5 +326,9 @@ public class BoardGraphics {
 		token_4.setText("");
 		token_5.setText("");
 		token_6.setText("");
+	}
+	public void setCurrentPlayerGraphics(PlayerGraphics player)
+	{
+		currentPlayer = player;
 	}
 }

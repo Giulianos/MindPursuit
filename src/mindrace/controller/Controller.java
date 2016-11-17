@@ -1,6 +1,13 @@
 package mindrace.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -246,7 +253,48 @@ public class Controller {
 	public PlayerGUI getInitialPlayer(){
 		return this.createPlayerGUI(game.getSituation().clonePlayersTurn().get(0));
 	}
+	public void loadGame() throws FileNotFoundException, IOException, ClassNotFoundException
+	{
+		ObjectInputStream file =  new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("game.out")));
+		game = (Game) file.readObject();
+		List<PlayerGraphics> playerGraphics = (List<PlayerGraphics>)file.readObject();
+		file.close();
+		view.setPlayersGraphics(playerGraphics);
+		view.setBoard(new BoardGraphics(playerGraphics,this,this.getInitialPlayer()));
+
+	}
 	
+	public void saveGame()
+	{
+		ObjectOutputStream file = null;
+		try {
+			file = new ObjectOutputStream(
+					new BufferedOutputStream(
+							new FileOutputStream("game.out")));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			file.writeObject(game);
+			List<PlayerGraphics> playerGraphics = view.getPlayersGraphics();
+			file.writeObject(playerGraphics);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			file.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 
 }

@@ -25,8 +25,10 @@ public class Asking extends State {
 	 */
 	@Override
 	public void initialize() {
+		
 		Category categoryToAsk;
-		if( (this.getPreviousState().getClass().equals(Moving.class)) ||
+		
+		if((this.getPreviousState().getClass().equals(Moving.class)) ||
 			(this.getPreviousState().getClass().equals(WinningToken.class)) ) {
 			
 			/* Si el estado anterior es Moving o WinningToken puedo asegurar que el casillero del juagdor
@@ -35,13 +37,15 @@ public class Asking extends State {
 			TileWithCategory playersTile = (TileWithCategory)getSituation().getCurrentPlayer().getTile();
 			categoryToAsk = playersTile.getCategory();
 			
-		} else {
+		} 
+		else {
+			
 			ChoosingCategory auxiliaryPreviousState = (ChoosingCategory)this.getPreviousState();
 			categoryToAsk = auxiliaryPreviousState.getCategory(); 
 		}
 		
-		questionToAsk = questionSet.getQuestion(categoryToAsk);
-		if(questionToAsk==null){
+		if(questionToAsk==null) {
+			
 			questionSet=new QuestionSet();
 			questionToAsk= questionSet.getQuestion(categoryToAsk);
 		}

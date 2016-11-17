@@ -53,12 +53,14 @@ public class QuestionGraphics extends JFrame {
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setBounds(100, 100, 450, 300);
+		this.setBounds(100, 100, 450, 310);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
 		this.setResizable(false);
 		this.controller=controller;
+		
+		
 		
 		this.question= q;
 		questionText = new JTextField(question.getQuestion()) ;
@@ -107,6 +109,10 @@ public class QuestionGraphics extends JFrame {
 		answer1 = new JButton(question.getOptions()[firstAnswer]);
 		answer2 = new JButton(question.getOptions()[secondAnswer]);
 		answer3 = new JButton(question.getOptions()[thirdAnswer]);
+		
+		answer1.setOpaque(true);
+		answer2.setOpaque(true);
+		answer3.setOpaque(true);
 		
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

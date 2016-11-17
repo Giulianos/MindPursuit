@@ -53,7 +53,7 @@ public class SettingPlayersGraphics {
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		Timer closingTimer = new Timer();
@@ -82,6 +82,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(lblNombreDelJugador);
 		
 		JButton green = new JButton("Verde");
+		green.setOpaque(true);
 		green.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceGreen.png");
@@ -100,6 +101,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(lblColor);
 		
 		JButton black = new JButton("Negro");
+		black.setOpaque(true);
 		black.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceBlack.png");
@@ -113,6 +115,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(black);
 		
 		JButton blue = new JButton("Azul");
+		blue.setOpaque(true);
 		blue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceBlue.png");
@@ -126,6 +129,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(blue);
 		
 		JButton purple = new JButton("Violeta");
+		purple.setOpaque(true);
 		purple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("piecePurple.png");
@@ -139,6 +143,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(purple);
 		
 		JButton red = new JButton("Rojo");
+		red.setOpaque(true);
 		red.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceRed.png");
@@ -152,6 +157,7 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(red);
 		
 		JButton yellow = new JButton("Amarillo");
+		yellow.setOpaque(true);
 		yellow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceYellow.png");

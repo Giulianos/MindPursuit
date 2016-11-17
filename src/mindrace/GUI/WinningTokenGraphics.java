@@ -64,16 +64,22 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_1 = new JButton(Category.Geography.toString());
 		button_1.setVisible(true);
+		button_1.setOpaque(true);
 		button_2 = new JButton(Category.Science.toString());
-		button_1.setVisible(true);
+		button_2.setVisible(true);
+		button_2.setOpaque(true);
 		button_3 = new JButton(Category.History.toString());
-		button_1.setVisible(true);
+		button_3.setVisible(true);
+		button_3.setOpaque(true);
 		button_4 = new JButton(Category.Sport.toString());
-		button_1.setVisible(true);
+		button_4.setVisible(true);
+		button_4.setOpaque(true);
 		button_5 = new JButton(Category.Art.toString());
-		button_1.setVisible(true);
+		button_5.setVisible(true);
+		button_5.setOpaque(true);
 		button_6 = new JButton(Category.Entertainment.toString());
-		button_1.setVisible(true);
+		button_6.setVisible(true);
+		button_6.setOpaque(true);
 		
 		if(!categories.contains(Category.Geography)) {
 			button_1.setBackground(Color.RED);

@@ -44,14 +44,21 @@ import java.util.Set;
 import java.awt.event.ActionEvent;
 
 /**
+ * This class has the information of the Player that correspond to the actual turn. 
+ * It also allows to throw the dice if isBtnDicePressed is true.
+ * The class display the board and all the graphics corresponding to the players. 
+ * Note: if to players are on the same tile, the board only shows one of them.   
+ * 
+ * 
  * @author Agustin Lavarello
+ * 
  *
  */
 public class BoardGraphics {
 
 	private JFrame frame;
 	private JTextField playerName;
-	private boolean isBtnDicepressed;
+	private boolean isBtnDicePressed;
 	private PlayerGraphics currentPlayer;
 	private PlayerGUI currentPlayerGUI;
 	private Object[] tokensOfPlayer;
@@ -68,12 +75,20 @@ public class BoardGraphics {
 	private Controller controller;
 	
 
-
-	/**
-	 * Launch the application.
-	 * @param playersGraphics 
-	 */
-
+/*
+ * Creates a new board with a frame with all the corresponding measures and add all the players graphics to the board.
+ * This also display the information of the first player and the button to throw the dice
+ * If the dice is pressed this method will call the controller with the corresponding action
+ * 
+ * 
+ * 
+ *   @param playersGraphics  a list that contains the PlayerGraphics to add to the LayeredPane
+ *   @param controller this is the controller that this class will call depending on the action
+ *   @param currentPlayerGUI to show the information of the first player
+ *   
+ *   @return void
+ */
+	
 	public BoardGraphics(List<PlayerGraphics> playersGraphics, Controller controller, PlayerGUI currentPlayerGUI) {
 		this.controller = controller;
 		this.currentPlayerGUI = currentPlayerGUI;
@@ -86,7 +101,7 @@ public class BoardGraphics {
 		btnDice.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
-				if(!isBtnDicepressed) {
+				if(!isBtnDicePressed) {
 					btnDice.setText("");
 					ImageIcon diceImg = null;
 					ThrowingDiceGUI dice = controller.throwDice();
@@ -107,7 +122,7 @@ public class BoardGraphics {
 				}
 					btnDice.setIcon(diceImg);
 					btnDice.setBounds(new Rectangle(diceImg.getIconWidth(), diceImg.getIconHeight()));
-					isBtnDicepressed = true;
+					isBtnDicePressed = true;
 					controller.move();
 			}
 		}
@@ -255,6 +270,13 @@ public class BoardGraphics {
 		
 	}
 	
+	/*
+	 * This method is used to set the BoardGraphics to the condition of a new turn.
+	 * Set the isBtnDicePressed false so the button of the dice can be pressed, 
+	 * and the replace the image of the dice for a text.
+	 * 
+	 * @return void
+	 */
 	public void newTurn() {
 		setBtnDicepressed(false);
 		btnDice.setText("Tira el dado");
@@ -263,24 +285,57 @@ public class BoardGraphics {
 		
 	}
 	
-	public void setBtnDicepressed(boolean isBtnDicepressed) {
-		this.isBtnDicepressed = isBtnDicepressed;
+	
+	/*
+	 * This method sets the btnDicePressed 
+	 * 
+	 * @param isBtnDicePressed boolean
+	 */
+	public void setBtnDicepressed(boolean isBtnDicePressed) {
+		this.isBtnDicePressed = isBtnDicePressed;
 	}
 	
+	
+	/*
+	 * This method return the frame that is use to display all the elements in this class.
+	 * 
+	 * @return JFrame
+	 * 
+	 *  @return void
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 	
-	
+	/*
+	 * This method sets the CurrentPlayer with a playerGraphics so that when draw() is called
+	 * will have the coordinates and the image of the Player.
+	 * 
+	 * @param player PlayerGraphics
+	 * 
+	 * @return void
+	 */
 	public void setCurrentPlayer(PlayerGraphics player) {
 		this.currentPlayer = player;
 	}
 	
+	/*
+	 * This method sets the CurrentPlayerGUI so that when draw() is called 
+	 * will have the information of the Player to display.
+	 * 
+	 * @param currentPlayerGUI PlayerGUI
+	 * 
+	 * @return void
+	 */
 	public void setCurrentPlayerGUI(PlayerGUI currentPlayerGUI) {
 		this.currentPlayerGUI = currentPlayerGUI;
 	}
 
-	
+	/*
+	 * This method is in charge of displaying all the actualize information and image of the Player. 
+	 * 
+	 * @return void
+	 */
 	public void draw() {
 		
 		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
@@ -318,7 +373,10 @@ public class BoardGraphics {
 	}
 
 	/**
+	 * This method takes all the text from tokens labels
+	 * This is used to reset the token when a player is change 
 	 * 
+	 * @return void
 	 */
 	private void cleanTokens() {
 		token_1.setText("");
@@ -328,8 +386,5 @@ public class BoardGraphics {
 		token_5.setText("");
 		token_6.setText("");
 	}
-	public void setCurrentPlayerGraphics(PlayerGraphics player)
-	{
-		currentPlayer = player;
-	}
+	
 }

@@ -20,6 +20,10 @@ import mindrace.model.Situation;
 import mindrace.controller.*;
 
 /**
+ * This class extends from a frame and displays all the categories.
+ * When the player choose a category, this class calls the controller with the chosen Category.
+ * Note: After pressing the button the class will close. 
+ * 
  * @author Agustin Lavarello
  *
  */
@@ -43,6 +47,14 @@ public class ChoosingCategoryGraphics extends JFrame {
 	private Category categoria6 = Category.Sport;
 
 	
+	/*
+	 * This is the constructor
+	 * This method will set visible the class and creats all the buttons with the categories name
+	 * When a button is pressed it will call the controller with the corresponding method and with the category
+	 * chosen
+	 * 
+	 * @param controller The controller that the class will call 
+	 */
 	public ChoosingCategoryGraphics(Controller controller) {
 		this.controller = controller;
 		setVisible(true);
@@ -65,11 +77,17 @@ public class ChoosingCategoryGraphics extends JFrame {
 		};
 		
 		button_1 = new JButton(categoria1.toString());
+		button_1.setOpaque(true);
 		button_2 = new JButton(categoria2.toString());
+		button_2.setOpaque(true);
 		button_3 = new JButton(categoria3.toString());
+		button_3.setOpaque(true);
 		button_4 = new JButton(categoria4.toString());
+		button_4.setOpaque(true);
 		button_5 = new JButton(categoria5.toString());
+		button_5.setOpaque(true);
 		button_6 = new JButton(categoria6.toString());
+		button_6.setOpaque(true);
 		
 		
 		button_1.addActionListener(new ActionListener() {

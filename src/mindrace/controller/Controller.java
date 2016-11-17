@@ -191,6 +191,9 @@ public class Controller {
 					WinningToken winning = (WinningToken) game.getState();
 					view.showToken(winning.getWinningCategory());
 					game.update();
+					if(game.getState().equals(WinningGame.class)){
+						endGame();
+					}
 			
 		}
 		else if (game.getState().getClass().equals(Moving.class)){
@@ -225,7 +228,12 @@ public class Controller {
 		stealingToken.setTokenToSteal(game.getPlayer(playersName), stealingTokenGUI.getStolenToken());
 		
 		game.update();
+		if(game.getState().getClass().equals(WinningGame.class))
+		{
+			this.endGame();
+		}else{
 		move();
+		}
  	}
 	
 	private void nextTurn(){
@@ -266,6 +274,13 @@ public class Controller {
 
 	}
 	
+	public void endGame(){
+		game.update();
+		WinningGame winning= (WinningGame) game.getState();
+		WinningGameGUI winningGUI=new WinningGameGUI(createPlayerGUI(winning.getWinner()));
+		new WinningGameGraphics(winningGUI);
+	}
+	
 	public void saveGame()
 	{
 		ObjectOutputStream file = null;
@@ -274,7 +289,7 @@ public class Controller {
 					new BufferedOutputStream(
 							new FileOutputStream("game.out")));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			new GameNotFoundGraphics();
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

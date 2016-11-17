@@ -28,6 +28,7 @@ import mindrace.model.states.Moving;
 import mindrace.model.states.State;
 import mindrace.model.states.StealingToken;
 import mindrace.model.states.ThrowingDice;
+import mindrace.model.states.WinningGame;
 import mindrace.model.states.WinningToken;
 
 /**
@@ -191,7 +192,7 @@ public class Controller {
 					WinningToken winning = (WinningToken) game.getState();
 					view.showToken(winning.getWinningCategory());
 					game.update();
-					if(game.getState().equals(WinningGame.class)){
+					if(game.getState().getClass().equals(WinningGame.class)){
 						endGame();
 					}
 			

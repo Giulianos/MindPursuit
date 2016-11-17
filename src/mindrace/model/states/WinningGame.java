@@ -32,4 +32,10 @@ public class WinningGame extends State {
 	public boolean isModifier() {
 		return false;
 	}
+	/**
+	 * @return the winner
+	 */
+	public Player getWinner() {
+		return winner;
+	}
 }

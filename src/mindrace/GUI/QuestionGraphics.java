@@ -38,13 +38,11 @@ public class QuestionGraphics extends JFrame {
 	private final static int firstAnswer = 0;
 	private final static int secondAnswer = 1;
 	private final static int thirdAnswer = 2;
-	private final static int fourthAnswer = 0;
 	private JPanel contentPane;
 	private JTextField questionText;
 	JButton answer1;
 	JButton answer2;
 	JButton answer3;
-	JButton answer4;
 	
 	private Controller controller;
 
@@ -109,7 +107,6 @@ public class QuestionGraphics extends JFrame {
 		answer1 = new JButton(question.getOptions()[firstAnswer]);
 		answer2 = new JButton(question.getOptions()[secondAnswer]);
 		answer3 = new JButton(question.getOptions()[thirdAnswer]);
-		answer4 = new JButton(question.getOptions()[fourthAnswer]);
 		
 		answer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,25 +164,6 @@ public class QuestionGraphics extends JFrame {
 		});
 		
 	
-		answer4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(question.getCorrectAnswer() == fourthAnswer) {
-					answer4.setBackground(Color.GREEN);
-				}
-				else {
-					answer4.setBackground(Color.RED);
-				}
-				showCorrectAnswer();
-				disableBtns();
-				progresTimer.cancel();
-				closingTimer.schedule(closingTask, 2000);
-				setAnswered(fourthAnswer);
-			}
-
-		
-		});
-		
-	
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -195,7 +173,6 @@ public class QuestionGraphics extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(timeLabel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 						.addComponent(questionText, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(answer4, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer3, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer2, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 						.addComponent(answer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
@@ -214,7 +191,6 @@ public class QuestionGraphics extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(answer3, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(answer4, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
@@ -236,8 +212,6 @@ public class QuestionGraphics extends JFrame {
 				break;
 		case 2: answer3.setBackground(Color.GREEN);
 				break;
-		case 3: answer4.setBackground(Color.GREEN);
-				break;
 		}
 	}
 	
@@ -245,7 +219,6 @@ public class QuestionGraphics extends JFrame {
 		answer1.setEnabled(false);
 		answer2.setEnabled(false);
 		answer3.setEnabled(false);
-		answer4.setEnabled(false);
 	}
 
 }

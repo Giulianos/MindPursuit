@@ -10,10 +10,6 @@ import mindrace.model.states.*;
  *
  */
 public class NewTurn extends State{
-	
-	
-
-
 	public void initialize(){
 		this.getSituation().nextTurn();
 	}

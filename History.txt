@@ -5,7 +5,7 @@ Con que emperador estuvo casada Cleopatra? (Julio Cesar,Marco Antonio,Todas son 
 Que pais fue dirgido por Stalin? (Union Sovietica,Cuba,Alemania,0)
 El 8 de marzo se celebra el dia de/l? (Trabajo,Niño,Mujer,2)
 Cuantos siglos duro el siglo de oro? (Uno,Dos,Tres,1)
-Cual fue el fin del plan Marshall (1947)? (Conquista,Comercio,Reconstruccion,2)
+Cual fue el fin del plan Marshall [1947]? (Conquista,Comercio,Reconstruccion,2)
 Como se llama la capital del antiguo imperio Azteca? (Quetzalcoalt,Tenochtitlan,Taxococo,1)
 Cuantos colores tiene la bandera española? (Uno,Dos,Tres,1)
 Maria Antonieta fue reuna de que pais? (Paises Bajos,Reino Unido,Francia,2)

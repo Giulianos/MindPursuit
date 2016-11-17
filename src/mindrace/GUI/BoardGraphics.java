@@ -240,7 +240,7 @@ public class BoardGraphics {
 		});
 		mnOptions.add(btnExit);
 		
-		
+		draw();
 		
 	}
 	

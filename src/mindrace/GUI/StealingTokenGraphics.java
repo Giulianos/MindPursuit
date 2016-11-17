@@ -154,7 +154,7 @@ public class StealingTokenGraphics {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria4);
+				stealingTokensGUI.setStolenToken(categoria5);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -167,7 +167,7 @@ public class StealingTokenGraphics {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria5);
+				stealingTokensGUI.setStolenToken(categoria4);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -188,15 +188,7 @@ public class StealingTokenGraphics {
 		btnCategoria6.setBounds(335, 170, 89, 23);
 		layeredPane.add(btnCategoria6);
 		
-		//falta llamar al controller
-		JButton btnExit = new JButton("Salir");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnExit.setBounds(335, 228, 89, 23);
-		layeredPane.add(btnExit);
+		
 		frame.getContentPane().setLayout(groupLayout);
 		
 		changePlayer(playerToSteal);

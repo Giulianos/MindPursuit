@@ -171,7 +171,7 @@ public class SettingPlayersGraphics {
 		yellow.setBounds(313, 187, 89, 23);
 		frame.getContentPane().add(yellow);
 		
-		JButton btnAcceptar = new JButton("Acceptar");
+		JButton btnAcceptar = new JButton("Aceptar");
 		btnAcceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(isColorChosen && !names.contains(nombreDelJugador.getText()) && !colors.contains(btnColorChosen.getText())){	

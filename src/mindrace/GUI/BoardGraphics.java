@@ -240,10 +240,10 @@ public class BoardGraphics {
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
-		JMenu mnOptions = new JMenu("opciones");
+		JMenu mnOptions = new JMenu("Opciones");
 		menuBar.add(mnOptions);
 		
-		JButton btnSave = new JButton("guardar");
+		JButton btnSave = new JButton("Guardar");
 		mnOptions.add(btnSave);
 		
 		btnSave.addActionListener(new ActionListener()
@@ -257,7 +257,7 @@ public class BoardGraphics {
 					}
 			
 				});
-		JButton btnExit = new JButton("salir");
+		JButton btnExit = new JButton("Salir");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ExitWindowGraphics exitMenu = new ExitWindowGraphics();

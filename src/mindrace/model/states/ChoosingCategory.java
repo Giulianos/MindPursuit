@@ -16,7 +16,7 @@ public class ChoosingCategory extends State {
 	 */
 	@Override
 	public void initialize() {
-		//TODO has nothing to to;
+		//TODO has nothing to do;
 		
 	}
 
@@ -27,9 +27,11 @@ public class ChoosingCategory extends State {
 	public State terminate() {
 		return new Asking();
 	}
+	
 	public Category getCategory(){
 		return chosenCategory;
 	}
+	
 	public void setCategory(Category chosenCategory){
 		this.chosenCategory=chosenCategory;
 	}

@@ -26,6 +26,8 @@ public class Moving extends State{
 		}
 		
 		public State terminate(){
+			//to check if went through the startTile i check if the number of my
+			//actual position is less than the movement i made. 
 			if (player.getTile().getPosition()<movement){
 				return new WinningToken();
 			}

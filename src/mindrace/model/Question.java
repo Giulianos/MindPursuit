@@ -7,12 +7,17 @@ import java.io.Serializable;
  * @author Julian
  *
  */
-public class Question implements Comparable<Question>, Serializable {
+public class Question implements Serializable {
 	
 	private String question;
 	private String[] options;
 	private int correctAnswer;
 	
+	/**
+	 * Constructs a new Question
+	 * @param question
+	 * @param parameters, contains the three possible options and the correct option
+	 */
 	public Question(String question, String[] parameters) 
 	{
 		this.question = question;
@@ -25,9 +30,6 @@ public class Question implements Comparable<Question>, Serializable {
 	@Override
 	public String toString() {
 		return question.toString();
-	}
-	public int compareTo(Question o) {
-		return question.compareTo(o.getQuestion());
 	}
 
 	public String getQuestion() {

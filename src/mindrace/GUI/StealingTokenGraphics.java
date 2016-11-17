@@ -13,6 +13,7 @@ import mindrace.model.Category;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
@@ -30,6 +31,7 @@ public class StealingTokenGraphics {
 	private StealingTokenGUI stealingTokensGUI;
 	private Map<PlayerGUI,Set<Category>> mapOfPlayers;
 	private Set<PlayerGUI> setPlayers;
+	private Iterator<PlayerGUI> it;
 	private JLabel lblName;
 	private JButton btnCategoria1;
 	private JButton btnCategoria2;
@@ -56,7 +58,8 @@ public class StealingTokenGraphics {
 		this.stealingTokensGUI = stealingToken;
 		this.mapOfPlayers = stealingToken.getPlayersWithTokensToSteal();
 		this.setPlayers = mapOfPlayers.keySet();
-		this.playerToSteal=setPlayers.iterator().next();
+		this.it = setPlayers.iterator();
+		this.playerToSteal= it.next();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setVisible(true);
@@ -87,7 +90,14 @@ public class StealingTokenGraphics {
 		JButton btnChangePlayer = new JButton("Ver otro Jugador");
 		btnChangePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				playerToSteal=setPlayers.iterator().next();
+				if(it.hasNext()) {
+					playerToSteal=it.next();
+				}
+				else {
+					it =setPlayers.iterator();
+					playerToSteal = it.next();
+				}
+				
 				changePlayer(playerToSteal);
 				
 			}
@@ -177,9 +187,21 @@ public class StealingTokenGraphics {
 		});
 		btnCategoria6.setBounds(335, 170, 89, 23);
 		layeredPane.add(btnCategoria6);
+		
+		//falta llamar al controller
+		JButton btnExit = new JButton("Salir");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnExit.setBounds(335, 228, 89, 23);
+		layeredPane.add(btnExit);
 		frame.getContentPane().setLayout(groupLayout);
 		
 		changePlayer(playerToSteal);
+		
+		
 	}
 
 	/**
@@ -211,5 +233,4 @@ public class StealingTokenGraphics {
 		}
 		frame.repaint();
 	}
-		
 }

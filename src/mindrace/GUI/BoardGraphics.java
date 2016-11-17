@@ -63,6 +63,8 @@ public class BoardGraphics {
 	private JLabel token_5;
 	private JLabel token_6;
 	private JLayeredPane layeredPane;
+	private ImageIcon playerImg;
+	private JLabel lblPlayerImg;
 	private Controller controller;
 	
 
@@ -185,9 +187,14 @@ public class BoardGraphics {
 		
 		ImageIcon boardImg = new ImageIcon("board.png");
 		JLabel board = new JLabel();
+		playerImg = new ImageIcon();
+		lblPlayerImg = new JLabel();
+		lblPlayerImg.setIcon(playerImg);
+		lblPlayerImg.setBounds(0, 0, 70, 70);
 		board.setIcon(boardImg);
 		board.setBounds(0, 0, boardImg.getIconWidth(), boardImg.getIconHeight());
 		layeredPane.add(board, 0, 0);
+		layeredPane.add(lblPlayerImg, 1,0);
 		
 		if(playersGraphics.size() >= 1) {
 			layeredPane.add(playersGraphics.get(0).getLabel(), 1, 0);
@@ -232,6 +239,8 @@ public class BoardGraphics {
 		});
 		mnOptions.add(btnExit);
 		
+		
+		
 	}
 	
 	public void newTurn() {
@@ -263,6 +272,8 @@ public class BoardGraphics {
 	public void draw() {
 		
 		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
+		
+		lblPlayerImg.setIcon(currentPlayer.getImg());
 		
 		playerName.setText(currentPlayerGUI.getName());
 		

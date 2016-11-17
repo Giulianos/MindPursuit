@@ -54,7 +54,7 @@ public class QuestionGraphics extends JFrame {
 	public QuestionGraphics(Controller controller, QuestionGUI q) {
 		
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setBounds(100, 100, 450, 402);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

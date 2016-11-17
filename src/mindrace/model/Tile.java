@@ -1,5 +1,6 @@
 package mindrace.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +8,7 @@ import java.util.Set;
  * @author Daniella
  *
  */
-public class Tile{
+public class Tile implements Serializable{
 	private Integer position;
 	private Set<Player> players = new HashSet<Player>();
 
@@ -21,7 +22,7 @@ public class Tile{
 	}
 	
 	public Boolean isStart(){
-		return position == 1;
+		return position == 0;
 	}
 	
 	public void addPlayer(Player player){

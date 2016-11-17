@@ -16,7 +16,8 @@ public class Asking extends State {
 	private Question questionToAsk;
 	private static QuestionSet questionSet= new QuestionSet();
 	private Integer selectedAnswer;
-	private Integer timeTaken;
+	private Long timeTaken;
+	private final static long FAST_TIME=15000;
 	
 
 	/**
@@ -40,6 +41,12 @@ public class Asking extends State {
 		}
 		
 		questionToAsk = questionSet.getQuestion(categoryToAsk);
+		if(questionToAsk==null){
+			questionSet=new QuestionSet();
+			questionToAsk= questionSet.getQuestion(categoryToAsk);
+		}
+		
+		timeTaken= System.currentTimeMillis();
 	}
 	
 	/**
@@ -56,11 +63,11 @@ public class Asking extends State {
 	 * del jugador.
 	 * 
 	 */
-	public void setAnswer(Integer option, Integer timeTaken) {
-		if(option==null || timeTaken==null)
+	public void setAnswer(Integer option) {
+		if(option==null )
 			throw new IllegalArgumentException();
 		this.selectedAnswer = option;
-		this.timeTaken = timeTaken;
+		this.timeTaken = System.currentTimeMillis()-timeTaken;
 	}
 	
 
@@ -70,11 +77,11 @@ public class Asking extends State {
 	@Override
 	public State terminate() {
 		if(selectedAnswer == null){
-			throw new NullPointerException();
+			//throw new NullPointerException();
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer)) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
-			if(timeTaken<15){ //constante de tiempo
+			if(timeTaken<FAST_TIME){ 
 				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {
 					return new WinningToken();	
 				} else if (getSituation().getCurrentPlayer().getTile().stealablePlayers(getSituation().getCurrentPlayer()).size() > 0) {
@@ -85,7 +92,7 @@ public class Asking extends State {
 		}
 		return new NewTurn();
 	}
-	public int getTimeTaken(){
+	public Long getTimeTaken(){
 		return timeTaken;
 	}
 
@@ -97,5 +104,7 @@ public class Asking extends State {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 
 }

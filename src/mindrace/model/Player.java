@@ -1,5 +1,6 @@
 package mindrace.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import mindrace.model.Category;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
  *
  */
 
-public class Player implements Cloneable{
+public class Player implements Cloneable, Serializable{
 	private Board board;
 	private String name;
 	private Set<Category> tokens;
@@ -19,7 +20,7 @@ public class Player implements Cloneable{
 		this.name = name;
 		this.tokens = new HashSet<Category>();
 		this.board=b;
-		this.tile = board.startingTile();
+		//this.tile = board.startingTile();
 	}
 	
 	public String getName(){

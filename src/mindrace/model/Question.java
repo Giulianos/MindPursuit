@@ -1,22 +1,25 @@
 package mindrace.model;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author Julian
  *
  */
-public class Question implements Comparable<Question> {
+public class Question implements Comparable<Question>, Serializable {
 	
 	private String question;
-	private String[] parameters;
+	private String[] options;
 	private int correctAnswer;
 	
-	public Question(String question, String[] options) 
+	public Question(String question, String[] parameters) 
 	{
 		this.question = question;
-		this.parameters= new String[3];
-		this.correctAnswer= new Integer(options[options.length-1]);
-		for (int i=0; i<options.length-1;i++){
-			this.parameters[i]=options[i];
+		this.options= new String[3];
+		this.correctAnswer= new Integer(parameters[parameters.length-1]);
+		for (int i=0; i<parameters.length-1;i++){
+			this.options[i]=parameters[i];
 		}
 	}
 	@Override
@@ -34,13 +37,13 @@ public class Question implements Comparable<Question> {
 	{
 		return correctAnswer;
 	}
-	public String[] getParameters(){
-		return parameters;
+	public String[] getOptions(){
+		return options.clone();
 	}
-	public void printParameters(){
-		for(int i=0; i<parameters.length;i++){
-			System.out.println(parameters[i]);
-		}
+	public boolean isCorrect(int optionNumber){
+		return optionNumber==correctAnswer;
+	}
 	
-	}
+	
+	
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 import mindrace.model.Category;
 import mindrace.model.TileWithCategory;
 
+
 /**
  * @author Daniella, Giuliano
  *
@@ -92,5 +93,12 @@ public class WinningToken extends State {
 	@Override
 	public boolean isModifier() {
 		return true;
+	}
+	
+	/**
+	 * @return the winningCategory
+	 */
+	public Category getWinningCategory() {
+		return winningCategory;
 	}
 }

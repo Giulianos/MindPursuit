@@ -74,8 +74,9 @@ public class BoardGraphics {
 	 * @param playersGraphics 
 	 */
 
-	public BoardGraphics(List<PlayerGraphics> playersGraphics, Controller controller) {
+	public BoardGraphics(List<PlayerGraphics> playersGraphics, Controller controller, PlayerGUI currentPlayerGUI) {
 		this.controller = controller;
+		this.currentPlayerGUI = currentPlayerGUI;
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setSize(1000,700);
@@ -215,7 +216,7 @@ public class BoardGraphics {
 			layeredPane.add(playersGraphics.get(5).getLabel(), 1, 0);
 		}
 		
-		currentPlayer = playersGraphics.get(0); 
+		this.currentPlayer = playersGraphics.get(0); 
 		
 		
 		

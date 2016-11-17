@@ -26,7 +26,6 @@ public class StealingTokenGUI {
 		this.playersWithTokensToSteal = new HashMap<PlayerGUI,Set<Category>>();
 		for(PlayerGUI p: playersToSteal){
 			Set<Category> tokensToSteal= p.getTokens();
-			tokensToSteal.removeAll(thief.getTokens());
 			this.playersWithTokensToSteal.put(p, tokensToSteal);
 		}
 	}

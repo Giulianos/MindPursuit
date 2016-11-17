@@ -1,5 +1,5 @@
 Que cambio de estado ocurre en la sublimacion ? (Solido-Liquido,Solido-Gaseoso,Liquido-Solido,1)
-Que organo del cuerpo produce la bilis? (Higado,Pancreas,Riñon,0)
+Que organo del cuerpo produce la bilis? (Higado,Pancreas,Riï¿½on,0)
 De que color es la sangre de los peces? (Verde,Marron,Rojo,2)
 De donde se saca la sacarina? (Azucar,Azufre,Carbon,2)
 Cuantas caras tiene un icosaedro? (18,20,26,1)
@@ -15,4 +15,3 @@ Cuantos son los dientes de leche? (18,20,23,1)
 Que es la hemofobia? (Miedo al agua,Miedo a las alturas,Miedo a la sangre,2)
 Que liquido almacenan los cactus? (Savia,Agua,Vino,1)
 Cuantos colores tenia la primera tarjeta grafica? (1,2,8,1)
-

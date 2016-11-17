@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 
 /**
@@ -86,8 +87,10 @@ private Map<Category, List<Question>> questionMap;
 		
 		if(categoryQuestionArray.size()>0)
 		{
-			int random = (int) (Math.random() * categoryQuestionArray.size());
-			return categoryQuestionArray.get(random);
+			int random = new Random().nextInt(categoryQuestionArray.size());
+			Question randomQuestion = categoryQuestionArray.get(random);
+			categoryQuestionArray.remove(random);
+			return randomQuestion;
 		}
 		else
 		{

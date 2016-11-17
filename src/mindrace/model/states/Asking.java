@@ -44,6 +44,9 @@ public class Asking extends State {
 			categoryToAsk = auxiliaryPreviousState.getCategory(); 
 		}
 		
+		questionToAsk = questionSet.getQuestion(categoryToAsk);
+		
+		
 		if(questionToAsk==null) {
 			
 			questionSet=new QuestionSet();

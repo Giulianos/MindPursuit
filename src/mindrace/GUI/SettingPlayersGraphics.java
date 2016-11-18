@@ -82,6 +82,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(lblNombreDelJugador);
 		
 		JButton green = new JButton();
+		green.setText("Verde");
+		green.setForeground(new Color(102, 204, 102));
 		green.setOpaque(true);
 		green.setBorderPainted(false);
 		green.addActionListener(new ActionListener() {
@@ -101,6 +103,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(lblColor);
 		
 		JButton black = new JButton();
+		black.setText("Negro");
+		black.setForeground(new Color(0, 0, 0));
 		black.setOpaque(true);
 		black.setBorderPainted(false);
 		black.addActionListener(new ActionListener() {
@@ -116,6 +120,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(black);
 		
 		JButton blue = new JButton();
+		blue.setText("Azul");
+		blue.setForeground(new Color(0, 0, 204));
 		blue.setOpaque(true);
 		blue.setBorderPainted(false);
 		blue.addActionListener(new ActionListener() {
@@ -131,6 +137,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(blue);
 		
 		JButton purple = new JButton();
+		purple.setText("Violeta");
+		purple.setForeground(new Color(102, 0, 102));
 		purple.setOpaque(true);
 		purple.setBorderPainted(false);
 		purple.addActionListener(new ActionListener() {
@@ -146,6 +154,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(purple);
 		
 		JButton red = new JButton();
+		red.setText("Rojo");
+		red.setForeground(new Color(255, 0, 0));
 		red.setOpaque(true);
 		red.setBorderPainted(false);
 		red.addActionListener(new ActionListener() {
@@ -161,6 +171,8 @@ public class SettingPlayersGraphics {
 		frame.getContentPane().add(red);
 		
 		JButton yellow = new JButton();
+		yellow.setText("Amarillo");
+		yellow.setForeground(new Color(255, 255, 0));
 		yellow.setOpaque(true);
 		yellow.setBorderPainted(false);
 		yellow.addActionListener(new ActionListener() {

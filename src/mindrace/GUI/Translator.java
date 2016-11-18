@@ -19,7 +19,7 @@ public class Translator {
 		{
 			case Geography:
 			{
-				return "Geografía";
+				return "Geografia";
 			}
 			case Science:
 			{

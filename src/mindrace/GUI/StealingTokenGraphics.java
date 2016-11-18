@@ -109,7 +109,7 @@ public class StealingTokenGraphics {
 		lblName.setBounds(20, 71, 46, 14);
 		layeredPane.add(lblName);
 		
-		btnCategoria1 = new JButton(categoria1.toString());
+		btnCategoria1 = new JButton(Translator.translate(categoria1).toString());
 		btnCategoria1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
@@ -123,7 +123,7 @@ public class StealingTokenGraphics {
 		btnCategoria1.setBounds(10, 108, 89, 23);
 		layeredPane.add(btnCategoria1);
 		
-		btnCategoria2 = new JButton(categoria2.toString());
+		btnCategoria2 = new JButton(Translator.translate(categoria2).toString());
 		btnCategoria2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
@@ -136,7 +136,7 @@ public class StealingTokenGraphics {
 		btnCategoria2.setBounds(10, 170, 101, 23);
 		layeredPane.add(btnCategoria2);
 		
-		btnCategoria3 = new JButton(categoria3.toString());
+		btnCategoria3 = new JButton(Translator.translate(categoria3).toString());
 		btnCategoria3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
@@ -149,7 +149,7 @@ public class StealingTokenGraphics {
 		btnCategoria3.setBounds(176, 108, 89, 23);
 		layeredPane.add(btnCategoria3);
 		
-		btnCategoria5 = new JButton(categoria5.toString());
+		btnCategoria5 = new JButton(Translator.translate(categoria5).toString());
 		btnCategoria5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
@@ -162,7 +162,7 @@ public class StealingTokenGraphics {
 		btnCategoria5.setBounds(335, 108, 89, 23);
 		layeredPane.add(btnCategoria5);
 		
-		btnCategoria4 = new JButton(categoria4.toString());
+		btnCategoria4 = new JButton(Translator.translate(categoria4).toString());
 		btnCategoria4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
@@ -175,7 +175,7 @@ public class StealingTokenGraphics {
 		btnCategoria4.setBounds(176, 170, 89, 23);
 		layeredPane.add(btnCategoria4);
 		
-		btnCategoria6 = new JButton(categoria6.toString());
+		btnCategoria6 = new JButton(Translator.translate(categoria6).toString());
 		btnCategoria6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);

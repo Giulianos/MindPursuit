@@ -61,7 +61,7 @@ public class BoardGraphics {
 	private boolean isBtnDicePressed;
 	private PlayerGraphics currentPlayer;
 	private PlayerGUI currentPlayerGUI;
-	private Object[] tokensOfPlayer;
+	private Category[] tokensOfPlayer;
 	private JButton btnDice;
 	private JLabel token_1;
 	private JLabel token_2;
@@ -338,35 +338,37 @@ public class BoardGraphics {
 	 */
 	public void draw() {
 		
-		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
+		this.tokensOfPlayer = new Category[currentPlayerGUI.getTokens().size()];
+		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray(tokensOfPlayer);
 		
 		lblPlayerImg.setIcon(currentPlayer.getImg());
 		
 		playerName.setText(currentPlayerGUI.getName());
 		
-		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray();
+		this.tokensOfPlayer = new Category[currentPlayerGUI.getTokens().size()];
+		this.tokensOfPlayer =  currentPlayerGUI.getTokens().toArray(tokensOfPlayer);
 		
 		playerName.setText(currentPlayerGUI.getName());
 		
 		cleanTokens();
 		
 		if(tokensOfPlayer.length >= 1){
-			token_1.setText(tokensOfPlayer[0].toString());
+			token_1.setText(Translator.translate(tokensOfPlayer[0]).toString());
 		}
 		if(tokensOfPlayer.length >= 2){
-			token_2.setText(tokensOfPlayer[1].toString());
+			token_2.setText(Translator.translate(tokensOfPlayer[1]).toString());
 		}
 		if(tokensOfPlayer.length >= 3){
-			token_3.setText(tokensOfPlayer[2].toString());
+			token_3.setText(Translator.translate(tokensOfPlayer[2]).toString());
 		}
 		if(tokensOfPlayer.length >= 4){
-			token_4.setText(tokensOfPlayer[3].toString());
+			token_4.setText((tokensOfPlayer[3]).toString());
 		}
 		if(tokensOfPlayer.length >= 5){
-			token_5.setText(tokensOfPlayer[4].toString());
+			token_5.setText(Translator.translate(tokensOfPlayer[4]).toString());
 		}
 		if(tokensOfPlayer.length >= 6){
-			token_6.setText(tokensOfPlayer[5].toString());
+			token_6.setText(Translator.translate(tokensOfPlayer[5]).toString());
 		}		
 		frame.repaint();
 		

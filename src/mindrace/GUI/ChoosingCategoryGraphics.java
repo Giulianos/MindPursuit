@@ -76,17 +76,17 @@ public class ChoosingCategoryGraphics extends JFrame {
 			
 		};
 		
-		button_1 = new JButton(categoria1.toString());
+		button_1 = new JButton(Translator.translate(categoria1).toString());
 		button_1.setOpaque(true);
-		button_2 = new JButton(categoria2.toString());
+		button_2 = new JButton(Translator.translate(categoria2).toString());
 		button_2.setOpaque(true);
-		button_3 = new JButton(categoria3.toString());
+		button_3 = new JButton(Translator.translate(categoria3).toString());
 		button_3.setOpaque(true);
-		button_4 = new JButton(categoria4.toString());
+		button_4 = new JButton(Translator.translate(categoria4).toString());
 		button_4.setOpaque(true);
-		button_5 = new JButton(categoria5.toString());
+		button_5 = new JButton(Translator.translate(categoria5).toString());
 		button_5.setOpaque(true);
-		button_6 = new JButton(categoria6.toString());
+		button_6 = new JButton(Translator.translate(categoria6).toString());
 		button_6.setOpaque(true);
 		
 		

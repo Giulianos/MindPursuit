@@ -75,23 +75,32 @@ public class ChoosingCategoryGraphics extends JFrame {
 			}
 			
 		};
+		/**
+		 * the colors asigned to the buttons have been measured in RGB.
+		 */
 		
 		button_1 = new JButton(Translator.translate(categoria1).toString());
+		button_1.setBackground(new Color(255,77,158));
 		button_1.setOpaque(true);
 		button_1.setBorderPainted(true);
 		button_2 = new JButton(Translator.translate(categoria2).toString());
+		button_2.setBackground(new Color(249,236,0));
 		button_2.setOpaque(true);
 		button_2.setBorderPainted(true);
 		button_3 = new JButton(Translator.translate(categoria3).toString());
+		button_3.setBackground(new Color(0,164,255));
 		button_3.setOpaque(true);
 		button_3.setBorderPainted(true);
 		button_4 = new JButton(Translator.translate(categoria4).toString());
+		button_4.setBackground(new Color(198,132,0));
 		button_4.setOpaque(true);
 		button_4.setBorderPainted(true);
 		button_5 = new JButton(Translator.translate(categoria5).toString());
+		button_5.setBackground(new Color(255,176,0));
 		button_5.setOpaque(true);
 		button_5.setBorderPainted(true);
 		button_6 = new JButton(Translator.translate(categoria6).toString());
+		button_6.setBackground(new Color(97,191,58));
 		button_6.setOpaque(true);
 		button_6.setBorderPainted(true);
 		

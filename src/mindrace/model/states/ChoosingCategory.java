@@ -30,9 +30,11 @@ public class ChoosingCategory extends State implements Constants {
 	public State terminate() {
 		return new Asking();
 	}
+	
 	public Category getCategory(){
 		return chosenCategory;
 	}
+	
 	public void setCategory(Category chosenCategory){
 		this.chosenCategory=chosenCategory;
 	}

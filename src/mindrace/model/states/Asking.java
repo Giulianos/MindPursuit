@@ -11,15 +11,12 @@ import mindrace.model.TileWithCategory;
  * @author Giuliano
  *
  */
-public class Asking extends State {
+public class Asking extends State implements Constants {
 	
 	private Question questionToAsk;
 	private static QuestionSet questionSet= new QuestionSet();
 	private Integer selectedAnswer;
 	private Long timeTaken;
-	private final static long FAST_TIME=15000;
-	private final static long SLOW_TIME=20500; //Delta added to compensate delay between model and view.
-	
 
 	/**
 	 * @see mindrace.model.states.State#initialize()
@@ -32,8 +29,9 @@ public class Asking extends State {
 		if((this.getPreviousState().getClass().equals(Moving.class)) ||
 			(this.getPreviousState().getClass().equals(WinningToken.class)) ) {
 			
-			/* Si el estado anterior es Moving o WinningToken puedo asegurar que el casillero del juagdor
-			 * es con categoria y sacarla del tile.
+			/**
+			 *  If previous state is WinningToken or Moving, it means the tile has category
+			 * 
 			 */
 			TileWithCategory playersTile = (TileWithCategory)getSituation().getCurrentPlayer().getTile();
 			categoryToAsk = playersTile.getCategory();
@@ -58,7 +56,7 @@ public class Asking extends State {
 	}
 	
 	/**
-	 * Metodo llamado por el controller para saber que pregunta realizarle al jugador.
+	 * Method called by controller
 	 * 
 	 * @return Question
 	 */
@@ -66,11 +64,6 @@ public class Asking extends State {
 		return questionToAsk;
 	}
 	
-	/**
-	 * Metodo llamado por el controller para pasarle al estado la respuesta
-	 * del jugador.
-	 * 
-	 */
 	public void setAnswer(Integer option) {
 		if(option==null )
 			throw new IllegalArgumentException();
@@ -85,7 +78,7 @@ public class Asking extends State {
 	public State terminate() {
 		timeTaken = timeTaken - System.currentTimeMillis();
 		if(selectedAnswer == null){
-			//throw new NullPointerException();
+			throw new NullPointerException();
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer) && timeTaken<=SLOW_TIME) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
@@ -104,12 +97,8 @@ public class Asking extends State {
 		return timeTaken;
 	}
 
-	/* (non-Javadoc)
-	 * @see mindrace.model.states.State#isModifier()
-	 */
 	@Override
 	public boolean isModifier() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -3,9 +3,9 @@ package mindrace.model.states;
 import mindrace.model.Player;
 
 /**
- * @author User
+ * @author Daniella
  */
-public class WinningGame extends State {
+public class WinningGame extends State implements Constants{
 	
 	private Player winner;
 	/**

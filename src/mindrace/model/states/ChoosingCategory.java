@@ -7,7 +7,7 @@ import mindrace.model.states.State;
  * @author francisco
  *
  */
-public class ChoosingCategory extends State {
+public class ChoosingCategory extends State implements Constants {
 
 		private Category chosenCategory;
 	/** 
@@ -15,8 +15,11 @@ public class ChoosingCategory extends State {
 	 * Class must be provided with chosenCategory(form UI) before initializing
 	 */
 	@Override
+	
+	/**
+	 * Initilize method in ChoosingCategory has nothing to do.
+	 */
 	public void initialize() {
-		//TODO has nothing to to;
 		
 	}
 
@@ -33,13 +36,8 @@ public class ChoosingCategory extends State {
 	public void setCategory(Category chosenCategory){
 		this.chosenCategory=chosenCategory;
 	}
-
-	/* (non-Javadoc)
-	 * @see mindrace.model.states.State#isModifier()
-	 */
 	@Override
 	public boolean isModifier() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

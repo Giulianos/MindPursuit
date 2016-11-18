@@ -6,12 +6,10 @@ import java.util.Random;
  * @author Agustin Lavarello
  *
  */
-public class ThrowingDice extends State {
+public class ThrowingDice extends State implements Constants{
 
 	private Integer diceNumber;
-	private Random randomNumber = new Random();
-	private static final int  MINIMALNUMBER = 1;
-	private static final int MAXIMALNUMBER = 6; 
+	private Random randomNumber = new Random(); 
 
 	public Integer throwDice() {
 		return (int) (randomNumber.nextDouble()*MAXIMALNUMBER + MINIMALNUMBER);

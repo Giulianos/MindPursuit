@@ -7,7 +7,7 @@ import mindrace.model.states.State;
  * @author francisco
  *
  */
-public class NewTurn extends State{
+public class NewTurn extends State implements Constants{
 	
 	
 
@@ -20,9 +20,7 @@ public class NewTurn extends State{
 		return new ThrowingDice();
 	}
 
-	/* (non-Javadoc)
-	 * @see mindrace.model.states.State#isModifier()
-	 */
+	
 	@Override
 	public boolean isModifier() {
 		return true;

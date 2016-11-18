@@ -11,7 +11,7 @@ import mindrace.model.TileWithCategory;
  * @author Daniella, Giuliano
  *
  */
-public class WinningToken extends State {
+public class WinningToken extends State implements Constants{
 	private Category winningCategory;
 	private Set<Category> possibleTokens;
 	private boolean shouldAsk=false;
@@ -21,14 +21,12 @@ public class WinningToken extends State {
 			TileWithCategory auxTile = (TileWithCategory) this.getSituation().getCurrentPlayer().getTile(); 
 			winningCategory = auxTile.getCategory();
 		}
-		/*
-		 * si no viene de asking, entonces viene de moving.
+		/**
+		 * if previous state is not asking, then it is moving.
+		 * @see stateMachine
 		 */
 		
 		else {
-			/*
-			 * si tiene 5 Tokens no puede ganar uno por pasar por start. 
-			 */
 			shouldAsk=true;
 			/**
 			 * @see http://stackoverflow.com/a/27980614
@@ -61,21 +59,22 @@ public class WinningToken extends State {
 			throw new NullPointerException();
 		}
 		(this.getSituation().getCurrentPlayer()).addToken(winningCategory);
-		/*
-		 * Si el jugador tiene 6 tokens, gano.
+		/**
+		 * if the player has 6 tokens then he is the winner
 		 */
-		if(this.getSituation().getCurrentPlayer().getTokens().size() == 6){
+		if(this.getSituation().getCurrentPlayer().getTokens().size() == QUANTITY_OF_TOKENS){
 			return new WinningGame();
 		}
-		/*
-		 * Si el jugador no tiene 6 tokens y viene de asking, tiene que ir a moving. (Respondio bien y gano una ficha)
+		/**
+		 *If the player owns 6 tokens and previous state is asking, 
+		 *then next state is moving(Answers correctly and wins 1 token.
 		 */
 		else if(this.getPreviousState().getClass().equals(Asking.class)){
 			return new Moving();
 		}
-		/*
-		 * Si el jugador no viene de asking, entonces viene de moving. Y deberia ir a
-		 * asking o choosing category dependiendo del casillero en donde cayo (Paso por la salida).
+		/**
+		 * If previous state is not asking, then it´s moving. The player should go
+		 * to Asking or ChoosingCategory depending on the tile
 		 */
 		else if (this.getSituation().getCurrentPlayer().getTile().getClass().equals(TileWithCategory.class)){
 			return new Asking();
@@ -86,10 +85,6 @@ public class WinningToken extends State {
 	public boolean shouldAsk(){
 		return this.shouldAsk;
 	}
-
-	/* (non-Javadoc)
-	 * @see mindrace.model.states.State#isModifier()
-	 */
 	@Override
 	public boolean isModifier() {
 		return true;

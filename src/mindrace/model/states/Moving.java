@@ -7,16 +7,25 @@ import mindrace.model.*;
  * @author Agustin Lavarello
  *
  */
-public class Moving extends State{
+public class Moving extends State implements Constants{
 
-		private Player player; //este seria el jugador que va a mover
-		private Integer movement; //va a tener cuanto va a moverse
+		/**
+		 * player is the player to be moved
+		 */
+		private Player player; 
+		/**
+		 * movement has the number of the dice
+		 */
+		private Integer movement; 
 		private Category currentCategory;
-		private static final Integer fastMovement = 5;
-		private static final Integer slowMovement = 1;
+		private  static final Integer fastMovement = 5;
+		private  static final Integer slowMovement = 1;
 		private final static int FAST_TIME=15000; 
+		private static final int QUANTITY_OF_TOKENS=6;
 		
-		
+		/**
+		 * initialize will update the position of the player. 
+		 */
 		public void initialize(){
 			this.player=this.getSituation().getCurrentPlayer();
 			this.setMovment();
@@ -26,8 +35,13 @@ public class Moving extends State{
 			player.getTile().addPlayer(player);
 		}
 		
+		/**
+		 * The player that goes throw starting tile, but already
+		 * has 5 tokens won´t receive token.
+		 */
+		
 		public State terminate(){
-			if (player.getTile().getPosition()<movement && this.getSituation().getCurrentPlayer().getTokens().size() <= 4){
+			if (player.getTile().getPosition()<movement && this.getSituation().getCurrentPlayer().getTokens().size() <= QUANTITY_OF_TOKENS-1){
 				return new WinningToken();
 			}
 			if(currentCategory == null){
@@ -46,18 +60,20 @@ public class Moving extends State{
 			if (this.getPreviousState().getClass().equals(ThrowingDice.class)){
 				movement = ((ThrowingDice) this.getPreviousState()).diceNumber();
 			}
-			if(this.getPreviousState().getClass().equals(WinningToken.class) || this.getPreviousState().getClass().equals(StealingToken.class)){
+			else if(this.getPreviousState().getClass().equals(WinningToken.class) || this.getPreviousState().getClass().equals(StealingToken.class)){
 				movement = fastMovement;
 			}
-			if(this.getPreviousState() instanceof Asking){
-				if(((Asking) this.getPreviousState()).getTimeTaken() > FAST_TIME){   ///falta agregar constante 
+			else if(this.getPreviousState() instanceof Asking){
+				if(((Asking) this.getPreviousState()).getTimeTaken() > FAST_TIME){   
 					movement = slowMovement;
 				}
 				else{
 					movement = fastMovement;
 				}
 			}
-			//todo: throw exception.
+			else{
+			throw new IllegalArgumentException("method called wrongly");
+			}
 		}
 		
 		private void setCurrentCategory() {
@@ -72,12 +88,8 @@ public class Moving extends State{
 			return player;
 		}
 
-		/* (non-Javadoc)
-		 * @see mindrace.model.states.State#isModifier()
-		 */
 		@Override
 		public boolean isModifier() {
-			// TODO Auto-generated method stub
 			return true;
 		}
 		

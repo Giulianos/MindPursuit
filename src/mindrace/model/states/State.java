@@ -9,22 +9,20 @@ import mindrace.model.Situation;
  * @author Giuliano
  *
  */
-abstract public class State implements Serializable {
+abstract public class State implements Serializable, Constants {
 	
 	private State previousState;
 	private Situation currentSituation;
 	
 	/**
-	 * Inicializa el estado y realiza todas las acciones
-	 * que sean posibles hacer sin recibir input del usuario.
+	 * initialize method will make all the actions that don´t need input from the user
 	 */
 	abstract public void initialize();
 
 	/**
-	 * Realiza las acciones necesarias para determinar a
-	 * que estado se ira luego.
+	 * terminate will decide which state will be the next
 	 * 
-	 * @return El estado siguiente.
+	 * @return next state
 	 */
 	abstract public State terminate();
 	

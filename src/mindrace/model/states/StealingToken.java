@@ -10,7 +10,7 @@ import mindrace.model.Situation;
  * @author Daniella
  *
  */
-public class StealingToken extends State {
+public class StealingToken extends State implements Constants {
 	private Player playerToSteal;
 	private Category categoryToSteal;
 	
@@ -31,7 +31,7 @@ public class StealingToken extends State {
 	@Override
 	public State terminate(){
 		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
-		if(this.getSituation().getCurrentPlayer().getTokens().size() == 6){
+		if(this.getSituation().getCurrentPlayer().getTokens().size() == QUANTITY_OF_TOKENS){
 			return new WinningGame();
 		}
 		this.getSituation().getRealPlayer(playerToSteal).removeToken(categoryToSteal);

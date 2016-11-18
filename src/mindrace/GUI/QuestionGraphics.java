@@ -118,13 +118,11 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == firstAnswer) {
 					answer1.setBackground(Color.GREEN);
-					answer1.setOpaque(true);
-					answer1.setBorderPainted(false);
+					answer1.setBorderPainted(true);
 				}
 				else {
 					answer1.setBackground(Color.RED);
-					answer1.setOpaque(false);
-					answer1.setBorderPainted(false);
+					answer1.setBorderPainted(true);
 				}
 				showCorrectAnswer();
 				disableBtns();
@@ -142,12 +140,10 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == secondAnswer) {
 					answer2.setBackground(Color.GREEN);
-					answer2.setOpaque(true);
 					answer2.setBorderPainted(false);
 				}
 				else {
 					answer2.setBackground(Color.RED);
-					answer2.setOpaque(false);
 					answer2.setBorderPainted(false);
 				}
 				showCorrectAnswer();
@@ -165,13 +161,11 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == thirdAnswer) {
 					answer3.setBackground(Color.GREEN);
-					answer3.setOpaque(true);
-					answer3.setBorderPainted(false);
+					answer3.setBorderPainted(true);
 				}
 				else {
 					answer3.setBackground(Color.RED);
-					answer3.setOpaque(false);
-					answer3.setBorderPainted(false);
+					answer3.setBorderPainted(true);
 				}
 				showCorrectAnswer();
 				disableBtns();

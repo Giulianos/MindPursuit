@@ -20,6 +20,10 @@ import mindrace.model.Situation;
 import mindrace.controller.*;
 
 /**
+ * This class extends from a frame and displays all the categories.
+ * When the player choose a category, this class calls the controller with the chosen Category.
+ * Note: After pressing the button the class will close. 
+ * 
  * @author Agustin Lavarello
  *
  */
@@ -29,19 +33,33 @@ public class ChoosingCategoryGraphics extends JFrame {
 	private JPanel contentPane;
 	private Category category;
 	private Controller controller;
-	JButton button_1;
-	JButton button_2;
-	JButton button_3;
-	JButton button_4;
-	JButton button_5;
-	JButton button_6;
+	private JButton button_1;
+	private JButton button_2;
+	private JButton button_3;
+	private JButton button_4;
+	private JButton button_5;
+	private JButton button_6;
+	private Category categoria1 = Category.Art;
+	private Category categoria2 = Category.Entertainment;
+	private Category categoria3 = Category.Geography;
+	private Category categoria4 = Category.History;
+	private Category categoria5 = Category.Science;
+	private Category categoria6 = Category.Sport;
 
 	
+	/*
+	 * This is the constructor
+	 * This method will set visible the class and creats all the buttons with the categories name
+	 * When a button is pressed it will call the controller with the corresponding method and with the category
+	 * chosen
+	 * 
+	 * @param controller The controller that the class will call 
+	 */
 	public ChoosingCategoryGraphics(Controller controller) {
 		this.controller = controller;
 		setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,69 +76,75 @@ public class ChoosingCategoryGraphics extends JFrame {
 			
 		};
 		
-		button_1 = new JButton(Category.Geography.toString());
-		button_2 = new JButton(Category.Science.toString());
-		button_3 = new JButton(Category.History.toString());
-		button_4 = new JButton(Category.Sport.toString());
-		button_5 = new JButton(Category.Art.toString());
-		button_6 = new JButton(Category.Entertainment.toString());
+		button_1 = new JButton(categoria1.toString());
+		button_1.setOpaque(true);
+		button_2 = new JButton(categoria2.toString());
+		button_2.setOpaque(true);
+		button_3 = new JButton(categoria3.toString());
+		button_3.setOpaque(true);
+		button_4 = new JButton(categoria4.toString());
+		button_4.setOpaque(true);
+		button_5 = new JButton(categoria5.toString());
+		button_5.setOpaque(true);
+		button_6 = new JButton(categoria6.toString());
+		button_6.setOpaque(true);
 		
 		
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					category = Category.Geography;
+					category = categoria1;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
-					controller.chosenCategory(Category.Geography);
+					controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Science;
+				category = categoria2;
 				button_2.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Science);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.History;
+				category = categoria3;
 				button_3.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.History);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Sport;
+				category = categoria4;
 				button_4.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Sport);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Art;
+				category = categoria5;
 				button_5.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Art);
+				controller.chosenCategory(category);
 			}
 		});
 		
 		
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				category = Category.Entertainment;
+				category = categoria6;
 				button_6.setBackground(Color.YELLOW);
 				closingTimer.schedule(closingTask, 1000);
-				controller.chosenCategory(Category.Entertainment);
+				controller.chosenCategory(category);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

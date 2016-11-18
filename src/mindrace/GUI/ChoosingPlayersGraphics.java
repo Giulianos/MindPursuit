@@ -10,15 +10,27 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import mindrace.controller.*;
 /**
- * @author AgusTin Lavarello
+ * This class is use to choose the number of players that will play the game. 
+ * When the player choose a number this class will call the controller and the view with the corresponding method
+ * Note: After pressing the button the class will close. 
+ * 
+ * 
+ * @author Agustin Lavarello
  *
  */
 public class ChoosingPlayersGraphics {
@@ -35,7 +47,13 @@ public class ChoosingPlayersGraphics {
 	private View view;
 
 	
-	//controller y view
+	/*
+	 * This is the constructor and recives the controller and the view wich 
+	 * methods the class will call corresponding to the action
+	 * 
+	 * @param controller
+	 * @param view
+	 */
 	public ChoosingPlayersGraphics(Controller controller, View view) {
 		this.controller = controller;
 		this.view = view;
@@ -43,48 +61,136 @@ public class ChoosingPlayersGraphics {
 		frame.getContentPane().setName("");
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 350, 200);
+		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		btn1.setOpaque(true);
+		btn2.setOpaque(true);
+		btn3.setOpaque(true);
+		btn4.setOpaque(true);
+		btn5.setOpaque(true);
+		btn6.setOpaque(true);
 		
 		JLabel lblNumeroDeJugadores = new JLabel("Numero de Jugadores");
 		
-		
+		Timer closingTimer = new Timer();
+		TimerTask closingTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				frame.dispose();
+				
+			}
+			
+		};
 		
 		
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
 				controller.numberOfPlayers(1);
-				view.enteringNames();
+				closingTimer.schedule(closingTask, 1000);
+				try {
+					view.enteringNames();
+				} catch (IOException | ParserConfigurationException | SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(2);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(3);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(4);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(5);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deactivateButtons();
+				closingTimer.schedule(closingTask, 1000);
 				controller.numberOfPlayers(6);
+				try {
+					view.enteringNames();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParserConfigurationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SAXException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	

@@ -18,7 +18,7 @@ public class QuestionGUI {
 		this.correctAnswer=correctAnswer;
 	}
 	
-	public int getanswer(){
+	public int getAnswer(){
 		return answer;
 	}
 	
@@ -41,7 +41,7 @@ public class QuestionGUI {
 	/**
 	 * @return the correctAnswer
 	 */
-	public int getCorrectAnswer() {
+	public Integer getCorrectAnswer() {
 		return correctAnswer;
 	}
 

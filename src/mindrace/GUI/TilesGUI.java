@@ -4,6 +4,7 @@ package mindrace.GUI;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,7 +24,22 @@ import org.xml.sax.SAXException;
 public class TilesGUI {
 	
 	private Integer tilesQuantity = 42;
-	private List<Point> tilesPositions = new ArrayList<Point>();
+	private static List<Point> tilesPositions = new LinkedList<Point>() ;
+	
+	public TilesGUI(){
+		try {
+			loadPositionsFromXML("boardGUI.xml");
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	private void loadPositionsFromXML(String URI) throws ParserConfigurationException, SAXException, IOException{
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -38,5 +54,12 @@ public class TilesGUI {
 			Integer tileID = new Integer(attributesMap.getNamedItem("id").getNodeValue());
 			tilesPositions.add(tileID, new Point(xCoord, yCoord));
 		}
+	}
+	
+	/**
+	 * @return the tilesPositions
+	 */
+	public static List<Point> getTilesPositions() {
+		return tilesPositions;
 	}
 }

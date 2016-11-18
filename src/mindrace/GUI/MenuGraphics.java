@@ -8,6 +8,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -27,37 +29,42 @@ public class MenuGraphics {
 	JButton exitBotton;
 	private Controller controller;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuGraphics window = new MenuGraphics();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public MenuGraphics() {
+	
+	public MenuGraphics(Controller controller) {
 
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 545, 458);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.controller=controller;
 		
 		saveBotton = new JButton("Recuperar partida");
 		startBotton = new JButton("Empezar");
 		exitBotton = new JButton("Salir");
 		
+		saveBotton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.loadGame();
+				} catch (FileNotFoundException e1) {
+					new GameNotFoundGraphics();
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					new GameNotFoundGraphics();
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					new GameNotFoundGraphics();
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+			
+		});
 		startBotton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.initialize();

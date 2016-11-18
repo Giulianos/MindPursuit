@@ -7,17 +7,13 @@ import mindrace.model.Player;
 import mindrace.model.Situation;
 
 /**
- * @author User
+ * @author Daniella
  *
  */
 public class StealingToken extends State {
 	private Player playerToSteal;
 	private Category categoryToSteal;
 	
-	/**
-	 * @see mindrace.model.states.ModifierState#initialize()
-	 */
-	@Override
 	public void initialize() {
 	}
 
@@ -35,6 +31,9 @@ public class StealingToken extends State {
 	@Override
 	public State terminate(){
 		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
+		if(this.getSituation().getCurrentPlayer().getTokens().size() == 6){
+			return new WinningGame();
+		}
 		this.getSituation().getRealPlayer(playerToSteal).removeToken(categoryToSteal);
 		return new Moving();
 	}
@@ -44,7 +43,6 @@ public class StealingToken extends State {
 	 */
 	@Override
 	public boolean isModifier() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 }

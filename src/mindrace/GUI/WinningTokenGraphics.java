@@ -31,6 +31,7 @@ public class WinningTokenGraphics extends JFrame {
 	private JPanel contentPane;
 	private Category category;
 	private Set<Category> categories;
+	private Controller controller;
 	JButton button_1;
 	JButton button_2;
 	JButton button_3;
@@ -39,11 +40,12 @@ public class WinningTokenGraphics extends JFrame {
 	JButton button_6;
 	
    
-	public WinningTokenGraphics(Controller controler,Set<Category> categories) {
+	public WinningTokenGraphics(Controller controller,Set<Category> categories) {
 		this.categories = categories; 
+		this.controller=controller;
 		setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,29 +63,47 @@ public class WinningTokenGraphics extends JFrame {
 		};
 		
 		button_1 = new JButton(Category.Geography.toString());
+		button_1.setVisible(true);
+		button_1.setOpaque(true);
 		button_2 = new JButton(Category.Science.toString());
+		button_2.setVisible(true);
+		button_2.setOpaque(true);
 		button_3 = new JButton(Category.History.toString());
+		button_3.setVisible(true);
+		button_3.setOpaque(true);
 		button_4 = new JButton(Category.Sport.toString());
+		button_4.setVisible(true);
+		button_4.setOpaque(true);
 		button_5 = new JButton(Category.Art.toString());
+		button_5.setVisible(true);
+		button_5.setOpaque(true);
 		button_6 = new JButton(Category.Entertainment.toString());
+		button_6.setVisible(true);
+		button_6.setOpaque(true);
 		
 		if(!categories.contains(Category.Geography)) {
 			button_1.setBackground(Color.RED);
+			button_1.setEnabled(false);
 		}
 		if(!categories.contains(Category.Science)) {
 			button_2.setBackground(Color.RED);
+			button_2.setEnabled(false);
 		}
 		if(!categories.contains(Category.History)) {
 			button_3.setBackground(Color.RED);
+			button_3.setEnabled(false);
 		}
 		if(!categories.contains(Category.Sport)) {
 			button_4.setBackground(Color.RED);
+			button_4.setEnabled(false);
 		}
 		if(!categories.contains(Category.Art)) {
 			button_5.setBackground(Color.RED);
+			button_5.setEnabled(false);
 		}
 		if(!categories.contains(Category.Entertainment)) {
 			button_6.setBackground(Color.RED);
+			button_6.setEnabled(false);
 		}
 		
 		
@@ -93,8 +113,8 @@ public class WinningTokenGraphics extends JFrame {
 					category = Category.Geography;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
-					//
 				}
+				controller.tokenChosen(category);
 		
 			}
 		});
@@ -107,6 +127,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_2.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -118,6 +139,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_3.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -129,6 +151,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_4.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -140,6 +163,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_5.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		
@@ -151,6 +175,7 @@ public class WinningTokenGraphics extends JFrame {
 					button_6.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
+				controller.tokenChosen(category);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

@@ -1,8 +1,6 @@
 package mindrace.model.states;
 
-import mindrace.model.Situation;
 import mindrace.model.states.State;
-import mindrace.model.states.*;
 
 /**
  * 
@@ -23,7 +21,6 @@ public class NewTurn extends State{
 	 */
 	@Override
 	public boolean isModifier() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

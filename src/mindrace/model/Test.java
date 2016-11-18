@@ -16,7 +16,6 @@ import org.xml.sax.SAXException;
  *
  */
 public class Test {
-	//hola como estas ?
 
 	/**
 	 * @param args1

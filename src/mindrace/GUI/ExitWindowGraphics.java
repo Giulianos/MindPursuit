@@ -29,7 +29,7 @@ public class ExitWindowGraphics {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		lblEstasSeguroQue = new JLabel("Estas seguro que quieres salir?");
 		lblEstasSeguroQue.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -37,6 +37,7 @@ public class ExitWindowGraphics {
 		btnSI = new JButton("Si");
 		btnSI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		});

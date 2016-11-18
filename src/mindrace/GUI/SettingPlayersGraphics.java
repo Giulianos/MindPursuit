@@ -83,6 +83,7 @@ public class SettingPlayersGraphics {
 		
 		JButton green = new JButton("Verde");
 		green.setOpaque(true);
+		green.setBorderPainted(false);
 		green.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceGreen.png");
@@ -102,6 +103,7 @@ public class SettingPlayersGraphics {
 		
 		JButton black = new JButton("Negro");
 		black.setOpaque(true);
+		black.setBorderPainted(false);
 		black.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceBlack.png");
@@ -130,6 +132,7 @@ public class SettingPlayersGraphics {
 		
 		JButton purple = new JButton("Violeta");
 		purple.setOpaque(true);
+		purple.setBorderPainted(false);
 		purple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("piecePurple.png");
@@ -144,6 +147,7 @@ public class SettingPlayersGraphics {
 		
 		JButton red = new JButton("Rojo");
 		red.setOpaque(true);
+		red.setBorderPainted(false);
 		red.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceRed.png");
@@ -158,6 +162,7 @@ public class SettingPlayersGraphics {
 		
 		JButton yellow = new JButton("Amarillo");
 		yellow.setOpaque(true);
+		yellow.setBorderPainted(false);
 		yellow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceYellow.png");

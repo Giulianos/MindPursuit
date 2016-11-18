@@ -288,7 +288,7 @@ public class Controller {
 		game.update();
 		WinningGame winning= (WinningGame) game.getState();
 		WinningGameGUI winningGUI=new WinningGameGUI(createPlayerGUI(winning.getWinner()));
-		new WinningGameGraphics(winningGUI);
+		view.endGame(winningGUI);
 	}
 	
 	public void saveGame()

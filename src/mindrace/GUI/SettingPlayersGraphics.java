@@ -96,8 +96,7 @@ public class SettingPlayersGraphics {
 		green.setBackground(new Color(102, 204, 102));
 		frame.getContentPane().add(green);
 		
-		JLabel lblColor = new JLabel("Color");
-		lblColor.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		JLabel lblColor = new JLabel("Color:");
 		lblColor.setBounds(22, 88, 46, 14);
 		frame.getContentPane().add(lblColor);
 		

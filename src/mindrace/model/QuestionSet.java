@@ -1,9 +1,11 @@
 package mindrace.model;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +50,7 @@ private Map<Category, List<Question>> questionMap;
 		
 		try 
 		{
-			Reader r = new FileReader(text);
+			Reader r = new InputStreamReader(new FileInputStream(text), "UTF-8");
 			BufferedReader in = new BufferedReader(r);
 			String currentline = in.readLine();
 			

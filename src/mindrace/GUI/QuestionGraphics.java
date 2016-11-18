@@ -45,6 +45,7 @@ public class QuestionGraphics extends JFrame {
 	private final static int firstAnswer = 0;
 	private final static int secondAnswer = 1;
 	private final static int thirdAnswer = 2;
+	private final static int MAX_TIME=20;
 	private JPanel contentPane;
 	private JTextField questionText;
 	JButton answer1;
@@ -93,9 +94,17 @@ public class QuestionGraphics extends JFrame {
 		 * if timeShown is 0 I set a wrong answer and close the window
 		 */
 		TimerTask progresTask = new TimerTask() {
-			int timeShown = 20;
+			int timeShown = MAX_TIME;
 			public void run() {
 				timeLabel.setText(timeShown + "");
+				if(timeShown<=5){
+					timeLabel.setForeground(Color.RED);
+				}
+				else if(timeShown<=10 & timeShown%2==0){
+					timeLabel.setForeground(Color.ORANGE);
+				} else {
+					timeLabel.setForeground(Color.GREEN);
+				}
 				if(timeShown == 0) {
 					if(question.getCorrectAnswer() == firstAnswer) {
 						setAnswered(secondAnswer);

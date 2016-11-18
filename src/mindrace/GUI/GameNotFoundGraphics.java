@@ -12,6 +12,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * 
+ * This class has a frame that displays a message that the game was not found
+ * This class is call when the user tries to load a game that is not saved
+ * Note: this class will dispose the frame after a certain amount of time 
  * @author Agustin Lavarello
  *
  */

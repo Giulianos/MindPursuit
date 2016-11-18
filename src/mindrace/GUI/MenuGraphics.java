@@ -18,8 +18,12 @@ import mindrace.controller.Controller;
 import java.awt.Font;
 
 /**
+ * This class display the menu with three buttons. The first button 
+ * starts the game, the second one is to open a load game and the 
+ * third one is to exit. This class calls the controller to execute 
+ * the methods 
+ *  Note: After pressing the button the class will close.  
  * @author Agustin Lavarello
- *
  */
 public class MenuGraphics {
 

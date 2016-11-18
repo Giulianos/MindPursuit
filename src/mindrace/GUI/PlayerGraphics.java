@@ -15,6 +15,10 @@ import mindrace.model.Player;
 
 
 /**
+ * This class has all the element to draw a player: the position and the image;
+ * The class add the image into a label and set the bounds of the label with the image 
+ * height and width and the coordinates
+ * 
  * @author Agustin Lavarello
  *
  */
@@ -25,10 +29,9 @@ public class PlayerGraphics extends JPanel implements Serializable {
 	private JLabel label = new JLabel();
 	private ImageIcon img;
 	
-	public String getName() {
-		return name;
-	}
-
+/*
+* this method is the constructor and receives an image and a string
+*/
 	public PlayerGraphics(ImageIcon img, String name) {
 		this.name = name;
 		this.img = img;
@@ -37,26 +40,34 @@ public class PlayerGraphics extends JPanel implements Serializable {
 		this.label.setBounds((int)p.getX(), (int)p.getY(), img.getIconHeight(), img.getIconWidth());
 	}
 	
+	/*
+	 * this method receives a point and set the X and Y 
+	 * coordinates with the X and Y coordinates of the point
+	 */
 	public void setCoordinates(Point  p) {
 		this.x = (int)p.getX();
 		this.y = (int)p.getY();
 	}
 
+	/*
+	 * this method updates the JLabel of the player with the new coordinates
+	 */
 	public void update() {
 		this.label.setBounds(x, y, img.getIconHeight(), img.getIconWidth());
 	}
 	
-	public void setY(int y) {
-		this.y = y;
-	}
-	
+	/*
+	 * this method returns the JLabel so that BoardGUI can draw the player
+	 */
 	public JLabel getLabel() {
 		return label;
 	}
 	
-	/**
-	 * @return the img
-	 */
+	public String getName() {
+		return name;
+	}
+
+	
 	public ImageIcon getImg() {
 		return img;
 	}

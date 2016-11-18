@@ -14,15 +14,19 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 /**
- * @author Agu
+ * This class has a frame that display an exit message and two buttons 
+ * If the button Yes is pressed the class creates a Windowevent to close all windows and terminate the program
+ * If the button No is pressed the class dispose the frame
+ *  
+ * @author Agustin Lavarello
  *
  */
 public class ExitWindowGraphics {
 
 	private JFrame frame;
-	JButton btnSI;
+	JButton btnYes;
 	JButton btnNO;
-	JLabel lblEstasSeguroQue;
+	JLabel lblMessage;
 	
 	public ExitWindowGraphics() {
 		frame = new JFrame();
@@ -31,17 +35,17 @@ public class ExitWindowGraphics {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
-		lblEstasSeguroQue = new JLabel("Estas seguro que quieres salir?");
-		lblEstasSeguroQue.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblMessage = new JLabel("Estas seguro que quieres salir?");
+		lblMessage.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		btnSI = new JButton("Si");
-		btnSI.addActionListener(new ActionListener() {
+		btnYes = new JButton("Si");
+		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		btnSI.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnYes.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		btnNO = new JButton("No");
 		btnNO.addActionListener(new ActionListener() {
@@ -55,11 +59,11 @@ public class ExitWindowGraphics {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblEstasSeguroQue)
+					.addComponent(lblMessage)
 					.addContainerGap(14, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
-					.addComponent(btnSI, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnYes, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
 					.addComponent(btnNO, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 					.addGap(37))
@@ -68,10 +72,10 @@ public class ExitWindowGraphics {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(36)
-					.addComponent(lblEstasSeguroQue)
+					.addComponent(lblMessage)
 					.addPreferredGap(ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnSI, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnYes, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnNO, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
 					.addGap(41))
 		);

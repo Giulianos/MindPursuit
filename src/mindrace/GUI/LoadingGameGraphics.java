@@ -15,7 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Agu
+ * @author Agustin Lavarello
  *
  */
 public class LoadingGameGraphics extends JFrame {

@@ -18,10 +18,6 @@ public class Moving extends State implements Constants{
 		 */
 		private Integer movement; 
 		private Category currentCategory;
-		private  static final Integer fastMovement = 5;
-		private  static final Integer slowMovement = 1;
-		private final static int FAST_TIME=15000; 
-		private static final int QUANTITY_OF_TOKENS=6;
 		
 		/**
 		 * initialize will update the position of the player. 
@@ -41,7 +37,7 @@ public class Moving extends State implements Constants{
 		 */
 		
 		public State terminate(){
-			if (player.getTile().getPosition()<movement && this.getSituation().getCurrentPlayer().getTokens().size() <= QUANTITY_OF_TOKENS-1){
+			if (player.getTile().getPosition()<movement && this.getSituation().getCurrentPlayer().getTokens().size() < QUANTITY_OF_TOKENS-1){
 				return new WinningToken();
 			}
 			if(currentCategory == null){

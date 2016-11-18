@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ import java.util.TreeMap;
  * @author Julian
  *
  */
-public class QuestionSet {
+public class QuestionSet implements Serializable {
 	
 private Map<Category, List<Question>> questionMap;
 	

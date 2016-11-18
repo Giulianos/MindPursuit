@@ -27,14 +27,14 @@ public class LoadingGameGraphics extends JFrame {
 		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 450, 250);
+		setBounds(100, 100, 500, 250);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		
 		
-		label = new JLabel("El Juego se esta Guardando ");
+		label = new JLabel("El juego se esta guardando");
 		label.setFont(new Font("Tekton Pro", Font.PLAIN, 35));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

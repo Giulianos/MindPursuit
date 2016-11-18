@@ -100,6 +100,22 @@ public class Asking extends State implements Constants {
 	public boolean isModifier() {
 		return false;
 	}
+	
+	/**
+	 * 
+	 * Method only to be used when serializing
+	 * @return the questionSet
+	 */
+	public static QuestionSet getQuestionSet() {
+		return questionSet;
+	}
+	
+	/**
+	 * @param questionSet the questionSet to set
+	 */
+	public static void setQuestionSet(QuestionSet questionSet) {
+		Asking.questionSet = questionSet;
+	}
 
 
 

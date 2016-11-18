@@ -22,6 +22,7 @@ import mindrace.model.Category;
 import mindrace.model.Game;
 import mindrace.model.Player;
 import mindrace.model.Question;
+import mindrace.model.QuestionSet;
 import mindrace.model.states.Asking;
 import mindrace.model.states.ChoosingCategory;
 import mindrace.model.states.Moving;
@@ -277,9 +278,11 @@ public class Controller {
 						new FileInputStream("game.out")));
 		game = (Game) file.readObject();
 		List<PlayerGraphics> playerGraphics = (List<PlayerGraphics>)file.readObject();
+		QuestionSet questionSet = (QuestionSet)file.readObject();
 		file.close();
 		view.setPlayersGraphics(playerGraphics);
 		view.setBoard(new BoardGraphics(playerGraphics,this,this.getInitialPlayer()));
+		Asking.setQuestionSet(questionSet);
 
 	}
 	
@@ -307,6 +310,8 @@ public class Controller {
 			file.writeObject(game);
 			List<PlayerGraphics> playerGraphics = view.getPlayersGraphics();
 			file.writeObject(playerGraphics);
+			file.writeObject(Asking.getQuestionSet());
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

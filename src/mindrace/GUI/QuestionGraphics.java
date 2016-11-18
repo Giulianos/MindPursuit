@@ -53,7 +53,7 @@ public class QuestionGraphics extends JFrame {
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setBounds(100, 100, 450, 310);
+		this.setBounds(750, 350, 450, 310);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
@@ -118,9 +118,13 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == firstAnswer) {
 					answer1.setBackground(Color.GREEN);
+					answer1.setOpaque(true);
+					answer1.setBorderPainted(false);
 				}
 				else {
 					answer1.setBackground(Color.RED);
+					answer1.setOpaque(false);
+					answer1.setBorderPainted(false);
 				}
 				showCorrectAnswer();
 				disableBtns();
@@ -138,9 +142,13 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == secondAnswer) {
 					answer2.setBackground(Color.GREEN);
+					answer1.setOpaque(true);
+					answer1.setBorderPainted(false);
 				}
 				else {
 					answer2.setBackground(Color.RED);
+					answer1.setOpaque(false);
+					answer1.setBorderPainted(false);
 				}
 				showCorrectAnswer();
 				disableBtns();
@@ -157,9 +165,13 @@ public class QuestionGraphics extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(question.getCorrectAnswer() == thirdAnswer) {
 					answer3.setBackground(Color.GREEN);
+					answer1.setOpaque(true);
+					answer1.setBorderPainted(false);
 				}
 				else {
 					answer3.setBackground(Color.RED);
+					answer1.setOpaque(false);
+					answer1.setBorderPainted(false);
 				}
 				showCorrectAnswer();
 				disableBtns();

@@ -55,14 +55,11 @@ public class MenuGraphics {
 					controller.loadGame();
 				} catch (FileNotFoundException e1) {
 					new GameNotFoundGraphics();
-					e1.printStackTrace();
 				} catch (ClassNotFoundException e1) {
 					new GameNotFoundGraphics();
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					new GameNotFoundGraphics();
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

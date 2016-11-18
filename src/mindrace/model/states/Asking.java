@@ -68,17 +68,16 @@ public class Asking extends State implements Constants {
 		if(option==null )
 			throw new IllegalArgumentException();
 		this.selectedAnswer = option;
+		timeTaken = System.currentTimeMillis() - timeTaken;
 	}
-	
 
 	/**
 	 * @see mindrace.model.states.State#terminate()
 	 */
 	@Override
 	public State terminate() {
-		timeTaken = timeTaken - System.currentTimeMillis();
 		if(selectedAnswer == null){
-			throw new NullPointerException();
+			return new NewTurn();
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer) && timeTaken<=SLOW_TIME) {
 			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );

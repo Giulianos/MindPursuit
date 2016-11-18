@@ -53,6 +53,7 @@ public class MenuGraphics {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controller.loadGame();
+					frame.dispose();
 				} catch (FileNotFoundException e1) {
 					new GameNotFoundGraphics();
 				} catch (ClassNotFoundException e1) {

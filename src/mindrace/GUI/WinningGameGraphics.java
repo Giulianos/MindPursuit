@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import javafx.scene.layout.Border;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -40,13 +43,13 @@ public class WinningGameGraphics{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
+		frame.setLayout(new BorderLayout());
 		
 		JLabel label = new JLabel("Gano el Jugador:");
-		label.setFont(new Font("Tekton Pro", Font.PLAIN, 25));
+		label.setFont(new Font("Tekton Pro", Font.PLAIN, 70));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		JLabel lblNameOfTheWinner = new JLabel("");
-		lblNameOfTheWinner.setFont(new Font("Tekton Pro", Font.PLAIN, 26));
+		lblNameOfTheWinner.setFont(new Font("Tekton Pro", Font.PLAIN, 70));
 		lblNameOfTheWinner.setText(winningGame.getWinner().getName());
 		lblNameOfTheWinner.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -57,34 +60,10 @@ public class WinningGameGraphics{
 				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		lblNameOfTheWinner.setFont(new Font("Tekton Pro", Font.PLAIN, 20));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(142)
-							.addComponent(btnFinish, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblNameOfTheWinner, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(33, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(158, Short.MAX_VALUE)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-					.addGap(143))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(40)
-					.addComponent(label)
-					.addGap(18)
-					.addComponent(lblNameOfTheWinner, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-					.addGap(51)
-					.addComponent(btnFinish, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
-		);
-		contentPane.setLayout(gl_contentPane);
+		
+		
+		frame.add(label, BorderLayout.NORTH);
+		frame.add(lblNameOfTheWinner,BorderLayout.CENTER);
+		frame.add(btnFinish, BorderLayout.SOUTH);
 	}
 }

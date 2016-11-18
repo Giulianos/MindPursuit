@@ -21,6 +21,9 @@ import mindrace.controller.Controller;
 import mindrace.model.Category;
 
 /**
+ * This class displays the winning token. It is call when a player win a token by answering 
+ * correctly a question.
+ * 
  * @author Agustin Lavarello
  *
  */

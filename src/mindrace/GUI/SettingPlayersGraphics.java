@@ -25,7 +25,12 @@ import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 
 /**
- * @author Agu
+ * This class creates a playerGraphics with an image and a name.
+ * The class saves the names and the images of the other players so that to players
+ * can't have the same name or image.
+ * After the player is done choosing the class calls the view with the respective method. 
+ * Note: After pressing the button the class will close.
+ * @author Agustin Lavarello
  *
  */
 public class SettingPlayersGraphics {
@@ -40,15 +45,11 @@ public class SettingPlayersGraphics {
 	private static Set<String> names = new HashSet<String>();
 	private static Set<String> colors = new HashSet<String>();
 	
+/*
+ * this is the cunstructor
+ */
 	public SettingPlayersGraphics(View view) {
 		this.view = view;
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 450, 300);
@@ -212,7 +213,8 @@ public class SettingPlayersGraphics {
 	}
 
 	/**
-	 * @return
+	 * This method creates a new playerGraphics
+	 * @return PlayerGraphics
 	 */
 	public PlayerGraphics creatPlayersGraphics() {
 		return new PlayerGraphics(img, nombreDelJugador.getText());

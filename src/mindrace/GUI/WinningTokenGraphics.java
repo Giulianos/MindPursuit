@@ -27,6 +27,10 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 /**
+ * This class display all the categories for the player to choose.
+ * It only allows the player to choose the token that he can. 
+ * After the player choose the token the class calls the controller with the respective method.
+ * Note: After choosing a token the class will be dispose.   
  * @author Agustin Lavarello
  *
  */
@@ -49,7 +53,11 @@ public class WinningTokenGraphics extends JFrame {
 	private static final Category category5 = Category.Science;
 	private static final Category category6 = Category.Sport;
 	
-   
+  /*
+   * this method is the constructor 
+   * 
+   * @param categories this are the tokens that the player is missing.
+   */
 	public WinningTokenGraphics(Controller controller,Set<Category> categories) {
 		this.categories = categories; 
 		this.controller=controller;
@@ -242,10 +250,6 @@ public class WinningTokenGraphics extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
-	
-	/**
-	 * 
-	 */
 	
 
 	public Category getCategory() {

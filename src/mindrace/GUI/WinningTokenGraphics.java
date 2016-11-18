@@ -38,6 +38,12 @@ public class WinningTokenGraphics extends JFrame {
 	JButton button_4;
 	JButton button_5;
 	JButton button_6;
+	private static final Category categoria1 = Category.Art;
+	private static final Category categoria2 = Category.Entertainment;
+	private static final Category categoria3 = Category.Geography;
+	private static final Category categoria4 = Category.History;
+	private static final Category categoria5 = Category.Science;
+	private static final Category categoria6 = Category.Sport;
 	
    
 	public WinningTokenGraphics(Controller controller,Set<Category> categories) {
@@ -46,7 +52,7 @@ public class WinningTokenGraphics extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 520, 300);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,22 +68,28 @@ public class WinningTokenGraphics extends JFrame {
 			
 		};
 		
-		button_1 = new JButton(Translator.translate(Category.Geography).toString());
+		button_1 = new JButton(Translator.translate(categoria1));
+		button_1.setBackground(new Color(255,77,158));
 		button_1.setVisible(true);
 		button_1.setOpaque(true);
-		button_2 = new JButton(Translator.translate(Category.Science).toString());
+		button_2 = new JButton(Translator.translate(categoria2));
+		button_2.setBackground(new Color(249,236,0));
 		button_2.setVisible(true);
 		button_2.setOpaque(true);
-		button_3 = new JButton(Translator.translate(Category.History).toString());
+		button_3 = new JButton(Translator.translate(categoria3));
+		button_3.setBackground(new Color(0,164,255));
 		button_3.setVisible(true);
 		button_3.setOpaque(true);
-		button_4 = new JButton(Translator.translate(Category.Sport).toString());
+		button_4 = new JButton(Translator.translate(categoria4));
+		button_4.setBackground(new Color(198,132,0));
 		button_4.setVisible(true);
 		button_4.setOpaque(true);
-		button_5 = new JButton(Translator.translate(Category.Art).toString());
+		button_5 = new JButton(Translator.translate(categoria5));
+		button_5.setBackground(new Color(255,176,0));
 		button_5.setVisible(true);
 		button_5.setOpaque(true);
-		button_6 = new JButton(Translator.translate(Category.Entertainment).toString());
+		button_6 = new JButton(Translator.translate(categoria6));
+		button_6.setBackground(new Color(97,191,58));
 		button_6.setVisible(true);
 		button_6.setOpaque(true);
 		

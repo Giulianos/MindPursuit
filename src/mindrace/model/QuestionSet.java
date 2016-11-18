@@ -88,8 +88,10 @@ private Map<Category, List<Question>> questionMap;
 		
 		if(categoryQuestionArray.size()>0)
 		{
-			int random = new Random().nextInt(categoryQuestionArray.size());
-			Question randomQuestion = categoryQuestionArray.get(random);
+			Random random = new Random();
+			random.setSeed(System.currentTimeMillis());
+			int nextInt = random.nextInt(categoryQuestionArray.size());
+			Question randomQuestion = categoryQuestionArray.get(nextInt);
 			categoryQuestionArray.remove(random);
 			return randomQuestion;
 		}

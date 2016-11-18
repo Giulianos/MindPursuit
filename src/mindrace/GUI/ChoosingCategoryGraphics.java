@@ -39,12 +39,12 @@ public class ChoosingCategoryGraphics extends JFrame {
 	private JButton button_4;
 	private JButton button_5;
 	private JButton button_6;
-	private Category categoria1 = Category.Art;
-	private Category categoria2 = Category.Entertainment;
-	private Category categoria3 = Category.Geography;
-	private Category categoria4 = Category.History;
-	private Category categoria5 = Category.Science;
-	private Category categoria6 = Category.Sport;
+	private static final Category categoria1 = Category.Art;
+	private static final Category categoria2 = Category.Entertainment;
+	private static final Category categoria3 = Category.Geography;
+	private static final Category categoria4 = Category.History;
+	private static final Category categoria5 = Category.Science;
+	private static final Category categoria6 = Category.Sport;
 
 	
 	/*

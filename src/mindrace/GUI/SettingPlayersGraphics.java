@@ -81,7 +81,7 @@ public class SettingPlayersGraphics {
 		lblNombreDelJugador.setBounds(22, 21, 154, 42);
 		frame.getContentPane().add(lblNombreDelJugador);
 		
-		JButton green = new JButton("Verde");
+		JButton green = new JButton();
 		green.setOpaque(true);
 		green.setBorderPainted(false);
 		green.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class SettingPlayersGraphics {
 		lblColor.setBounds(22, 88, 46, 14);
 		frame.getContentPane().add(lblColor);
 		
-		JButton black = new JButton("Negro");
+		JButton black = new JButton();
 		black.setOpaque(true);
 		black.setBorderPainted(false);
 		black.addActionListener(new ActionListener() {
@@ -116,8 +116,9 @@ public class SettingPlayersGraphics {
 		black.setBounds(169, 113, 89, 23);
 		frame.getContentPane().add(black);
 		
-		JButton blue = new JButton("Azul");
+		JButton blue = new JButton();
 		blue.setOpaque(true);
+		blue.setBorderPainted(false);
 		blue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				img = new ImageIcon("pieceBlue.png");
@@ -130,7 +131,7 @@ public class SettingPlayersGraphics {
 		blue.setBounds(313, 113, 89, 23);
 		frame.getContentPane().add(blue);
 		
-		JButton purple = new JButton("Violeta");
+		JButton purple = new JButton();
 		purple.setOpaque(true);
 		purple.setBorderPainted(false);
 		purple.addActionListener(new ActionListener() {
@@ -145,7 +146,7 @@ public class SettingPlayersGraphics {
 		purple.setBounds(22, 187, 89, 23);
 		frame.getContentPane().add(purple);
 		
-		JButton red = new JButton("Rojo");
+		JButton red = new JButton();
 		red.setOpaque(true);
 		red.setBorderPainted(false);
 		red.addActionListener(new ActionListener() {
@@ -160,7 +161,7 @@ public class SettingPlayersGraphics {
 		red.setBounds(169, 187, 89, 23);
 		frame.getContentPane().add(red);
 		
-		JButton yellow = new JButton("Amarillo");
+		JButton yellow = new JButton();
 		yellow.setOpaque(true);
 		yellow.setBorderPainted(false);
 		yellow.addActionListener(new ActionListener() {

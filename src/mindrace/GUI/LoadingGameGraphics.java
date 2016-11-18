@@ -15,6 +15,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * This class has a frame that displays a message to let know the user the game
+ * was saved
+ * Note: this class will dispose the frame after a certain amount of time
  * @author Agustin Lavarello
  *
  */

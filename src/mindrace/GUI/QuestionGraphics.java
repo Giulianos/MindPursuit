@@ -27,6 +27,13 @@ import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 
 /**
+ * This class shows a question and all the three posible answers.
+ * When the button that correspond to and answer is pressed the correct answer is shown
+ * changing the color green and if the button pressed is the wrong answer it changes the
+ * color of the background to red.
+ * 
+ *  Note: After pressing the button or 20 seconds the class will close
+ * 
  * @author Agustin Lavarello
  *
  */
@@ -47,7 +54,11 @@ public class QuestionGraphics extends JFrame {
 	private Controller controller;
 
 	
-
+/*
+ * This method is the constructor and receives a QuestionGUI to show all the question 
+ * and the answers. 
+ * After 20 seconds the timer of the class set a wrong answer and dispose the frame.
+ */
 	
 	public QuestionGraphics(Controller controller, QuestionGUI q) {
 		
@@ -207,13 +218,18 @@ public class QuestionGraphics extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 	
-	public void draw() {}
-	
+	/*
+	 * this method calls the controller with the QuestionGUI and set the answer 
+	 * on the QuestionGUI
+	 */
 	public void setAnswered(Integer answer) {
 		this.question.setAnswer(answer);
 		controller.answered(question);
 	}
 	
+	/*
+	 * this method paint green the button of the correct answer
+	 */
 	public void showCorrectAnswer() {
 		
 		switch (question.getCorrectAnswer()) {
@@ -225,7 +241,10 @@ public class QuestionGraphics extends JFrame {
 				break;
 		}
 	}
-	
+	/*
+	 * this method disable all the buttons so that the user can't press 
+	 * another button after he choose the an answer.
+	 */
 	public void disableBtns() {
 		answer1.setEnabled(false);
 		answer2.setEnabled(false);

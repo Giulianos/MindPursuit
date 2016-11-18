@@ -21,6 +21,12 @@ import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 
 /**
+ * This class shows a frame where it displays the name of the player and the 
+ * tokens the user can steal from the player. If there is more that one player
+ * the class allows the user to visualize the other players.
+ * After choosing the token, this class calls the controller with the respective method.
+ * Note: When the token is chosen this class will dispose the frame.
+ *  
  * @author Agustin Lavarello
  *
  */
@@ -49,9 +55,11 @@ public class StealingTokenGraphics {
 	
 
 	/**
+	 * This method is the constructor and receives the controller and  StealingTokenGUI
+	 * to display the information.
 	 * 
-	 * 
-	 * Faltan las llamadas a controller con lo que gano el jugador
+	 * @param controller
+	 * @param stealingToken
 	 */
 	public StealingTokenGraphics(Controller controller, StealingTokenGUI stealingToken) {
 		this.controller = controller;
@@ -197,7 +205,7 @@ public class StealingTokenGraphics {
 	}
 
 	/**
-	 * @param next
+	 * this method changes all the information display of the player that can be stolen. 
 	 */
 	public void changePlayer(PlayerGUI player) {
 		//metodos de playerGUI

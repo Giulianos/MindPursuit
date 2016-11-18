@@ -93,6 +93,7 @@ public class View {
 	}
 	
 	public void questionGraphics(QuestionGUI question){
+		board.getFrame().setEnabled(false);
 		new QuestionGraphics(controller,question);
 	}
 	
@@ -109,6 +110,7 @@ public class View {
 		board.setCurrentPlayer(currentPlayerGraphics);
 		board.setCurrentPlayerGUI(player);
 		board.newTurn();
+		board.getFrame().setEnabled(true);
 	}
 	public void updateBoard(PlayerGUI player){
 		board.setCurrentPlayerGUI(player);

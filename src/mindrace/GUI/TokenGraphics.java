@@ -33,12 +33,13 @@ public class TokenGraphics extends JFrame {
 		this.controller=controller;
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblMessage = new JLabel("Felicitaciones Ganaste una Categoria");
+		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMessage.setFont(new Font("Tekton Pro", Font.PLAIN, 23));
 		
 		JLabel Category = new JLabel(Translator.translate(winningCategory).toString());
@@ -58,24 +59,24 @@ public class TokenGraphics extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(37)
-							.addComponent(lblMessage))
+							.addGap(23)
+							.addComponent(lblMessage, GroupLayout.PREFERRED_SIZE, 421, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(81)
+							.addGap(102)
 							.addComponent(Category, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(163)
+							.addGap(195)
 							.addComponent(btnAcceptar)))
-					.addContainerGap(37, Short.MAX_VALUE))
+					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(37)
+					.addGap(35)
 					.addComponent(lblMessage)
 					.addGap(39)
 					.addComponent(Category, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
 					.addComponent(btnAcceptar)
 					.addContainerGap())
 		);

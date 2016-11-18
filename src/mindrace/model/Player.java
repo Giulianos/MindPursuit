@@ -1,5 +1,6 @@
 package mindrace.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import mindrace.model.Category;
 import java.util.Set;
@@ -9,15 +10,16 @@ import java.util.Set;
  *
  */
 
-public class Player{
+public class Player implements Cloneable, Serializable{
 	private Board board;
 	private String name;
 	private Set<Category> tokens;
 	private Tile tile;
 	
-	public Player(String name){
+	public Player(String name, Board b){
 		this.name = name;
 		this.tokens = new HashSet<Category>();
+		this.board=b;
 		this.tile = board.startingTile();
 	}
 	
@@ -29,10 +31,13 @@ public class Player{
 	}
 	
 	public void addToken(Category category){
-		if(tokens.contains(category)){
-			throw new IllegalArgumentException("Has that token");
-		}
 		tokens.add(category);
+	}
+	public void removeToken(Category category){
+		if(!tokens.contains(category)){
+			throw new IllegalArgumentException("Doesn�t have that token");
+		}
+		tokens.remove(category);
 	}
 	
 	public void move(int quantity){
@@ -43,15 +48,49 @@ public class Player{
 			tile=board.getNext(tile);
 		}
 	}
+	public Player clone(){
+		Player cloned= new Player(this.name, board);
+		Set<Category> clonedTokens= new HashSet<Category>();
+		clonedTokens.addAll(this.tokens);
+		cloned.tokens=clonedTokens;
+		cloned.tile=this.tile;
+		return cloned;
+	}
+	public void setBoard(Board b){
+		this.board=b;
+	}
+	public Set<Category> getTokens() {
+		Set<Category> tokensCopy = new HashSet<Category>();
+		tokensCopy.addAll(this.tokens);
+		return tokensCopy;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.name.equals(obj.toString());
+		if(obj==null){
+			return false;
+		}
+		if(!obj.getClass().equals(this.getClass())){
+			return false;
+		}
+		Player aux= (Player) obj;
+		return this.name.equals(aux.getName());
 	}
 	
 	@Override
 	public int hashCode() {
 		return this.name.hashCode();
+	}
+	@Override
+	public String toString() {
+		String string =this.name;
+		for(Category c: tokens){
+			string+=c.toString();
+		}
+		return string;
+	}
+	public void setTile(Tile tile){
+		this.tile=tile;
 	}
 
 }

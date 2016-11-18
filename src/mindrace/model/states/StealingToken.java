@@ -1,44 +1,48 @@
 package mindrace.model.states;
 
+import java.util.Set;
+
 import mindrace.model.Category;
 import mindrace.model.Player;
 import mindrace.model.Situation;
-import mindrace.model.states.ModifierState;
 
 /**
- * @author User
+ * @author Daniella
  *
  */
-public class StealingToken extends ModifierState {
+public class StealingToken extends State implements Constants {
 	private Player playerToSteal;
 	private Category categoryToSteal;
 	
-	/**
-	 * @see mindrace.model.states.ModifierState#initialize()
-	 */
-	@Override
 	public void initialize() {
 	}
 
+	public Set<Player> getPlayersToSteal(){
+		return this.getSituation().getCurrentPlayer().getTile().stealablePlayers(this.getSituation().getCurrentPlayer());
+	}
+	
 	public void setTokenToSteal(Player playerToSteal, Category category){
 		this.playerToSteal = playerToSteal;
-		this.categoryToSteal = categoryToSteal;
+		this.categoryToSteal = category;
 	}
 	/**
 	 * @see mindrace.model.states.ModifierState#terminate()
 	 */
 	@Override
 	public State terminate(){
-		(currentSituation.getCurrentPlayer()).addToken(categoryToSteal);
-		playerToSteal.removeToken(categoryToSteal);
+		(this.getSituation().getCurrentPlayer()).addToken(categoryToSteal);
+		if(this.getSituation().getCurrentPlayer().getTokens().size() == QUANTITY_OF_TOKENS){
+			return new WinningGame();
+		}
+		this.getSituation().getRealPlayer(playerToSteal).removeToken(categoryToSteal);
+		return new Moving();
 	}
 
-	/**
-	 * @see mindrace.model.states.ModifierState#getNewSituation()
+	/* (non-Javadoc)
+	 * @see mindrace.model.states.State#isModifier()
 	 */
 	@Override
-	public Situation getNewSituation() {
-		return currentSituation;
+	public boolean isModifier() {
+		return true;
 	}
-
 }

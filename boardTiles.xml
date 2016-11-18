@@ -1,0 +1,44 @@
+<tiles>
+  <tile star="false" />
+  <tile category="Sport" star="false" />
+  <tile category="Entertainment" star="false" />
+  <tile category="Geography" star="false" />
+  <tile category="Art" star="false" />
+  <tile category="History" star="false" />
+  <tile category="Science" star="false" />
+  <tile star="false" />
+  <tile category="Sport" star="true" />
+  <tile category="Geography" star="false" />
+  <tile category="Entertainment" star="false" />
+  <tile category="Science" star="false" />
+  <tile category="History" star="false" />
+  <tile category="Art" star="true" />
+  <tile category="Geography" star="false" />
+  <tile category="Entertainment" star="false" />
+  <tile category="Sport" star="false" />
+  <tile star="false" />
+  <tile category="Art" star="false" />
+  <tile category="History" star="false" />
+  <tile category="Science" star="true" />
+  <tile category="Sport" star="false" />
+  <tile category="Entertainment" star="false" />
+  <tile category="Geography" star="false" />
+  <tile category="Art" star="false" />
+  <tile category="History" star="true" />
+  <tile category="Science" star="false" />
+  <tile star="false" />
+  <tile category="Science" star="false" />
+  <tile category="History" star="false" />
+  <tile category="Art" star="false" />
+  <tile category="Geography" star="true" />
+  <tile category="Entertainment" star="false" />
+  <tile category="Sport" star="false" />
+  <tile star="false" />
+  <tile category="Geography" star="false" />
+  <tile category="Art" star="false" />
+  <tile category="History" star="false" />
+  <tile star="false" />
+  <tile category="Entertainment" star="true" />
+  <tile category="Sport" star="false" />
+  <tile category="Science" star="false" />
+</tiles>

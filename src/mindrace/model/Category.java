@@ -1,10 +1,11 @@
 package mindrace.model;
-
 /**
- * @author francisco
+ * 
+ * @author Julian
+ * 
  *
  */
-public enum Category {
-	ART, SPORTS
 
+public enum Category {
+	Geography,Science,History,Sport,Art,Entertainment
 }

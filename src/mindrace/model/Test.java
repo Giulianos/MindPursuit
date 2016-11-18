@@ -159,7 +159,7 @@ public class Test {
 					int f = reader.nextInt();
 					long z= System.currentTimeMillis()-y;
 					System.out.println((int)(z/1000));
-					askingState.setAnswer(f-1, (int)(z/1000));
+					askingState.setAnswer(f-1);
 					game.update();
 					
 					break;	

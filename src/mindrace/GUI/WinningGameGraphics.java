@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 /**
@@ -22,38 +23,41 @@ import java.awt.event.ActionEvent;
  * @author Agustin Lavallero
  *
  */
-public class WinningGameGraphics extends JFrame {
+public class WinningGameGraphics{
 
 	private JPanel contentPane;
+	private JFrame frame;
 /*
  * The constructor use the WinningGameGUI to print the name of the winner
  * 
  * @param winningGame 
  */
 	public WinningGameGraphics(WinningGameGUI winningGame) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		setUndecorated(true);
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		
 		JLabel label = new JLabel("Gano el Jugador:");
-		label.setFont(new Font("Tekton Pro", Font.PLAIN, 18));
+		label.setFont(new Font("Tekton Pro", Font.PLAIN, 25));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNameOfTheWinner = new JLabel("");
 		lblNameOfTheWinner.setFont(new Font("Tekton Pro", Font.PLAIN, 26));
 		lblNameOfTheWinner.setText(winningGame.getWinner().getName());
 		lblNameOfTheWinner.setHorizontalAlignment(SwingConstants.CENTER);
+
 		
 		JButton btnFinish = new JButton("Terminar");
 		btnFinish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		});
+		lblNameOfTheWinner.setFont(new Font("Tekton Pro", Font.PLAIN, 20));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

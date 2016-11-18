@@ -1,6 +1,7 @@
 package mindrace.GUI;
 
 import java.awt.Point;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -143,6 +144,9 @@ public class View {
 	public BoardGraphics getBoardGraphics()
 	{
 		return board;
+	}
+	public void removeBoard(){
+		board.getFrame().setEnabled(true);
 	}
 	
 

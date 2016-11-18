@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -41,12 +42,12 @@ public class WinningTokenGraphics extends JFrame {
 	JButton button_4;
 	JButton button_5;
 	JButton button_6;
-	private static final Category categoria1 = Category.Art;
-	private static final Category categoria2 = Category.Entertainment;
-	private static final Category categoria3 = Category.Geography;
-	private static final Category categoria4 = Category.History;
-	private static final Category categoria5 = Category.Science;
-	private static final Category categoria6 = Category.Sport;
+	private static final Category category1 = Category.Art;
+	private static final Category category2 = Category.Entertainment;
+	private static final Category category3 = Category.Geography;
+	private static final Category category4 = Category.History;
+	private static final Category category5 = Category.Science;
+	private static final Category category6 = Category.Sport;
 	
    
 	public WinningTokenGraphics(Controller controller,Set<Category> categories) {
@@ -55,7 +56,7 @@ public class WinningTokenGraphics extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 450, 350);
+		setBounds(150, 190, 450, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -71,52 +72,52 @@ public class WinningTokenGraphics extends JFrame {
 			
 		};
 		
-		button_1 = new JButton(Translator.translate(categoria1));
+		button_1 = new JButton(Translator.translate(category1));
 		button_1.setBackground(new Color(255,77,158));
 		button_1.setVisible(true);
 		button_1.setOpaque(true);
-		button_2 = new JButton(Translator.translate(categoria2));
+		button_2 = new JButton(Translator.translate(category2));
 		button_2.setBackground(new Color(249,236,0));
 		button_2.setVisible(true);
 		button_2.setOpaque(true);
-		button_3 = new JButton(Translator.translate(categoria3));
+		button_3 = new JButton(Translator.translate(category3));
 		button_3.setBackground(new Color(0,164,255));
 		button_3.setVisible(true);
 		button_3.setOpaque(true);
-		button_4 = new JButton(Translator.translate(categoria4));
+		button_4 = new JButton(Translator.translate(category4));
 		button_4.setBackground(new Color(198,132,0));
 		button_4.setVisible(true);
 		button_4.setOpaque(true);
-		button_5 = new JButton(Translator.translate(categoria5));
+		button_5 = new JButton(Translator.translate(category5));
 		button_5.setBackground(new Color(255,176,0));
 		button_5.setVisible(true);
 		button_5.setOpaque(true);
-		button_6 = new JButton(Translator.translate(categoria6));
+		button_6 = new JButton(Translator.translate(category6));
 		button_6.setBackground(new Color(97,191,58));
 		button_6.setVisible(true);
 		button_6.setOpaque(true);
 		
-		if(!categories.contains(Category.Geography)) {
+		if(!categories.contains(category1)) {
 			button_1.setBackground(Color.RED);
 			button_1.setEnabled(false);
 		}
-		if(!categories.contains(Category.Science)) {
+		if(!categories.contains(category2)) {
 			button_2.setBackground(Color.RED);
 			button_2.setEnabled(false);
 		}
-		if(!categories.contains(Category.History)) {
+		if(!categories.contains(category3)) {
 			button_3.setBackground(Color.RED);
 			button_3.setEnabled(false);
 		}
-		if(!categories.contains(Category.Sport)) {
+		if(!categories.contains(category4)) {
 			button_4.setBackground(Color.RED);
 			button_4.setEnabled(false);
 		}
-		if(!categories.contains(Category.Art)) {
+		if(!categories.contains(category5)) {
 			button_5.setBackground(Color.RED);
 			button_5.setEnabled(false);
 		}
-		if(!categories.contains(Category.Entertainment)) {
+		if(!categories.contains(category6)) {
 			button_6.setBackground(Color.RED);
 			button_6.setEnabled(false);
 		}
@@ -124,8 +125,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.Geography)) {
-					category = Category.Geography;
+				if(categories.contains(category1)) {
+					category = category1;
 					button_1.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
@@ -137,8 +138,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.Science)) {
-					category = Category.Science;
+				if(categories.contains(category2)) {
+					category = category2;
 					button_2.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
@@ -149,8 +150,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.History)) {
-					category = Category.History;
+				if(categories.contains(category3)) {
+					category =category3;
 					button_3.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
@@ -161,8 +162,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.Sport)) {
-					category = Category.Sport;
+				if(categories.contains(category4)) {
+					category = category4;
 					button_4.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
@@ -173,8 +174,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.Art)) {
-					category = Category.Art;
+				if(categories.contains(category5)) {
+					category = category5;
 					button_5.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}
@@ -185,8 +186,8 @@ public class WinningTokenGraphics extends JFrame {
 		
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(categories.contains(Category.Entertainment)) {
-					category = Category.Entertainment;
+				if(categories.contains(category6)) {
+					category = category6;
 					button_6.setBackground(Color.YELLOW);
 					closingTimer.schedule(closingTask, 1000);
 				}

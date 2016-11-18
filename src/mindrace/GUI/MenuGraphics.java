@@ -84,7 +84,7 @@ public class MenuGraphics {
 			}
 		});
 		
-		JLabel menuTitle = new JLabel("Carrera de mentes");
+		JLabel menuTitle = new JLabel("Carrera de Mente");
 		menuTitle.setFont(new Font("Traditional Arabic", Font.BOLD, 29));
 		menuTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

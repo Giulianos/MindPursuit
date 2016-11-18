@@ -23,13 +23,15 @@ import java.util.TreeMap;
 public class QuestionSet implements Serializable {
 	
 private Map<Category, List<Question>> questionMap;
+private Random random;
 	
 	/**
 	 * Creates a map where each category is associated with an ArrayList of questions of that category
 	 */
 
 	public QuestionSet() {
-		
+		random = new Random();
+		random.setSeed(System.currentTimeMillis());
 		questionMap = new TreeMap<Category,List<Question>>();
 		
 		for(Category each : Category.values())
@@ -90,11 +92,9 @@ private Map<Category, List<Question>> questionMap;
 		
 		if(categoryQuestionArray.size()>0)
 		{
-			Random random = new Random();
-			random.setSeed(System.currentTimeMillis());
 			int nextInt = random.nextInt(categoryQuestionArray.size());
 			Question randomQuestion = categoryQuestionArray.get(nextInt);
-			categoryQuestionArray.remove(random);
+			categoryQuestionArray.remove(nextInt);
 			return randomQuestion;
 		}
 		else

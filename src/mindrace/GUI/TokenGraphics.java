@@ -33,18 +33,17 @@ public class TokenGraphics extends JFrame {
 		this.controller=controller;
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 500, 300);
+		setBounds(170, 195, 400, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblMessage = new JLabel("Felicitaciones Ganaste una Categoria");
-		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMessage.setFont(new Font("Tekton Pro", Font.PLAIN, 23));
+		JLabel lblMessage = new JLabel("Felicitaciones Ganaste una Categoria:");
+		lblMessage.setFont(new Font("Tekton Pro", Font.PLAIN, 18));
 		
 		JLabel Category = new JLabel(Translator.translate(winningCategory).toString());
 		Category.setHorizontalAlignment(SwingConstants.CENTER);
-		Category.setFont(new Font("Tekton Pro", Font.PLAIN, 18));
+		Category.setFont(new Font("Tekton Pro", Font.PLAIN, 24));
 		
 		JButton btnAcceptar = new JButton("Aceptar");
 		btnAcceptar.addActionListener(new ActionListener() {

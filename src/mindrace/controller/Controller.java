@@ -183,10 +183,8 @@ public class Controller {
 		
 		state.setAnswer(questionGUI.getAnswer());
 		
-		System.out.println("1"+game.getState().getClass());
 		
 		game.update();
-		System.out.println("2"+game.getState().getClass());
 		
 		
 		

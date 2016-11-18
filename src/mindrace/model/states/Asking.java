@@ -45,7 +45,6 @@ public class Asking extends State implements Constants {
 		
 		questionToAsk = questionSet.getQuestion(categoryToAsk);
 		
-		
 		if(questionToAsk==null) {
 			
 			questionSet=new QuestionSet();
@@ -80,7 +79,6 @@ public class Asking extends State implements Constants {
 			return new NewTurn();
 		}
 		if(questionToAsk.getCorrectAnswer().equals(selectedAnswer) && timeTaken<=SLOW_TIME) {
-			System.out.println(this.getSituation().getCurrentPlayer().getTile().getClass() );
 			if(timeTaken<FAST_TIME){ 
 				if(this.getSituation().getCurrentPlayer().getTile().isSpecial()) {
 					return new WinningToken();	

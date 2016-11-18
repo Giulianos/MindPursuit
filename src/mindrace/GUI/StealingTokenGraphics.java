@@ -40,12 +40,12 @@ public class StealingTokenGraphics {
 	private JButton btnCategoria5;
 	private PlayerGUI playerToSteal;
 	private JButton btnCategoria6;
-	private Category categoria1 = Category.Art;
-	private Category categoria2 = Category.Entertainment;
-	private Category categoria3 = Category.Geography;
-	private Category categoria4 = Category.History;
-	private Category categoria5 = Category.Science;
-	private Category categoria6 = Category.Sport;
+	private Category category1 = Category.Art;
+	private Category category2 = Category.Entertainment;
+	private Category category3 = Category.Geography;
+	private Category category4 = Category.History;
+	private Category category5 = Category.Science;
+	private Category category6 = Category.Sport;
 	
 
 	/**
@@ -61,7 +61,7 @@ public class StealingTokenGraphics {
 		this.it = setPlayers.iterator();
 		this.playerToSteal= it.next();
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(150, 190, 450, 300);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
@@ -109,12 +109,12 @@ public class StealingTokenGraphics {
 		lblName.setBounds(20, 71, 46, 14);
 		layeredPane.add(lblName);
 		
-		btnCategoria1 = new JButton(Translator.translate(categoria1).toString());
+		btnCategoria1 = new JButton(Translator.translate(category1).toString());
 		btnCategoria1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria1);
+				stealingTokensGUI.setStolenToken(category1);
 				controller.tokenStolen(stealingTokensGUI);
 				
 				
@@ -123,12 +123,12 @@ public class StealingTokenGraphics {
 		btnCategoria1.setBounds(10, 108, 89, 23);
 		layeredPane.add(btnCategoria1);
 		
-		btnCategoria2 = new JButton(Translator.translate(categoria2).toString());
+		btnCategoria2 = new JButton(Translator.translate(category2).toString());
 		btnCategoria2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria2);
+				stealingTokensGUI.setStolenToken(category2);
 				controller.tokenStolen(stealingTokensGUI);
 			
 			}
@@ -136,12 +136,12 @@ public class StealingTokenGraphics {
 		btnCategoria2.setBounds(10, 170, 101, 23);
 		layeredPane.add(btnCategoria2);
 		
-		btnCategoria3 = new JButton(Translator.translate(categoria3).toString());
+		btnCategoria3 = new JButton(Translator.translate(category3).toString());
 		btnCategoria3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria3);
+				stealingTokensGUI.setStolenToken(category3);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -149,12 +149,12 @@ public class StealingTokenGraphics {
 		btnCategoria3.setBounds(176, 108, 89, 23);
 		layeredPane.add(btnCategoria3);
 		
-		btnCategoria5 = new JButton(Translator.translate(categoria5).toString());
+		btnCategoria5 = new JButton(Translator.translate(category5).toString());
 		btnCategoria5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria5);
+				stealingTokensGUI.setStolenToken(category5);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -162,12 +162,12 @@ public class StealingTokenGraphics {
 		btnCategoria5.setBounds(335, 108, 89, 23);
 		layeredPane.add(btnCategoria5);
 		
-		btnCategoria4 = new JButton(Translator.translate(categoria4).toString());
+		btnCategoria4 = new JButton(Translator.translate(category4).toString());
 		btnCategoria4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria4);
+				stealingTokensGUI.setStolenToken(category4);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -175,12 +175,12 @@ public class StealingTokenGraphics {
 		btnCategoria4.setBounds(176, 170, 89, 23);
 		layeredPane.add(btnCategoria4);
 		
-		btnCategoria6 = new JButton(Translator.translate(categoria6).toString());
+		btnCategoria6 = new JButton(Translator.translate(category6).toString());
 		btnCategoria6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closingTimer.schedule(closingTask, 1000);
 				stealingTokensGUI.setStolenPlayer(playerToSteal);
-				stealingTokensGUI.setStolenToken(categoria6);
+				stealingTokensGUI.setStolenToken(category6);
 				controller.tokenStolen(stealingTokensGUI);
 				
 			}
@@ -200,27 +200,31 @@ public class StealingTokenGraphics {
 	 * @param next
 	 */
 	public void changePlayer(PlayerGUI player) {
-		//metodos de playerGUI
 		lblName.setText(player.getName());
 		
+		btnCategoria1.setEnabled(true);
+		btnCategoria2.setEnabled(true);
+		btnCategoria3.setEnabled(true);
+		btnCategoria4.setEnabled(true);
+		btnCategoria5.setEnabled(true);
+		btnCategoria6.setEnabled(true);
 		
-		
-		if(!mapOfPlayers.get(player).contains(categoria1)){
+		if(!mapOfPlayers.get(player).contains(category1)){
 			btnCategoria1.setEnabled(false);
 		}
-		if(!mapOfPlayers.get(player).contains(categoria2)){
+		if(!mapOfPlayers.get(player).contains(category2)){
 			btnCategoria2.setEnabled(false);
 		}
-		if(!mapOfPlayers.get(player).contains(categoria3)){
+		if(!mapOfPlayers.get(player).contains(category3)){
 			btnCategoria3.setEnabled(false);
 		}
-		if(!mapOfPlayers.get(player).contains(categoria4)){
+		if(!mapOfPlayers.get(player).contains(category4)){
 			btnCategoria4.setEnabled(false);
 		}
-		if(!mapOfPlayers.get(player).contains(categoria5)){
+		if(!mapOfPlayers.get(player).contains(category5)){
 			btnCategoria5.setEnabled(false);
 		}
-		if(!mapOfPlayers.get(player).contains(categoria6)){
+		if(!mapOfPlayers.get(player).contains(category6)){
 			btnCategoria6.setEnabled(false);
 		}
 		frame.repaint();

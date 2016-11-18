@@ -15,6 +15,6 @@
 ¿Qué cantante hizo una aparición en el medio tiempo del Superbowl 2014? (Justin Bieber,Bruno Mars,Rihanna,1)
 ¿En qué año se fundó The Walt Disney Company? (1972,1984,1923,2)
 ¿Cómo se llama el malo de "Monsters INC"? (Mike,Randal,Bu,1)
-¿Cómo se llama el papá de Nemo? ("Marlín,Merlín,Crush",0)
+¿Cómo se llama el papá de Nemo? ("Marlín","Merlín","Crush",0)
 ¿De dónde es la frase: "si pato come pez, sería una abominación"? ("El pato Donald","Lilo y Stich","El pato Lucas",1)
 ¿Cómo se llama el amigo de Pumba? ("Timón","Tamín","Timo",0)

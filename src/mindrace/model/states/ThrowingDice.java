@@ -9,7 +9,7 @@ import java.util.Random;
 public class ThrowingDice extends State implements Constants{
 
 	private Integer diceNumber;
-	private Random randomNumber = new Random(); 
+	private static  Random randomNumber =  new Random(); 
 
 	public Integer throwDice() {
 		return (int) (randomNumber.nextDouble()*MAXIMALNUMBER + MINIMALNUMBER);

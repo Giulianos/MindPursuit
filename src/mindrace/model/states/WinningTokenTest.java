@@ -36,11 +36,11 @@ public class WinningTokenTest {
 	 */
 	@Before
 	public void testSetUp()throws Exception{
+		board = new Board();
 		choosingCategory = new ChoosingCategory();
 		players = new LinkedList();
 		player = new Player("Juancito", board);
 		players.add(player);
-		board = new Board();
 		asking = new Asking();
 		moving = new Moving();
 		situation = new Situation(players,board);

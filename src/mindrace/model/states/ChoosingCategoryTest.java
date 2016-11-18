@@ -17,8 +17,6 @@ import mindrace.model.Situation;
  *
  */
 public class ChoosingCategoryTest {
-
-	public class WinningTokenTest {
 		ChoosingCategory choosingCategory;
 		List<Player> players;
 		Board board;
@@ -32,11 +30,11 @@ public class ChoosingCategoryTest {
 		 */
 		@Before
 		public void testSetUp()throws Exception{
+			board = new Board();
 			choosingCategory = new ChoosingCategory();
 			players = new LinkedList();
 			player = new Player("Juancito", board);
 			players.add(player);
-			board = new Board();
 			asking = new Asking();
 			moving = new Moving();
 			situation = new Situation(players,board);
@@ -61,5 +59,5 @@ public class ChoosingCategoryTest {
 	public void testIsModifier() {
 		assertFalse(choosingCategory.isModifier());
 	}
-
 }
+

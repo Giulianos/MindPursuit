@@ -27,10 +27,10 @@ public class NewTurnTest {
 	
 	@Before
 	public void testSetUp()throws Exception{
+		board = new Board();
 		players = new LinkedList();
 		player = new Player("Juancito", board);
 		players.add(player);
-		board = new Board();
 		asking = new Asking();
 		throwingDice = new ThrowingDice();
 		newTurn = new NewTurn();

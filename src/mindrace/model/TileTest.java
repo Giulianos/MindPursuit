@@ -25,10 +25,10 @@ public class TileTest {
 	
 	@Before
 	public void testSetUp()throws Exception{
+		board = new Board();
 		juancito = new Player("juancito", board);
 		pedro = new Player("pedro", board);
 		jorge = new Player("jorge", board);
-		board = new Board();
 		tileStart = board.getTileAt(0);
 		tileStealable = board.getTileAt(4);
 		players = new LinkedList();

@@ -103,7 +103,7 @@ public class CircularList<T> implements Serializable{
 
 	/**
 	 * 
-	 * Busca un elemento y devuelve el proximo.
+	 * Searches for an element and returns the next one
 	 * 
 	 * @param element
 	 * @return

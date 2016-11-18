@@ -17,6 +17,8 @@ import org.xml.sax.SAXException;
  * 
  * @author francisco
  *
+ *
+ *Game class is in charge of handling the sequence of states.
  */
 
 public class Game implements Serializable {

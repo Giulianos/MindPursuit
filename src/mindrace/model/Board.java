@@ -21,9 +21,9 @@ import org.xml.sax.SAXException;
  */
 public class Board implements Serializable{
 	/*
-	 * Constantes
+	 * Constants
 	 */
-	private final Integer tilesQuantity = 42;
+	private static  final Integer tilesQuantity = 42;
 	
 	private CircularList<Tile> tiles = new CircularList<Tile>();
 	private String tilesXMLFile = "boardTiles.xml";
@@ -38,7 +38,9 @@ public class Board implements Serializable{
 	 */
 	public Board() throws ParserConfigurationException, SAXException, IOException {
 		
-		//Cargo los tiles desde un XML
+		/**
+		 * loading tiles from XML document
+		 */
 		loadTilesFromXML(tilesXMLFile);
 		
 	}

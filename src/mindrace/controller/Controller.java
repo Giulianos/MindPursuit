@@ -34,6 +34,14 @@ import mindrace.model.states.WinningToken;
 /**
  * @author francisco
  *
+ *
+ *
+ *Controller provides a link between the model and the View. Each time an event is triggered 
+ *from the user, a method from controller is called. 
+ *
+ *It can update the view as well as provide the model with the user input. It can
+ *also get information from the model, and traduce it to GUI classes that can be sent 
+ *to the view.
  */
 public class Controller {
 	
@@ -293,7 +301,6 @@ public class Controller {
 			new GameNotFoundGraphics();
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -301,13 +308,11 @@ public class Controller {
 			List<PlayerGraphics> playerGraphics = view.getPlayersGraphics();
 			file.writeObject(playerGraphics);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			file.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

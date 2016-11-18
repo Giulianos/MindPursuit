@@ -20,7 +20,7 @@ public class Player implements Cloneable, Serializable{
 		this.name = name;
 		this.tokens = new HashSet<Category>();
 		this.board=b;
-		//this.tile = board.startingTile();
+		this.tile = board.startingTile();
 	}
 	
 	public String getName(){
@@ -81,9 +81,6 @@ public class Player implements Cloneable, Serializable{
 	public int hashCode() {
 		return this.name.hashCode();
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		String string =this.name;

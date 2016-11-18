@@ -72,9 +72,6 @@ public class View {
 		ChoosingPlayersGraphics choosing=new ChoosingPlayersGraphics(controller, this);
 		
 	}
-	public void winning(WinningGameGUI winningGame){
-		
-	}
 	
 	public void winningTokenGraphics( Set<Category> possibleTokens){
 		new WinningTokenGraphics(controller, possibleTokens);

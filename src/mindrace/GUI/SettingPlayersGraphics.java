@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
 import mindrace.model.Category;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -203,6 +204,8 @@ public class SettingPlayersGraphics {
 					e1.printStackTrace();
 				}
 				closingTimer.schedule(closingTask, 1000);
+				} else {
+					JOptionPane.showMessageDialog(frame, "Nombre/Color inválido!");
 				}
 			}	
 		});
